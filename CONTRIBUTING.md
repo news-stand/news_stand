@@ -3,12 +3,14 @@
 ## General Workflow
 
 1. Fork the repo
-1. Cut a namespaced feature branch from master
+1. Pull/rebase and changes from organization master repo
+1. Cut a namespaced feature branch from master with specific prefix (see prefix examples below)
 1. Make commits to your feature branch. Prefix each commit like so: (see examples below)
-1. When you've finished with your fix or feature, Rebase upstream changes into your branch. submit a pull request directly to master. Include a description of your changes.
+1. When you've finished with your fix or feature, rebase upstream changes into your feature branch. After resolving any conflicts, push your branch to your personal github and then submit a pull request directly to organization master. Include a description of your changes.
 1. Your pull request will be reviewed by another maintainer. The point of code reviews is to help keep the codebase clean and of high quality and, equally as important, to help you grow as a programmer. If your code reviewer requests you make a change you don't understand, ask them why.
-1. Fix any issues raised by your code reviwer, and push your fixes as a single new commit.
+1. Fix any issues raised by your code reviwer, and push your fixes as a single new commit to your feature branch.
 1. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits.
+1. DO NOT MERGE YOUR OWN COMMITS!
 
 ## Detailed Workflow
 
@@ -126,6 +128,7 @@ Thanks for contributing!
 1. Run the [tests][] before submitting a pull request.
 1. Tests are very, very important. Submit tests if your pull request contains
    new, testable behavior.
+   - We wil require at least 1 test per pull request where possible
 
 ## Checklist:
 
