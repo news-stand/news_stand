@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header.jsx'
+import Header from './Header'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +11,6 @@ class App extends React.Component {
         Hello World!
         <Header />
       </div>
-
     );
   }
 }
