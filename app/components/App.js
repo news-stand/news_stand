@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import NewsList from './NewsList';
 
 class App extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class App extends React.Component {
       <div>
         Hello World!
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
+         {/* // RENDERING BY PASSING NEWSLIST DUMMY DATA */}
+         <NewsList newsArticles={dummyArticles} />
       </div>
     );
   }
