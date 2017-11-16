@@ -13,11 +13,11 @@ const searchArticles = (request, response, next) => {
   const search = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_KEY}&source=${source}`;
 
   axios.get(search)
-    .then((data) => {
-      const articles = data.data.articles.map((article) => {
+    .then((newsResponse) => {
+      const articles = newsResponse.data.articles.map((article) => {
         const newArticle = article;
         newArticle.source = source;
-        return article;
+        return newArticle;
       });
       request.articles = articles;
       next();

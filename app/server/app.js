@@ -19,7 +19,8 @@ app.get('/articles', searchArticles, (request, response) => {
   // sends back an array of articles for a single source
   // not an array of sources
   const { articles } = request;
-  response.end(JSON.stringify(articles));
+  // response.end(JSON.stringify(articles));
+  response.json(articles);
 });
 
 export default app;
