@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const getArticles = (baseSearch, sortBy, successCallback, failureCallback) => {
-  axios.get(`${baseSearch}&sortBy=${sortBy}`)
+const getArticles = (search, successCallback, failureCallback) => {
+  axios.get(search)
     .then((newsResponse) => {
       successCallback(newsResponse.data);
     })
