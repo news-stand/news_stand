@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import NewsList from './NewsList';
+import dummyArticles from '../dummy-data/articles';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class App extends React.Component {
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
          {/* // RENDERING BY PASSING NEWSLIST DUMMY DATA */}
          <NewsList newsArticles={dummyArticles} />
+         {/* Proper rendering of articles given dummy data.  Will need to uncomment 'article.source' of NewsItem component when we have our specialized data rendering.  Still needs a lot of work with CSS */}
       </div>
     );
   }

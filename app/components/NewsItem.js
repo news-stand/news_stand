@@ -3,9 +3,10 @@ import React from 'react';
 const NewsItem = ({article}) => {
   return (
     <div>
-      <img src={article.urlToImage} className='articleImg'>
+      <img src={article.urlToImage} className='articleImg' />>
       <h3 className='articleTitle'>{article.title}</h3>
       <p className='articleDescription'>{article.description}</p>
+      {/* <p className='articleSource'>{article.source}</p> */}
       <p className='articleAuthor'>{article.author}</p>
       <p className='articleUrl'>{article.url}</p>
       <br/>
@@ -14,3 +15,4 @@ const NewsItem = ({article}) => {
 }
 
 export default NewsItem;
+// TODO: uncomment source when we have backend-crafted source data
