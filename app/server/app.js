@@ -1,6 +1,6 @@
 import path from 'path';
 import express from 'express';
-import searchArticles from './middleware/search';
+import searchBySource from './middleware/bySource';
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.get('/', (request, response) => {
   response.sendFile(indexPath);
 });
 
-app.get('/articles', searchArticles, (request, response) => {
+app.get('/articles', searchBySource, (request, response) => {
   response.status(200);
 
   // sends back an array of articles for a single source
