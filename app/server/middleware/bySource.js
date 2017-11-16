@@ -10,12 +10,7 @@ const searchArticles = (request, response, next) => {
   const search = `https://newsapi.org/v2/everything?apiKey=${process.env.NEWS_KEY}&source=${source}&sortBy=${sortBy}&q=${topic}`;
 
   apiHelper(search, (newsData) => {
-    const articles = newsData.articles.map((article) => {
-      const newArticle = article;
-      newArticle.source = source;
-      return newArticle;
-    });
-    request.articles = articles;
+    request.articles = newsData.articles;
     next();
   }, (err) => {
     console.log(err);
