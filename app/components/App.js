@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from './Header'
+import Header from './Header';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      mostPopular: true
+      mostPopular: true,
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
@@ -14,11 +14,12 @@ class App extends React.Component {
   }
 
   onRefreshClick() {
-    // trigger get request to server
+    // trigger get request to server '/load' route
   }
 
   onToggleClick() {
     this.setState({mostPopular: !this.state.mostPopular});
+    // trigger get request to server to '/popular' or '/recent' routes as necessary
   }
 
   render() {

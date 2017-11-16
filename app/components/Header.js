@@ -1,9 +1,7 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
 
 const Header = (props) => (
   <div>
-  {console.log('props in Header:', props)}
     <form>
       [News Stand Logo]
       Viewing {props.mostPopular ? 'most popular' : 'most recent'} news.
