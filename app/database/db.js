@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import config from '../config/config';
+// import config from '../config/config';
 import Source from './models/source';
 
 // mongoDB conenction uri to mlab (remote mongo server)
