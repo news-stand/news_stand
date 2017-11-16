@@ -1,5 +1,8 @@
 ### node etc ###
 
+# VSCode Files
+.vscode/
+
 # Config Files
 config.js
 
