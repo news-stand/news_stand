@@ -23,22 +23,40 @@
 
 ## Usage
 
-- Clone
-> git clone https://github.com/news-stand/news-stand
+From the command line, run the following commands:
 
-- Install Dependencies
-> npm intall
+Clone:
+```sh
+git clone https://github.com/news-stand/news_stand
+```
 
-- Start
-> npm run start(?)
+Navigate Into Repo:
+```sh
+cd news_stand
+```
+
+Install Dependencies:
+```sh
+npm install
+```
+
+
+Start:
+```sh
+npm run start:dev
+```
+Note: This starts the Webpack bundler and Babel transpiler, which run in parallel with nodemon to run your server. You only need one open "running" terminal, rather than three. All three will watch for changes, so you don't need to re-run or re-start any of the processes.
 
 
 ## Requirements
 
-- node 6.4.x
-- mongodb
+- node 8.4.0
+- express 
 - body-parser
+- mongodb
 - mongoose
+- react
+- react-dom
 
 
 ## Development
@@ -58,4 +76,4 @@ View the project roadmap [here](https://docs.google.com/document/d/1lz--RxE-sTt_
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/news-stand/news-stand/blob/master/CONTRIBUTING.md) for contribution guidelines.
+See [CONTRIBUTING.md](https://github.com/news-stand/news_stand/blob/master/CONTRIBUTING.md) for contribution guidelines.
