@@ -7,12 +7,12 @@ import db from './db';
 const saveSources = (apiSourceData) => {
   const sources = apiSourceData.items.forEach((source) => {
     // check to see if souce exists
-      // if it doesn't exist, create a new doc and save it
-      // if it does exist, do nothing
+    // if it doesn't exist, create a new doc and save it
+    // if it does exist, do nothing
     let newSource = new Source({
       id: source.id,
       name: source.name,
-    })
+    });
     return newSource;
-  }
+  });
 };
