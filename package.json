@@ -44,6 +44,7 @@
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
+    "karma-nyan-reporter": "^0.2.5",
     "karma-webpack": "^2.0.6",
     "nodemon": "^1.12.1",
     "parallelshell": "^3.0.2"

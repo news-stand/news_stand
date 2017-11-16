@@ -9,7 +9,7 @@ describe('[App]', () => {
 
 	it('[Subtract] should subtract second param from first and return the result', () => {
 
-		expect(Subtract(1,2)).toBe(-1);
+		expect(Subtract(1,2)).toBe(5);
 	});
 
 	it('[Multiply] should multiply two numbers and return the result', () => {
