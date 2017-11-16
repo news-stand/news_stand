@@ -5,6 +5,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      mostPopular: true
+    };
+
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
   }
@@ -14,14 +18,14 @@ class App extends React.Component {
   }
 
   onToggleClick() {
-    // invert article-view state
+    this.setState({mostPopular: !this.state.mostPopular});
   }
 
   render() {
     return (
       <div>
         Hello World!
-        <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} />
+        <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
       </div>
     );
   }
