@@ -5,6 +5,6 @@ const sourceSchema = Schema({
   name: 'String',
 });
 
-const Source = mongoose.model('users', sourceSchema);
+const Source = mongoose.model('Source', sourceSchema);
 
 export default Source;
