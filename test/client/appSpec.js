@@ -1,4 +1,4 @@
-import { Add, Subtract, Multiply } from '../app/test-app';
+import { Add, Subtract, Multiply } from '../../app/test-app';
 
 describe('[App]', () => {
 
