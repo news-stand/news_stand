@@ -1,13 +1,15 @@
-import getArticles from './search';
+import apiHelper from './search';
 
-const searchBySource = (request, response, next) => {
+const searchArticles = (request, response, next) => {
   // only searches a single source, rather than an
   // array of sources
-  const { source, sortBy } = request.query;
+  // need to see what that request will look like
+  // before we can search for multiple sources
+  const { source, sortBy, topic } = request.query;
 
-  const search = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_KEY}&source=${source}&sortBy=${sortBy}`;
+  const search = `https://newsapi.org/v2/everything?apiKey=${process.env.NEWS_KEY}&source=${source}&sortBy=${sortBy}&q=${topic}`;
 
-  getArticles(search, (newsData) => {
+  apiHelper(search, (newsData) => {
     const articles = newsData.articles.map((article) => {
       const newArticle = article;
       newArticle.source = source;
@@ -21,4 +23,4 @@ const searchBySource = (request, response, next) => {
   });
 };
 
-export default searchBySource;
+export default searchArticles;
