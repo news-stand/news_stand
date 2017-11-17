@@ -27,7 +27,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello World!
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
          {/* // RENDERING BY PASSING NEWSLIST DUMMY DATA */}
          <NewsList newsArticles={dummyArticles} />

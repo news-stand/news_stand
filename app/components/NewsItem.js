@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsItem = ({article}) => {
   return (
-    <div>
+    <div className="newsItem">
       <img src={article.urlToImage} className='articleImg' />>
       <h3 className='articleTitle'>{article.title}</h3>
       <p className='articleDescription'>{article.description}</p>
