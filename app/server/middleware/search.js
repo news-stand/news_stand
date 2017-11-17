@@ -3,30 +3,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const searchArticles = (request, response, next) => {
-  // only searches a single source, rather than an
-  // array of sources
-  // also doesn't allow sortBy filtering yet, as some
-  // sources don't support all types of filtering
-  const { source } = request.query;
-
-  const search = `https://newsapi.org/v1/articles?apiKey=${process.env.NEWS_KEY}&source=${source}`;
-
+const getArticles = (search, successCallback, failureCallback) => {
   axios.get(search)
     .then((newsResponse) => {
-      const articles = newsResponse.data.articles.map((article) => {
-        const newArticle = article;
-        newArticle.source = source;
-        return newArticle;
-      });
-      request.articles = articles;
-      next();
+      successCallback(newsResponse.data);
     })
     .catch((err) => {
-      console.log(err);
-      response.status(500);
-      response.end();
+      failureCallback(err);
     });
 };
 
-export default searchArticles;
+export default getArticles;

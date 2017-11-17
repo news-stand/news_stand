@@ -1,6 +1,6 @@
 import path from 'path';
 import express from 'express';
-import searchArticles from './middleware/search';
+import searchArticles from './middleware/bySource';
 
 const app = express();
 
