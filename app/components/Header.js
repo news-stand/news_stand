@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = (props) => (
+const Header = props => (
   <div className="header">
     <form>
       [News Stand Logo]
