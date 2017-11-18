@@ -15,7 +15,8 @@
     "build:prod": "npm run build:server && npm run build:client",
     "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js",
     "start:dev": "parallelshell 'npm run build:watch:server' 'npm run build:watch:client' 'nodemon ./build/server/index.js'",
-    "start:dev:client": "webpack-dev-server"
+    "start:dev:client": "webpack-dev-server",
+    "test": "./node_modules/.bin/jasmine-node test/server"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -37,19 +38,25 @@
     "webpack-dev-server": "^2.9.4"
   },
   "devDependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.11.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
     "jasmine-core": "^2.8.0",
+    "jasmine-node": "^1.14.5",
     "karma": "^1.7.1",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-nyan-reporter": "^0.2.5",
+    "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.6",
     "nodemon": "^1.12.1",
-    "parallelshell": "^3.0.2"
+    "parallelshell": "^3.0.2",
+    "react-addons-test-utils": "^15.6.2",
+    "request": "^2.83.0"
   },
   "babel": {
     "presets": [

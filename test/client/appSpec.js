@@ -1,20 +1,39 @@
-import { Add, Subtract, Multiply } from '../../app/test-app';
+import React from "react";
+import Enzyme, { mount, shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-describe('[App]', () => {
+Enzyme.configure({ adapter: new Adapter() });
 
-	it('[Add] should add two numbers together and return the result', () => {
+import App from '../../app/components/App';
+import Header from '../../app/components/Header';
+import NewsList from '../../app/components/NewsList';
 
-		expect(Add(1,2)).toBe(3);
-	});
+describe('<App />', function () {
+  it('should have onReferchClick function defined', function () {
+    const wrapper = shallow(<App />);
+    expect(wrapper.props().onRefreshClick).toBe.defined;
+  });
 
-	it('[Subtract] should subtract second param from first and return the result', () => {
+  it("should have onToggleClick function defined", function() {
+    const wrapper = shallow(<App />);
+    expect(wrapper.props().onToggleClick).toBe.defined;
+  });
 
-		expect(Subtract(1,2)).toBe(5);
-	});
+  it("should have an initial mostPopular state of true", function() {
+    const wrapper = mount(<App />);
+    expect(wrapper.state().mostPopular).toBe(true);
+  });
 
-	it('[Multiply] should multiply two numbers and return the result', () => {
+  it("contains an <Header/> component", function() {
+    const wrapper = mount(<App />);
+    expect(wrapper.find(Header).length).toEqual(1);
+  });
 
-		expect(Multiply(1,2)).toBe(2);
-	});
+  it("contains an <NewsList/> component", function() {
+    const wrapper = mount(<App />);
+    expect(wrapper.find(NewsList).length).toEqual(1);
+  });
 
-}); // describe('[Org]', () => {...});
+});
+
+
