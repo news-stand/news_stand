@@ -9,13 +9,13 @@ const indexPath = path.join(__dirname, '../index.html');
 
 app.use(publicPath);
 
-app.get('/', (req, res) => {
-  res.sendFile(indexPath);
+app.get('/', (request, response) => {
+  response.sendFile(indexPath);
 });
 
-app.get('/articles', searchArticles, (req, res) => {
-  const { articles } = req;
-  res.json(articles);
+app.get('/articles', searchArticles, (request, response) => {
+  const { articles } = request;
+  response.json(articles);
 });
 
 export default app;
