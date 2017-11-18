@@ -1,20 +1,12 @@
-import { Add, Subtract, Multiply } from '../../app/test-app';
+import React from "react";
+import { mount, shallow } from "enzyme";
 
-describe('[App]', () => {
+import App from '../../app/components/App';
 
-	it('[Add] should add two numbers together and return the result', () => {
-
-		expect(Add(1,2)).toBe(3);
-	});
-
-	it('[Subtract] should subtract second param from first and return the result', () => {
-
-		expect(Subtract(1,2)).toBe(5);
-	});
-
-	it('[Multiply] should multiply two numbers and return the result', () => {
-
-		expect(Multiply(1,2)).toBe(2);
-	});
-
-}); // describe('[Org]', () => {...});
+describe('<App />', function () {
+  it('should have an image to display the gravatar', function () {
+    const wrapper = shallow(<App />);
+    expect(wrapper.props().onRefreshClick).to.be.defined;
+    expect(wrapper.props().onToggleClick).to.be.defined;
+  });
+});
