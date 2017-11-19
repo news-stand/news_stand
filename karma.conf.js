@@ -37,7 +37,7 @@ module.exports = function(config) {
             loader: 'babel-loader',
             exclude: path.resolve(__dirname, 'node_modules'),
             query: {
-              presets: ['es2015', 'react']
+              presets: ['es2015', 'react', 'stage-1']
             }
           }
         ]

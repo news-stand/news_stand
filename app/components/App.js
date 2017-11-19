@@ -1,8 +1,10 @@
 import React from 'react';
-import Header from './Header';
-import NewsList from './NewsList';
-import dummyArticles from '../dummy-data/articles';
 import axios from 'axios';
+
+import NewsList from './NewsList';
+import Header from './Header';
+import AddSource from './AddSource';
+import SelectedSources from './SelectedSources';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,19 +13,12 @@ class App extends React.Component {
     this.state = {
       mostPopular: true,
       articles: [],
+      selectedSources: [],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
-  }
-
-  onRefreshClick() {
-    // trigger get request to server '/load' route
-  }
-
-  onToggleClick() {
-    this.setState({ mostPopular: !this.state.mostPopular });
-    // trigger get request to server to '/popular' or '/recent' routes as necessary
+    this.onAddSource = this.onAddSource.bind(this);
   }
 
   componentDidMount() {
@@ -36,8 +31,20 @@ class App extends React.Component {
     this.getArticles(options);
   }
 
-  getArticles(options) {
+  onRefreshClick() {
+    // trigger get request to server '/load' route
+  }
 
+  onToggleClick() {
+    this.setState({ mostPopular: !this.state.mostPopular });
+    // trigger get request to server to '/popular' or '/recent' routes as necessary
+  }
+
+  onAddSource(source) {
+    this.setState((state) => { return { selectedSources: state.selectedSources.concat([source]) }; });
+  }
+
+  getArticles(options) {
     axios
       .get('/articles', {
         params: options,
@@ -55,9 +62,9 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-         {/* // RENDERING BY PASSING NEWSLIST DUMMY DATA */}
-         <NewsList newsArticles={this.state.articles} />
-         {/* Proper rendering of articles given dummy data.  Will need to uncomment 'article.source' of NewsItem component when we have our specialized data rendering.  Still needs a lot of work with CSS */}
+        <AddSource onAddSource={this.onAddSource} />
+        <SelectedSources selectedSources={this.state.selectedSources} />
+        <NewsList newsArticles={this.state.articles} />
       </div>
     );
   }

@@ -32,3 +32,32 @@ padding: 10px;
 
 }
 
+
+/* ---------------------------- */
+/*    Material-UI Component     */
+/* ---------------------------- */
+.addSourceContainer {
+  width: 250px;
+  display: inline-block;
+  vertical-align:top;
+}
+
+.AddSource-container-1 {
+  width: 150px;
+  display: inline-block;
+}
+
+
+/* ---------------------------- */
+/*      Selectetd Sources       */
+/* ---------------------------- */
+.selectedSourcesContainer {
+  display: inline-block;
+  width: 200px;
+  height: 300px;
+}
+
+.selectedSources {
+  display: inline-block;
+  width: 200px;
+}
