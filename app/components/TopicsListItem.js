@@ -1,5 +1,7 @@
 import React from 'react';
 
-const TopicsListItem = (props) => (<div className="topics list">TopicsListItem</div>);
+const TopicsListItem = (props) => (
+  <li className="topics list-item">{props.topic}</li>
+);
 
 export default TopicsListItem;
