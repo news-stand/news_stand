@@ -40,11 +40,16 @@ describe('News Stand Server', function() {
     });
 
     //not totally sure if this is how it works
-    xit('returns an array', function(done) {
-      request.get(`${baseUrl}/articles`, function(error, response, body) {
-        expect(response.data).toBe(200);
-        done();
-      });
+    it('returns an array', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          console.log(response.data);
+          expect(Array.isArray(response.data)).toBe(true);
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
     });
 
     xit('returns an array of objects', function(done) {
