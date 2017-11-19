@@ -5,7 +5,14 @@ class TopicsSearch extends React.Component {
     super(props);
   }
   render() {
-    return <div className="topics search">Topics Search Here</div>;
+    return (
+      <div className="topics search">
+        <form className="topics search">
+          <input className="topics search" placeholder="Search a Topic" />
+          <button type="button" >Search</button>
+        </form>
+      </div>
+    );
   }
 }
 
