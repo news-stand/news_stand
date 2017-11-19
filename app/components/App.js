@@ -15,7 +15,9 @@ class App extends React.Component {
       mostPopular: true,
       articles: [],
       selectedSources: [],
-      topics: [],
+      // added 2 dummy topics for default to make it easy to see while building the component
+      // TODO: take out dummy topics
+      topics: ['tech', 'sports'],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);

@@ -6,7 +6,7 @@ const Topics = (props) => (
   <div className="topics">
     <h5>Topics Component Here</h5>
     <TopicsSearch className="topics search" />
-    <TopicsList className="topics list" />
+    <TopicsList topics={props.topics} className="topics list" />
   </div>
 );
 
