@@ -14,26 +14,34 @@ describe('<App />', function () {
     expect(wrapper.props().onRefreshClick).toBe.defined;
   });
 
-  it("should have onToggleClick function defined", function() {
+  it('should have onToggleClick function defined', function() {
     const wrapper = shallow(<App />);
     expect(wrapper.props().onToggleClick).toBe.defined;
   });
 
-  it("should have an initial mostPopular state of true", function() {
+  it('should have onTopicRemoval function defined', function() {
+    const wrapper = shallow(<App />);
+    expect(wrapper.props().onTopicRemoval).toBe.defined;
+  });
+
+  it('should have onTopicSearch function defined', function() {
+    const wrapper = shallow(<App />);
+    expect(wrapper.props().onTopicSearch).toBe.defined;
+  });
+
+  it('should have an initial mostPopular state of true', function() {
     const wrapper = mount(<App />);
     expect(wrapper.state().mostPopular).toBe(true);
   });
 
-  it("contains an <Header/> component", function() {
+  it('contains an <Header/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(Header).length).toEqual(1);
   });
 
-  it("contains an <NewsList/> component", function() {
+  it('contains an <NewsList/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(NewsList).length).toEqual(1);
   });
 
 });
-
-
