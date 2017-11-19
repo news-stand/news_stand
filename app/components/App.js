@@ -45,7 +45,36 @@ class App extends React.Component {
   }
 
   onAddSource(source) {
-    this.setState((state) => { return { selectedSources: state.selectedSources.concat([source]) }; });
+    this.setState((state) => { 
+      return { selectedSources: state.selectedSources.concat([source]) }; 
+    });
+  }
+
+  onTopicSearch(topic) {
+    // update state
+    const { topics } = this.state;
+    topics.push(topic);
+    this.setState({ topics: topics });
+
+    // complete /get request
+    // note that source is hardcoded because we don't have state set for that yet
+    const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
+    const options = {
+      topic: topics.join('+'),
+      sortBy: sorting,
+      source: 'bbc-news',
+    };
+    this.getArticles(options);
+  }
+
+  componentDidMount() {
+    const options = {
+      topic: null,
+      source: null,
+      sortBy: null,
+      topHeadlines: true,
+    };
+    this.getArticles(options);
   }
 
   getArticles(options) {
