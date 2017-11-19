@@ -18,7 +18,6 @@ const searchArticles = (request, response, next) => {
     .get(search)
     .then((newsResponse) => {
       request.articles = newsResponse.data.articles;
-      console.log(request.articles);
     })
     .catch((err) => {
       console.log('error newsAPI: ', err);
