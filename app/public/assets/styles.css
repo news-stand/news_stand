@@ -32,3 +32,12 @@ padding: 10px;
 
 }
 
+
+/* ---------------------------- */
+/*    Material-UI Component     */
+/* ---------------------------- */
+
+.Source-container-1 {
+  width: 150px;
+  display: inline-block;
+}

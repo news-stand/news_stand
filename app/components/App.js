@@ -1,8 +1,9 @@
 import React from 'react';
-import Header from './Header';
-import NewsList from './NewsList';
-import dummyArticles from '../dummy-data/articles';
 import axios from 'axios';
+
+import NewsList from './NewsList';
+import Header from './Header';
+import Source from './Source';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,15 +18,7 @@ class App extends React.Component {
     this.onToggleClick = this.onToggleClick.bind(this);
   }
 
-  onRefreshClick() {
-    // trigger get request to server '/load' route
-  }
-
-  onToggleClick() {
-    this.setState({ mostPopular: !this.state.mostPopular });
-    // trigger get request to server to '/popular' or '/recent' routes as necessary
-  }
-
+  
   componentDidMount() {
     const options = {
       topic: null,
@@ -36,6 +29,14 @@ class App extends React.Component {
     this.getArticles(options);
   }
 
+  onRefreshClick() {
+    // trigger get request to server '/load' route
+  }
+
+  onToggleClick() {
+    this.setState({ mostPopular: !this.state.mostPopular });
+    // trigger get request to server to '/popular' or '/recent' routes as necessary
+  }
   getArticles(options) {
 
     axios
@@ -55,9 +56,8 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-         {/* // RENDERING BY PASSING NEWSLIST DUMMY DATA */}
-         <NewsList newsArticles={this.state.articles} />
-         {/* Proper rendering of articles given dummy data.  Will need to uncomment 'article.source' of NewsItem component when we have our specialized data rendering.  Still needs a lot of work with CSS */}
+        <Source />
+        <NewsList newsArticles={this.state.articles} />
       </div>
     );
   }
