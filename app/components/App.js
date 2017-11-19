@@ -57,6 +57,16 @@ class App extends React.Component {
     const { topics } = this.state;
     topics.splice(index, 1);
     this.setState({ topics: topics });
+
+    // complete /get request
+    // note that source is hardcoded because we don't have state set for that yet
+    const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
+    const options = {
+      topic: topics.join('%20OR%20'),
+      sortBy: sorting,
+      source: 'bbc-news',
+    };
+    this.getArticles(options);
   }
 
   onTopicSearch(topic) {
