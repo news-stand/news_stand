@@ -50,24 +50,50 @@ describe('<App />', function () {
 
   it('contains a <Topics/> component', function() {
     const wrapper = mount(<App />);
-    expect(wrapper.find(NewsList).length).toEqual(1);
+    expect(wrapper.find(Topics).length).toEqual(1);
   });
 });
 
 describe('<Topics />', function () {
-  it('contains a <Header/> component', function() {
-    const wrapper = mount(<App />);
-    expect(wrapper.find(Header).length).toEqual(1);
-  });
-
   it('contains a <TopicsList /> component', function() {
-    const wrapper = mount(<App />);
-    expect(wrapper.find(NewsList).length).toEqual(1);
+    const wrapper = mount(<Topics />);
+    expect(wrapper.find(TopicsList).length).toEqual(1);
   });
 
   it('contains a <TopicsSearch /> component', function() {
-    const wrapper = mount(<App />);
-    expect(wrapper.find(NewsList).length).toEqual(1);
+    const wrapper = mount(<Topics />);
+    expect(wrapper.find(TopicsSearch).length).toEqual(1);
+  });
+});
+
+describe('<TopicsList />', function () {
+  it('contains a <TopicsListItem /> component', function() {
+    const topics = ['politics'];
+    const wrapper = mount(<TopicsList topics={topics} />);
+    expect(wrapper.find(TopicsListItem).length).toEqual(1);
+  });
+
+  it('doesn\'t render <TopicsListItem /> component if no topics are passed in', function() {
+    const wrapper = mount(<TopicsList />);
+    expect(wrapper.find(TopicsListItem).length).toEqual(0);
+  });
+
+  it('contains a <TopicsListItem /> component that dynamically renders topics', function() {
+    const topics = ['politics', 'art'];
+    const wrapper = mount(<TopicsList topics={topics} />);
+    expect(wrapper.find(TopicsListItem).length).toEqual(2);
+  });
+});
+
+describe('<TopicsSearch />', function () {
+  it('contains an onSearch function', function() {
+    const wrapper = mount(<TopicsSearch />);
+    expect(wrapper.props().onSearch).toBe.defined;
+  });
+
+  it('contains an onSearch function', function() {
+    const wrapper = mount(<TopicsSearch />);
+    expect(wrapper.props().handleBarChange).toBe.defined;
   });
 });
 
