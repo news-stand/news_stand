@@ -15,6 +15,7 @@ class App extends React.Component {
       mostPopular: true,
       articles: [],
       selectedSources: [],
+      topics: [],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
@@ -63,7 +64,7 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-        <Topics className="topics" />
+        <Topics className="topics" topics={this.state.topics} />
         <AddSource onAddSource={this.onAddSource} />
         <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
