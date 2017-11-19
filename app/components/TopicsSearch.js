@@ -7,10 +7,15 @@ class TopicsSearch extends React.Component {
       searchTerm: '',
     };
 
-    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleBarChange = this.handleBarChange.bind(this);
+    this.onSearch = this.onSearch.bind(this);
   }
 
-  handleSearchChange(event) {
+  onSearch(event) {
+    event.preventDefault();
+  }
+
+  handleBarChange(event) {
     const { value } = event.target;
     this.setState({ searchTerm: value });
   }
@@ -23,7 +28,7 @@ class TopicsSearch extends React.Component {
             className="topics search"
             placeholder="Search a Topic"
             value={this.state.searchTerm}
-            onChange={(event) => { this.handleSearchChange(event); }}
+            onChange={(event) => { this.handleBarChange(event); }}
           />
           <button type="button" >Search</button>
         </form>
