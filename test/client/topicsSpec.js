@@ -10,12 +10,12 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('<Topics />', function () {
   it('contains a <TopicsList /> component', function() {
-    const wrapper = mount(<Topics />);
+    const wrapper = shallow(<Topics />);
     expect(wrapper.find(TopicsList).length).toEqual(1);
   });
 
   it('contains a <TopicsSearch /> component', function() {
-    const wrapper = mount(<Topics />);
+    const wrapper = shallow(<Topics />);
     expect(wrapper.find(TopicsSearch).length).toEqual(1);
   });
 });
