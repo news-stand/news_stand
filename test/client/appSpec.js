@@ -1,12 +1,12 @@
-import React from "react";
-import Enzyme, { mount, shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-Enzyme.configure({ adapter: new Adapter() });
+import React from 'react';
+import Enzyme, { mount, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 import App from '../../app/components/App';
 import Header from '../../app/components/Header';
 import NewsList from '../../app/components/NewsList';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('<App />', function () {
   it('should have onReferchClick function defined', function () {
