@@ -18,25 +18,36 @@ describe('News Stand Server', function() {
     });
   });
 
-  //I beleive this test is failing because the middlware function is throwing an error
+  // I beleive this test is failing because the middlware function is throwing an error
   // I don't have a .env file setup so I don't think I am actually able to make a request
-  xdescribe('GET /articles', function() {
+  describe('GET /articles', function() {
+    const options = {
+      topic: null,
+      source: null,
+      sortBy: null,
+      topHeadlines: true,
+    };
+
     it('returns status code 200', function(done) {
-      request.get(`${baseUrl}/articles`, function(error, response, body) {
-        expect(response.statusCode).toBe(200);
-        done();
-      });
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.status).toBe(200);
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
     });
 
     //not totally sure if this is how it works
-    it('returns an array', function(done) {
+    xit('returns an array', function(done) {
       request.get(`${baseUrl}/articles`, function(error, response, body) {
         expect(response.data).toBe(200);
         done();
       });
     });
 
-    it('returns an array of objects', function(done) {
+    xit('returns an array of objects', function(done) {
       request.get(`${baseUrl}/articles`, function(error, response, body) {
         expect(response.data).toBe(200);
         done();
