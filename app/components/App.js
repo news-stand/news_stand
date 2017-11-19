@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import NewsList from './NewsList';
 import Header from './Header';
+import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 
@@ -62,6 +63,7 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
+        <Topics />
         <AddSource onAddSource={this.onAddSource} />
         <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
