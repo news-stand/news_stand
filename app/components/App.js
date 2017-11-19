@@ -65,7 +65,8 @@ class App extends React.Component {
       sortBy: sorting,
       source: 'bbc-news',
     };
-    this.getArticles(options);
+    // this.getArticles(options);
+    console.log(options);
   }
 
   componentDidMount() {
