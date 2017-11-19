@@ -52,11 +52,16 @@ describe('News Stand Server', function() {
         });
     });
 
-    xit('returns an array of objects', function(done) {
-      request.get(`${baseUrl}/articles`, function(error, response, body) {
-        expect(response.data).toBe(200);
-        done();
-      });
+    it('returns an array of objects', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          console.log(response.data);
+          expect(typeof response.data[0]).toBe('object');
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
     });
 
   });
