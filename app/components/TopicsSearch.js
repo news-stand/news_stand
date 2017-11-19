@@ -5,7 +5,7 @@ class TopicsSearch extends React.Component {
     super(props);
   }
   render() {
-    return <div>Topics Search Here</div>;
+    return <div className="topics search">Topics Search Here</div>;
   }
 }
 

@@ -1,10 +1,12 @@
 import React from 'react';
 import TopicsSearch from './TopicsSearch';
+import TopicsList from './TopicsList'
 
 const Topics = (props) => (
-  <div>
+  <div className="topics">
     <h5>Topics Component Here</h5>
-    <TopicsSearch />
+    <TopicsSearch className="topics search" />
+    <TopicsList className="topics list" />
   </div>
 );
 

@@ -63,7 +63,7 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-        <Topics />
+        <Topics className="topics" />
         <AddSource onAddSource={this.onAddSource} />
         <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
