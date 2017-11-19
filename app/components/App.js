@@ -3,7 +3,8 @@ import axios from 'axios';
 
 import NewsList from './NewsList';
 import Header from './Header';
-import Source from './Source';
+import AddSource from './AddSource';
+import SelectedSources from './SelectedSources';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,13 +13,14 @@ class App extends React.Component {
     this.state = {
       mostPopular: true,
       articles: [],
+      selectedSources: [],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
+    this.onAddSource = this.onAddSource.bind(this);
   }
 
-  
   componentDidMount() {
     const options = {
       topic: null,
@@ -37,8 +39,12 @@ class App extends React.Component {
     this.setState({ mostPopular: !this.state.mostPopular });
     // trigger get request to server to '/popular' or '/recent' routes as necessary
   }
-  getArticles(options) {
 
+  onAddSource(source) {
+    this.setState((state) => { return { selectedSources: state.selectedSources.concat([source]) }; });
+  }
+
+  getArticles(options) {
     axios
       .get('/articles', {
         params: options,
@@ -56,7 +62,8 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-        <Source />
+        <AddSource onAddSource={this.onAddSource} />
+        <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
       </div>
     );

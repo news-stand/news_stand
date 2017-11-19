@@ -10,7 +10,9 @@ import { MenuItem } from "material-ui/Menu";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import { withStyles } from "material-ui/styles";
+
 import sources from '../dummy-data/sources_v2';
+
 
 const suggestions = sources.sources.map((source) => {
   return { label: source.name };
@@ -118,7 +120,7 @@ const styles = theme => ({
   }
 });
 
-class Source extends React.Component {
+class AddSource extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -149,7 +151,7 @@ class Source extends React.Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className="addSourceContainer">
         <Autosuggest
           theme={{
             container: classes.container,
@@ -172,14 +174,14 @@ class Source extends React.Component {
             onChange: this.handleChange.bind(this)
           }}
         />
-        <button>Add Source</button>
+        <button onClick={() => this.props.onAddSource(this.state.value)}>Add Source</button>
       </div>
     );
   }
 }
 
-Source.propTypes = {
+AddSource.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Source);
+export default withStyles(styles)(AddSource);
