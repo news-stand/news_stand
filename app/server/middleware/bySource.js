@@ -10,7 +10,7 @@ const searchArticles = (request, response, next) => {
   // if we are looking for specific headlines
   } else {
     const { source, sortBy, topic } = request.query;
-    search = `https://newsapi.org/v2/everything/?q=${topic}&sources=${source}&sortBy=${sortBy}&&apiKey=${process.env.NEWS_KEY}`;
+    search = `https://newsapi.org/v2/everything/?q=${topic}&sources=${source}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
   }
 
   // Request information from newsAPI
