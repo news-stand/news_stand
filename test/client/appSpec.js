@@ -6,6 +6,9 @@ import App from '../../app/components/App';
 import Header from '../../app/components/Header';
 import NewsList from '../../app/components/NewsList';
 import Topics from '../../app/components/Topics';
+import TopicsList from '../../app/components/TopicsList';
+import TopicsListItem from '../../app/components/TopicsListItem';
+import TopicsSearch from '../../app/components/TopicsSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -49,5 +52,22 @@ describe('<App />', function () {
     const wrapper = mount(<App />);
     expect(wrapper.find(NewsList).length).toEqual(1);
   });
-
 });
+
+describe('<Topics />', function () {
+  it('contains a <Header/> component', function() {
+    const wrapper = mount(<App />);
+    expect(wrapper.find(Header).length).toEqual(1);
+  });
+
+  it('contains a <TopicsList /> component', function() {
+    const wrapper = mount(<App />);
+    expect(wrapper.find(NewsList).length).toEqual(1);
+  });
+
+  it('contains a <TopicsSearch /> component', function() {
+    const wrapper = mount(<App />);
+    expect(wrapper.find(NewsList).length).toEqual(1);
+  });
+});
+
