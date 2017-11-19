@@ -62,13 +62,16 @@ class App extends React.Component {
     const options = {
       topic: topics.join('%20OR%20'),
       sortBy: sorting,
-      source: selectedSources,
+      source: selectedSources.join(','),
     };
+    // note: API middleware doesn't properly use arrays yet, so sending through
+    // as a comma-seperated list
     this.getArticles(options);
   }
 
   onTopicSearch(topic) {
     const { topics, selectedSources } = this.state;
+    console.log(selectedSources);
     topics.push(topic);
     this.setState({ topics: topics });
 
@@ -76,8 +79,10 @@ class App extends React.Component {
     const options = {
       topic: topics.join('%20OR%20'),
       sortBy: sorting,
-      source: selectedSources,
+      source: selectedSources.join(','),
     };
+    // note: API middleware doesn't properly use arrays yet, so sending through
+    // as a comma-seperated list
     this.getArticles(options);
   }
 
