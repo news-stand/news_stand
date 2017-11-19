@@ -23,6 +23,7 @@ class App extends React.Component {
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
     this.onAddSource = this.onAddSource.bind(this);
+    this.onTopicSearch = this.onTopicSearch.bind(this);
   }
 
   componentDidMount() {
@@ -95,7 +96,7 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-        <Topics className="topics" topics={this.state.topics} />
+        <Topics className="topics" topics={this.state.topics} onTopicSearch={this.onTopicSearch} />
         <AddSource onAddSource={this.onAddSource} />
         <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
