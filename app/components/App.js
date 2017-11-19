@@ -71,7 +71,6 @@ class App extends React.Component {
 
   onTopicSearch(topic) {
     const { topics, selectedSources } = this.state;
-    console.log(selectedSources);
     topics.push(topic);
     this.setState({ topics: topics });
 
