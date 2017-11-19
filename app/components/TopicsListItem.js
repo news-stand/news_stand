@@ -1,12 +1,12 @@
 import React from 'react';
 
 const TopicsListItem = (props) => (
-  <li
+  <div
     className="topics list-item"
     onClick={() => { props.onTopicRemoval(props.index); }}
   >
     {props.topic}
-  </li>
+  </div>
 );
 
 export default TopicsListItem;

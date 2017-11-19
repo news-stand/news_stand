@@ -3,8 +3,8 @@ import TopicsListItem from './TopicsListItem';
 
 const TopicsList = (props) => (
   <div className="topics list">
-    <h5 className="topics list">Select Topics:</h5>
-    <ul className="topics list">
+    <h5 className="topics list">Selected Topics:</h5>
+    <div className="topics list">
       {props.topics && props.topics.map((topic, key) => {
         return (
           <TopicsListItem
@@ -15,7 +15,7 @@ const TopicsList = (props) => (
             onTopicRemoval={props.onTopicRemoval}
           />);
       })}
-    </ul>
+    </div>
   </div>
 );
 
