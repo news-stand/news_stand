@@ -1,21 +1,29 @@
-import apiHelper from './search';
+import axios from 'axios';
 
 const searchArticles = (request, response, next) => {
-  // only searches a single source, rather than an
-  // array of sources
-  // need to see what that request will look like
-  // before we can search for multiple sources
-  const { source, sortBy, topic } = request.query;
+  let search;
 
-  const search = `https://newsapi.org/v2/everything?apiKey=${process.env.NEWS_KEY}&source=${source}&sortBy=${sortBy}&q=${topic}`;
+  // if we are only looking for top headlines
+  if (request.query.topHeadlines === 'true') {
+    const sources = 'espn';
+    search = `https://newsapi.org/v2/top-headlines/?sources=${sources}&apiKey=${process.env.NEWS_KEY}`;
+  // if we are looking for specific headlines
+  } else {
+    const { source, sortBy, topic } = request.query;
+    search = `https://newsapi.org/v2/everything/?q=${topic}&sources=${source}&sortBy=${sortBy}&&apiKey=${process.env.NEWS_KEY}`;
+  }
 
-  apiHelper(search, (newsData) => {
-    request.articles = newsData.articles;
-    next();
-  }, (err) => {
-    console.log(err);
-    response.status(500).send('Error--request can\'t be processed.');
-  });
+  // Request information from newsAPI
+  axios
+    .get(search)
+    .then((newsResponse) => {
+      request.articles = newsResponse.data.articles;
+      console.log(request.articles);
+    })
+    .catch((err) => {
+      console.log('didn\'t get a response form newsAPI');
+    })
+    .then(() => next());
 };
 
 export default searchArticles;

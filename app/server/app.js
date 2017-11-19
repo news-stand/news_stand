@@ -14,10 +14,6 @@ app.get('/', (request, response) => {
 });
 
 app.get('/articles', searchArticles, (request, response) => {
-  response.status(200);
-
-  // sends back an array of articles for a single source
-  // not an array of sources
   const { articles } = request;
   response.json(articles);
 });
