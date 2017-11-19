@@ -60,9 +60,9 @@ class App extends React.Component {
 
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
-      topic: topics.join('%20OR%20'),
+      topic: topics/*.join('%20OR%20')*/,
       sortBy: sorting,
-      source: selectedSources.join(','),
+      source: selectedSources/*.join(',')*/,
     };
     // note: API middleware doesn't properly use arrays yet, so sending through
     // as a comma-seperated list
@@ -76,9 +76,9 @@ class App extends React.Component {
 
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
-      topic: topics.join('%20OR%20'),
+      topic: topics/*.join('%20OR%20')*/,
       sortBy: sorting,
-      source: selectedSources.join(','),
+      source: selectedSources/*.join(',')*/,
     };
     // note: API middleware doesn't properly use arrays yet, so sending through
     // as a comma-seperated list
