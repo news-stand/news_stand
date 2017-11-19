@@ -61,7 +61,7 @@ class App extends React.Component {
     // note that source is hardcoded because we don't have state set for that yet
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
-      topic: topics.join('+'),
+      topic: `+${topics.join('+')}`,
       sortBy: sorting,
       source: 'bbc-news',
     };
