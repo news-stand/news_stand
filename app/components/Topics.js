@@ -6,7 +6,11 @@ const Topics = (props) => (
   <div className="topics">
     <h5>Topics Component Here</h5>
     <TopicsSearch className="topics search" onTopicSearch={props.onTopicSearch} />
-    <TopicsList topics={props.topics} className="topics list" />
+    <TopicsList
+      topics={props.topics}
+      onTopicRemoval={props.onTopicRemoval}
+      className="topics list"
+    />
   </div>
 );
 

@@ -23,6 +23,7 @@ class App extends React.Component {
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
     this.onAddSource = this.onAddSource.bind(this);
+    this.onTopicRemoval = this.onTopicRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
   }
 
@@ -49,6 +50,11 @@ class App extends React.Component {
     this.setState((state) => { 
       return { selectedSources: state.selectedSources.concat([source]) }; 
     });
+  }
+
+  onTopicRemoval(topic) {
+    console.log(topic);
+    console.log(this.state.topics);
   }
 
   onTopicSearch(topic) {
@@ -96,7 +102,10 @@ class App extends React.Component {
     return (
       <div>
         <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-        <Topics className="topics" topics={this.state.topics} onTopicSearch={this.onTopicSearch} />
+        <Topics
+          className="topics" topics={this.state.topics}
+          onTopicSearch={this.onTopicSearch} onTopicRemoval={this.onTopicRemoval}
+        />
         <AddSource onAddSource={this.onAddSource} />
         <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
