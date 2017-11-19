@@ -15,9 +15,7 @@ class App extends React.Component {
       mostPopular: true,
       articles: [],
       selectedSources: [],
-      // added 2 dummy topics for default to make it easy to see while building the component
-      // TODO: take out dummy topics
-      topics: ['tech', 'sports'],
+      topics: [],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
@@ -54,34 +52,31 @@ class App extends React.Component {
   }
 
   onTopicRemoval(index) {
-    const { topics } = this.state;
+    const { topics, selectedSources } = this.state;
     topics.splice(index, 1);
     this.setState({ topics: topics });
 
-    // complete /get request
-    // note that source is hardcoded because we don't have state set for that yet
+    this.setState({ topics: topics });
+
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
       topic: topics.join('%20OR%20'),
       sortBy: sorting,
-      source: 'bbc-news',
+      source: selectedSources,
     };
     this.getArticles(options);
   }
 
   onTopicSearch(topic) {
-    // update state
-    const { topics } = this.state;
+    const { topics, selectedSources } = this.state;
     topics.push(topic);
     this.setState({ topics: topics });
 
-    // complete /get request
-    // note that source is hardcoded because we don't have state set for that yet
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
       topic: topics.join('%20OR%20'),
       sortBy: sorting,
-      source: 'bbc-news',
+      source: selectedSources,
     };
     this.getArticles(options);
   }
