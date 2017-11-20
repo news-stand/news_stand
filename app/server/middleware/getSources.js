@@ -10,10 +10,9 @@ module.exports = (request, response, next) => {
           label: source.name,
         };
       });
-      next();
     })
     .catch((err) => {
       console.log(err);
-      next();
-    });
+    })
+    .then(() => next());
 };
