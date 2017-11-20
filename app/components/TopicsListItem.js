@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TopicsListItem = (props) => (
+const TopicsListItem = props => (
   <div
     className="topics list-item"
     onClick={() => { props.onTopicRemoval(props.index); }}

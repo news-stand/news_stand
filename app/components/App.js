@@ -83,16 +83,6 @@ class App extends React.Component {
     this.getArticles(options);
   }
 
-  componentDidMount() {
-    const options = {
-      topic: null,
-      source: null,
-      sortBy: null,
-      topHeadlines: true,
-    };
-    this.getArticles(options);
-  }
-
   getArticles(options) {
     axios
       .get('/articles', {
