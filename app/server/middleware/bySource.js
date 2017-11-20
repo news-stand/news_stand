@@ -10,7 +10,13 @@ const searchArticles = (request, response, next) => {
   // if we are looking for specific headlines
   } else {
     const { source, sortBy, topic } = request.query;
-    search = `https://newsapi.org/v2/everything/?q=${topic}&sources=${source}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
+
+    // format source and topic for url-encoding
+    // switch spaces on source to '-', since we don't have source codes yet
+    // encode all other spaces as '%20'
+    const formattedSource = source.join(',').split(' ').join('-');
+    const formattedTopic = topic.join('%20OR%20').split(' ').join('%20');
+    search = `https://newsapi.org/v2/everything/?q=${formattedTopic}&sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
   }
 
   // Request information from newsAPI
