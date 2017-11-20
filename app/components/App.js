@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
 
@@ -6,6 +7,7 @@ import Header from './Header';
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -112,16 +114,43 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
-        <Topics
-          className="topics"
-          topics={this.state.topics}
-          onTopicSearch={this.onTopicSearch}
-          onTopicRemoval={this.onTopicRemoval}
+        <Header
+          onRefreshClick={this.onRefreshClick}
+          onToggleClick={this.onToggleClick}
+          mostPopular={this.state.mostPopular}
         />
-        <AddSource onAddSource={this.onAddSource} />
-        <SelectedSources selectedSources={this.state.selectedSources} />
-        <NewsList newsArticles={this.state.articles} />
+        {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
+        {/* <div id="accounts">
+          <div><Link to="/signup"></Link></div>
+          <div><Link to="/login">Login</Link></div>
+        </div> */}
+
+        <hr />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() =>
+              ( // Need to refactor this to be it's own 'Home' component
+                <div>
+                  <Topics
+                    className="topics"
+                    topics={this.state.topics}
+                    onTopicSearch={this.onTopicSearch}
+                    onTopicRemoval={this.onTopicRemoval}
+                  />
+                  <AddSource onAddSource={this.onAddSource} />
+                  <SelectedSources selectedSources={this.state.selectedSources} />
+                  <NewsList newsArticles={this.state.articles} />
+                </div>
+              )
+            }
+
+          />
+          {/* <Route path="/login" component={}/> */}
+          {/* <Route component={NotFound} /> */}
+        </Switch>
+        
       </div>
     );
   }
