@@ -25,6 +25,13 @@ module.exports = {
         loader: 'style-loader!css-loader',
         include: path.join(__dirname, 'app/public/assets/styles.css'),
       },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
+      },
     ],
   },
   plugins: [
