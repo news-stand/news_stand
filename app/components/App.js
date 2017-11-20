@@ -56,9 +56,9 @@ class App extends React.Component {
   onTopicRemoval(index) {
     const { topics, selectedSources } = this.state;
     topics.splice(index, 1);
-    this.setState({ topics: topics });
+    this.setState({ topics });
 
-    this.setState({ topics: topics });
+    this.setState({ topics });
 
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
@@ -72,23 +72,13 @@ class App extends React.Component {
   onTopicSearch(topic) {
     const { topics, selectedSources } = this.state;
     topics.push(topic);
-    this.setState({ topics: topics });
+    this.setState({ topics });
 
     const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
       topic: topics,
       sortBy: sorting,
       source: selectedSources,
-    };
-    this.getArticles(options);
-  }
-
-  componentDidMount() {
-    const options = {
-      topic: null,
-      source: null,
-      sortBy: null,
-      topHeadlines: true,
     };
     this.getArticles(options);
   }
@@ -114,6 +104,12 @@ class App extends React.Component {
           onRefreshClick={this.onRefreshClick}
           onToggleClick={this.onToggleClick}
           mostPopular={this.state.mostPopular}
+        />
+        <Topics
+          className="topics"
+          topics={this.state.topics}
+          onTopicSearch={this.onTopicSearch}
+          onTopicRemoval={this.onTopicRemoval}
         />
         {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
         {/* <div id="accounts">

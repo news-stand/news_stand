@@ -1,15 +1,14 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 /* eslint-disable react/no-array-index-key */
-import axios from 'axios';
-import React from "react";
-import PropTypes from "prop-types";
-import Autosuggest from "react-autosuggest";
-import TextField from "material-ui/TextField";
-import Paper from "material-ui/Paper";
-import { MenuItem } from "material-ui/Menu";
-import match from "autosuggest-highlight/match";
-import parse from "autosuggest-highlight/parse";
-import { withStyles } from "material-ui/styles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Autosuggest from 'react-autosuggest';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import { MenuItem } from 'material-ui/Menu';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+import { withStyles } from 'material-ui/styles';
 
 import sources from '../dummy-data/sources_v2';
 
@@ -97,27 +96,27 @@ function getSuggestions(value) {
 const styles = theme => ({
   container: {
     flexGrow: 1,
-    position: "relative",
-    height: 200
+    position: 'relative',
+    height: 200,
   },
   suggestionsContainerOpen: {
-    position: "absolute",
+    position: 'absolute',
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit * 3,
     left: 0,
-    right: 0
+    right: 0,
   },
   suggestion: {
-    display: "block"
+    display: 'block',
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: "none"
+    listStyleType: 'none',
   },
   textField: {
-    width: "100%"
-  }
+    width: '100%',
+  },
 });
 
 class AddSource extends React.Component {
@@ -131,19 +130,19 @@ class AddSource extends React.Component {
 
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
-      suggestions: getSuggestions(value)
+      suggestions: getSuggestions(value),
     });
   };
 
   handleSuggestionsClearRequested() {
     this.setState({
-      suggestions: []
+      suggestions: [],
     });
   };
 
   handleChange(event, { newValue }) {
     this.setState({
-      value: newValue
+      value: newValue,
     });
   };
 
@@ -181,7 +180,7 @@ class AddSource extends React.Component {
 }
 
 AddSource.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(AddSource);
