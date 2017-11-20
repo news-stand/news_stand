@@ -99,6 +99,7 @@ class App extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div>
         <Header
           onRefreshClick={this.onRefreshClick}
@@ -132,12 +133,53 @@ class App extends React.Component {
               )
             }
 
+=======
+      <Router>
+        <div>
+          <Header
+            onRefreshClick={this.onRefreshClick}
+            onToggleClick={this.onToggleClick}
+            mostPopular={this.state.mostPopular}
           />
-          {/* <Route path="/login" component={}/> */}
-          {/* <Route component={NotFound} /> */}
-        </Switch>
-        
-      </div>
+          <Topics
+            className="topics"
+            topics={this.state.topics}
+            onTopicSearch={this.onTopicSearch}
+            onTopicRemoval={this.onTopicRemoval}
+>>>>>>> (bug fix) fixed '<Switch> outside of <Router> bug that was failing tests
+          />
+          {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
+          {/* <div id="accounts">
+            <div><Link to="/signup"></Link></div>
+            <div><Link to="/login">Login</Link></div>
+          </div> */}
+
+          <hr />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              component={() =>
+                ( // Need to refactor this to be it's own 'Home' component
+                  <div>
+                    <Topics
+                      className="topics"
+                      topics={this.state.topics}
+                      onTopicSearch={this.onTopicSearch}
+                      onTopicRemoval={this.onTopicRemoval}
+                    />
+                    <AddSource onAddSource={this.onAddSource} />
+                    <SelectedSources selectedSources={this.state.selectedSources} />
+                    <NewsList newsArticles={this.state.articles} />
+                  </div>
+                )
+              }
+
+            />
+          </Switch>
+          
+        </div>
+      </Router>
     );
   }
 }
