@@ -25,7 +25,6 @@ class App extends React.Component {
     this.onAddSource = this.onAddSource.bind(this);
     this.onTopicRemoval = this.onTopicRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
-    this.onAddSoure = this.onAddSource.bind(this);
   }
 
   componentDidMount() {
