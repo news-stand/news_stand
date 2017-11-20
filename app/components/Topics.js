@@ -4,7 +4,10 @@ import TopicsList from './TopicsList';
 
 const Topics = props => (
   <div className="topics">
-    <TopicsSearch className="topics search" onTopicSearch={props.onTopicSearch} />
+    <TopicsSearch
+      className="topics search"
+      onTopicSearch={props.onTopicSearch} 
+    />
     <TopicsList
       topics={props.topics}
       onTopicRemoval={props.onTopicRemoval}

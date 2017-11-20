@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SourceItem from './SourceItem';
 
-export default () => {
-  const sources = this.props.selectedSources.map((source) => {
+export default (props) => {
+  const sources = props.selectedSources.map((source) => {
     return <SourceItem source={source} />;
   });
   return (
@@ -10,4 +10,4 @@ export default () => {
       {sources}
     </div>
   );
-}
+};

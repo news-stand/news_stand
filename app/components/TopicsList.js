@@ -10,11 +10,11 @@ const TopicsList = props => (
           className="topics list-item"
           topic={topic}
           key={topic}
+          // What is index for? should we remove?
           index={key}
           onTopicRemoval={props.onTopicRemoval}
         />
-        )
-      )};
+        ))};
     </div>
   </div>
 );
