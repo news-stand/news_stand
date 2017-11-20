@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
 
@@ -122,16 +122,28 @@ class App extends React.Component {
         </div> */}
 
         <hr />
-
-        <Topics
-          className="topics"
-          topics={this.state.topics}
-          onTopicSearch={this.onTopicSearch}
-          onTopicRemoval={this.onTopicRemoval}
-        />
-        <AddSource onAddSource={this.onAddSource} />
-        <SelectedSources selectedSources={this.state.selectedSources} />
-        <NewsList newsArticles={this.state.articles} />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={
+              <div>
+                <Topics
+                  className="topics"
+                  topics={this.state.topics}
+                  onTopicSearch={this.onTopicSearch}
+                  onTopicRemoval={this.onTopicRemoval}
+                />
+                <AddSource onAddSource={this.onAddSource} />
+                <SelectedSources selectedSources={this.state.selectedSources} />
+                <NewsList newsArticles={this.state.articles} />
+              </div>
+            }
+          />
+          {/* <Route path="/login" component={}/> */}
+          <Route component={NotFound} />
+        </Switch>
+        
       </div>
     );
   }
