@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 import searchArticles from './middleware/bySource';
+import getSources from './middleware/getSources';
 
 const app = express();
 
@@ -16,6 +17,11 @@ app.get('/articles', searchArticles, (request, response) => {
 
 app.get('*', (request, response) => {
   response.sendFile(indexPath);
+});
+
+app.get('/sources', getSources, (request, response) => {
+  console.log('sources: ', request.sources);
+  response.json(request.sources);
 });
 
 export default app;
