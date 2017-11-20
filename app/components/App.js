@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
 
@@ -6,6 +7,7 @@ import Header from './Header';
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -112,7 +114,19 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header onRefreshClick={this.onRefreshClick} onToggleClick={this.onToggleClick} mostPopular={this.state.mostPopular} />
+        <Header
+          onRefreshClick={this.onRefreshClick}
+          onToggleClick={this.onToggleClick}
+          mostPopular={this.state.mostPopular}
+        />
+        {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
+        {/* <div id="accounts">
+          <div><Link to="/signup"></Link></div>
+          <div><Link to="/login">Login</Link></div>
+        </div> */}
+
+        <hr />
+
         <Topics
           className="topics"
           topics={this.state.topics}
