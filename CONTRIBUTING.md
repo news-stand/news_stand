@@ -18,7 +18,7 @@
 
 Use github’s interface to make a fork of the repo, then add that repo as an upstream remote:
 
-```
+```bash
 git remote add upstream https://github.com/organization/<NAME_OF_REPO>.git
 ```
 
@@ -33,7 +33,7 @@ Your branch should follow this naming convention:
 
 These commands will help you do this:
 
-``` bash
+```bash
 
 # Creates your branch and brings you there
 git checkout -b `your-branch-name`
@@ -44,10 +44,10 @@ git checkout -b `your-branch-name`
 Prefix each commit like so
   - (feat) Add a new feature
   - (fix) Fix inconsistent tests [Fixes #0]
-  - (refactor) ...
-  - (cleanup) ...
-  - (test) ...
-  - (doc) ...
+  - (refactor) Refactor/improve existing code or tests
+  - (cleanup) Remove stray logs or comments
+  - (test) Create tests
+  - (doc) Create or update documentation
 
 Make changes and commits on your branch, and make sure that you
 only make changes that are relevant to this branch. If you find
@@ -101,6 +101,39 @@ make sure they work also.
 If rebasing broke anything, fix it, then repeat the above process until
 you get here again and nothing is broken and all the tests pass.
 
+### Testing
+
+For testing, we have separate client- and server-side test suites. 
+
+1. Client-Side Testing
+    - Technologies/Libraries:
+      - [Karma](https://karma-runner.github.io/1.0/index.html)
+      - [Jasmine](https://jasmine.github.io/)
+      - [Karma-Jasmine-Ajax](https://www.npmjs.com/package/karma-jasmine-ajax)
+    - Debugging:
+      - Click the 'debug' button on the Karma browser and open up the Chrome Dev Tools console
+
+```bash
+# karma client must be installed globally to run tests
+npm install -g karma-cli
+```
+
+```bash
+# to run the tests
+karma start
+```
+
+2. Server-Side Testing
+    - Technologies/Libraries:
+      - [Jasmine](https://jasmine.github.io/)
+      - [Jasmine-Node](https://jasmine.github.io/2.0/node.html)
+      - [Jasmine-Expect](https://www.npmjs.com/package/jasmine-expect)
+
+```bash
+# to run the tests
+npm run test
+```
+
 ### Make a pull request
 
 Make a clear pull request from your fork and branch to the upstream master
@@ -108,10 +141,14 @@ branch, detailing exactly what changes you made and what feature this
 should add. The clearer your pull request is the faster you can get
 your changes incorporated into this repo.
 
-At least one other person MUST give your changes a code review, and once
-they are satisfied they will merge your changes into upstream. Alternatively,
-they may have some requested changes. You should make more commits to your
-branch to fix these, then follow this process again from rebasing onwards.
+Two other people should give your changes a code review, and once they 
+are satisfied one of them will merge your changes into upstream. If only one 
+person has completed a code review and five hours have passed, then that reviewer 
+can merge your changes into upstream without waiting for a second review. The goal 
+is to give as many team members as possible a chance to see what's going on in 
+every corner of the codebase. Alternatively, they may have some requested 
+changes. You should make more commits to your branch to fix these, then follow this 
+process again from rebasing onwards.
 
 Once you get back here, make a comment requesting further review and
 someone will look at your code again. If they like it, it will get merged,
@@ -122,10 +159,10 @@ Thanks for contributing!
 ### Guidelines
 
 1. Uphold the current code standard:
-    - Keep your code [DRY][].
-    - Apply the [boy scout rule][].
+    - Keep your code [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+    - Apply the [boy scout rule](http://programmer.97things.oreilly.com/wiki/index.php/The_Boy_Scout_Rule)  
     - Follow [STYLE-GUIDE.md](_STYLE-GUIDE.md)
-1. Run the [tests][] before submitting a pull request.
+1. Run the all tests before submitting a pull request.
 1. Tests are very, very important. Submit tests if your pull request contains
    new, testable behavior.
    - We wil require at least 1 test per pull request where possible
