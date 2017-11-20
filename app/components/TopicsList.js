@@ -13,7 +13,7 @@ const TopicsList = props => (
           index={key}
           onTopicRemoval={props.onTopicRemoval}
         />
-        ))};
+        ))}
     </div>
   </div>
 );
