@@ -1,12 +1,13 @@
 import path from 'path';
 import express from 'express';
+import cookieSession from 'cookie-session';
 import searchArticles from './middleware/bySource';
+import passport from 'passport';
 import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
 import db from './database/db';
-import cookieSession from 'cookie-session';
-import passport from 'passport';
 import keys from './config/keys';
+import getSources from './middleware/getSources';
 
 const app = express();
 
@@ -29,6 +30,11 @@ app.get('/articles', searchArticles, (request, response) => {
 
 app.get('*', (request, response) => {
   response.sendFile(indexPath);
+});
+
+app.get('/sources', getSources, (request, response) => {
+  console.log('sources: ', request.sources);
+  response.json(request.sources);
 });
 
 export default app;
