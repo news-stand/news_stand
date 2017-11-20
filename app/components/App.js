@@ -175,15 +175,10 @@ class App extends React.Component {
                   </div>
                 )
               }
-
             />
-<<<<<<< HEAD
-=======
             {/* <Route path="/login" component={}/> */}
-            {/* <Route path="/404" component={NotFound} /> */}
->>>>>>> Fixed router bug. Added 404 component to app.  Experiencing bugs.
+            <Route path="/404" component={NotFound} />
           </Switch>
-          
         </div>
       </Router>
     );
