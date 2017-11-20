@@ -7,7 +7,8 @@ import Header from './Header';
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
-import NotFound from './NotFound';
+// import NotFound from './NotFound';
+import Login from './Login';
 
 
 class App extends React.Component {
@@ -177,7 +178,7 @@ class App extends React.Component {
               }
             />
             {/* <Route path="/login" component={}/> */}
-            <Route path="/404" component={NotFound} />
+            {/* <Route path="/404" component={NotFound} /> */}
           </Switch>
         </div>
       </Router>
