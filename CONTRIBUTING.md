@@ -106,12 +106,12 @@ you get here again and nothing is broken and all the tests pass.
 For testing, we have separate client- and server-side test suites. 
 
 1. Client-Side Testing
-  - Technologies/Libraries:
-    - [Karma](https://karma-runner.github.io/1.0/index.html)
-    - [Jasmine](https://jasmine.github.io/)
-    - [Karma-Jasmine-Ajax](https://www.npmjs.com/package/karma-jasmine-ajax)
-  - Debugging:
-    - Click the 'debug' button on the Karma browser and open up the Chrome Dev Tools console
+    - Technologies/Libraries:
+      - [Karma](https://karma-runner.github.io/1.0/index.html)
+      - [Jasmine](https://jasmine.github.io/)
+      - [Karma-Jasmine-Ajax](https://www.npmjs.com/package/karma-jasmine-ajax)
+    - Debugging:
+      - Click the 'debug' button on the Karma browser and open up the Chrome Dev Tools console
 
 ```bash
 # karma client must be installed globally to run tests
@@ -124,10 +124,10 @@ karma start
 ```
 
 2. Server-Side Testing
-  - Technologies/Libraries:
-    - [Jasmine](https://jasmine.github.io/)
-    - [Jasmine-Node](https://jasmine.github.io/2.0/node.html)
-    - [Jasmine-Expect](https://www.npmjs.com/package/jasmine-expect)
+    - Technologies/Libraries:
+      - [Jasmine](https://jasmine.github.io/)
+      - [Jasmine-Node](https://jasmine.github.io/2.0/node.html)
+      - [Jasmine-Expect](https://www.npmjs.com/package/jasmine-expect)
 
 ```bash
 # to run the tests
