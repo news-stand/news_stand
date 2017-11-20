@@ -7,6 +7,7 @@ import Header from './Header';
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
+import NotFound from './NotFound';
 
 
 class App extends React.Component {
@@ -157,8 +158,8 @@ class App extends React.Component {
           <hr />
           <Switch>
             <Route
-              exact
               path="/"
+              exactly
               component={() =>
                 ( // Need to refactor this to be it's own 'Home' component
                   <div>
@@ -176,6 +177,11 @@ class App extends React.Component {
               }
 
             />
+<<<<<<< HEAD
+=======
+            {/* <Route path="/login" component={}/> */}
+            {/* <Route path="/404" component={NotFound} /> */}
+>>>>>>> Fixed router bug. Added 404 component to app.  Experiencing bugs.
           </Switch>
           
         </div>
