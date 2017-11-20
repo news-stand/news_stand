@@ -33,3 +33,6 @@ node_modules/
 
 # private environment variables
 .env
+
+# Desktop services store
+.DS_Store
