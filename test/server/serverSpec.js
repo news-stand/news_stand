@@ -1,3 +1,6 @@
+// require('jasmine-matchers');
+require('jasmine-expect');
+
 const axios = require('axios');
 
 const baseUrl = 'http://localhost:8080';
@@ -38,11 +41,10 @@ describe('News Stand Server', function() {
         });
     });
 
-    //not totally sure if this is how it works
     it('returns an array', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
-          expect(Array.isArray(response.data)).toBe(true);
+          expect(response.data).toBeArray();
           done();
         })
         .catch((err) => {
@@ -53,7 +55,7 @@ describe('News Stand Server', function() {
     it('returns an array of objects', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
-          expect(typeof response.data[0]).toBe('object');
+          expect(response.data).toBeArrayOfObjects();
           done();
         })
         .catch((err) => {
@@ -88,7 +90,7 @@ describe('News Stand Server', function() {
     it('returns an array', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
-          expect(Array.isArray(response.data)).toBe(true);
+          expect(response.data).toBeArray();
           done();
         })
         .catch((err) => {
@@ -99,7 +101,7 @@ describe('News Stand Server', function() {
     it('returns an array of objects', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
-          expect(typeof response.data[0]).toBe('object');
+          expect(response.data).toBeArrayOfObjects();
           done();
         })
         .catch((err) => {
