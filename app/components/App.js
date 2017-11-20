@@ -127,7 +127,7 @@ class App extends React.Component {
             exact
             path="/"
             component={() =>
-              ( // Need to refactor this to be it's own component
+              ( // Need to refactor this to be it's own 'Home' component
                 <div>
                   <Topics
                     className="topics"
