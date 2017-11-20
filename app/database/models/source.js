@@ -1,10 +1,11 @@
-import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
 
-const sourceSchema = Schema({
+
+const sourceSchema = mongoose.Schema({
   id: 'String',
   name: 'String',
 });
 
 const Source = mongoose.model('Source', sourceSchema);
 
-export default Source;
+module.exports = Source;
