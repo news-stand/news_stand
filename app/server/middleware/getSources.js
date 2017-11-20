@@ -7,7 +7,7 @@ module.exports = (request, response, next) => {
       request.sources = newsAPI.data.sources.map((source) => {
         return {
           id: source.id,
-          name: source.name,
+          label: source.name,
         };
       });
       next();
