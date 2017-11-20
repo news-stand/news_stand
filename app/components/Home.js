@@ -120,10 +120,8 @@ class Home extends React.Component {
         <SelectedSources selectedSources={this.state.selectedSources} />
         <NewsList newsArticles={this.state.articles} />
       </div>
-    )
+    );
   }
-
-
 }
 
 export default Home;

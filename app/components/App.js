@@ -1,103 +1,19 @@
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
-import NewsList from './NewsList';
-import Header from './Header';
-import Topics from './Topics';
-import AddSource from './AddSource';
-import SelectedSources from './SelectedSources';
 // import NotFound from './NotFound';
 import Login from './Login';
+import Home from './Home';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      mostPopular: true,
-      articles: [],
-      selectedSources: [],
-      topics: [],
-    };
-
-    this.onRefreshClick = this.onRefreshClick.bind(this);
-    this.onToggleClick = this.onToggleClick.bind(this);
-    this.onAddSource = this.onAddSource.bind(this);
-    this.onTopicRemoval = this.onTopicRemoval.bind(this);
-    this.onTopicSearch = this.onTopicSearch.bind(this);
+    this.state = {};
   }
 
-  componentDidMount() {
-    const options = {
-      topic: null,
-      source: null,
-      sortBy: null,
-      topHeadlines: true,
-    };
-    this.getArticles(options);
-  }
-
-  onRefreshClick() {
-    // trigger get request to server '/load' route
-  }
-
-  onToggleClick() {
-    this.setState({ mostPopular: !this.state.mostPopular });
-    // trigger get request to server to '/popular' or '/recent' routes as necessary
-  }
-
-
-  onAddSource(source) {
-    this.setState((state) => {
-      return { selectedSources: state.selectedSources.concat([source]) };
-    });
-  }
-
-  onTopicRemoval(index) {
-    const { topics, selectedSources } = this.state;
-    topics.splice(index, 1);
-    this.setState({ topics });
-
-    this.setState({ topics });
-
-    const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
-    const options = {
-      topic: topics,
-      sortBy: sorting,
-      source: selectedSources,
-    };
-    this.getArticles(options);
-  }
-
-  onTopicSearch(topic) {
-    const { topics, selectedSources } = this.state;
-    topics.push(topic);
-    this.setState({ topics });
-
-    const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
-    const options = {
-      topic: topics,
-      sortBy: sorting,
-      source: selectedSources,
-    };
-    this.getArticles(options);
-  }
-
-  getArticles(options) {
-    axios
-      .get('/articles', {
-        params: options,
-      })
-      .then((newsArticles) => {
-        console.log('returned articles: ', newsArticles);
-        this.setState({ articles: newsArticles.data });
-      })
-      .catch((error) => {
-        console.log('error: ', error);
-      });
-  }
 
   render() {
     return (
@@ -138,6 +54,7 @@ class App extends React.Component {
 =======
       <Router>
         <div>
+<<<<<<< HEAD
           <Header
             onRefreshClick={this.onRefreshClick}
             onToggleClick={this.onToggleClick}
@@ -157,27 +74,19 @@ class App extends React.Component {
           </div> */}
 
           <hr />
+=======
+>>>>>>> Moved all code from App.js to Home.js.  Next step is to figure out how to render components server-side
           <Switch>
             <Route
               path="/"
               exactly
-              component={() =>
-                ( // Need to refactor this to be it's own 'Home' component
-                  <div>
-                    <Topics
-                      className="topics"
-                      topics={this.state.topics}
-                      onTopicSearch={this.onTopicSearch}
-                      onTopicRemoval={this.onTopicRemoval}
-                    />
-                    <AddSource onAddSource={this.onAddSource} />
-                    <SelectedSources selectedSources={this.state.selectedSources} />
-                    <NewsList newsArticles={this.state.articles} />
-                  </div>
-                )
-              }
+              component={Home}
             />
-            <Route path="/login" component={Login} />
+            <Route
+              path="/login"
+              component={Login}
+            />
+            {/* <Route path="/signup" component={Signup} /> */}
             {/* <Route path="/404" component={NotFound} /> */}
           </Switch>
         </div>
