@@ -36,6 +36,21 @@ describe('<Home />', function () {
     expect(wrapper.props().onTopicSearch).toBe.defined;
   });
 
+  it('should have onAddSource function defined', function() {
+    const wrapper = shallow(<Home search={dummySearch} />);
+    expect(wrapper.props().onAddSource).toBe.defined;
+  });
+
+  it('should have getArticles function defined', function() {
+    const wrapper = shallow(<Home search={dummySearch} />);
+    expect(wrapper.props().getArticles).toBe.defined;
+  });
+
+  it('should have renderArticles function defined', function() {
+    const wrapper = shallow(<Home search={dummySearch} />);
+    expect(wrapper.props().renderArticles).toBe.defined;
+  });
+
   it('should have an initial mostPopular state of true', function() {
     const wrapper = shallow(<Home search={dummySearch} />);
     expect(wrapper.state().mostPopular).toBe(true);
