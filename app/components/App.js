@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
-import Home from './Home';
+import HomeWithSearch from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            component={Home}
+            component={HomeWithSearch}
           />
           <Route
             path="/login"

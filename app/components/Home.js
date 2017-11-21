@@ -5,7 +5,11 @@ import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
+import search from './helpers/search';
 
+const HomeWithSearch = () => (
+  <Home search={search} />
+);
 
 class Home extends React.Component {
   constructor() {
@@ -81,17 +85,15 @@ class Home extends React.Component {
   }
 
   getArticles(options) {
-    axios
-      .get('/articles', {
-        params: options,
-      })
-      .then((newsArticles) => {
-        console.log('returned articles: ', newsArticles);
-        this.setState({ articles: newsArticles.data });
-      })
-      .catch((error) => {
-        console.log('error: ', error);
-      });
+    const renderArticles = this.renderArticles.bind(this);
+
+    this.props.search(options, (newsArticles) => {
+      renderArticles(newsArticles);
+    });
+  }
+
+  renderArticles(newsArticles) {
+    this.setState({ articles: newsArticles });
   }
 
   render() {
@@ -124,4 +126,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default HomeWithSearch;
