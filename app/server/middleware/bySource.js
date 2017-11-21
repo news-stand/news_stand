@@ -1,22 +1,21 @@
 import axios from 'axios';
 
+const defaultSources = ['espn'];
+
 const searchArticles = (request, response, next) => {
   let search;
 
-  // if we are only looking for top headlines
-  if (request.query.topHeadlines === 'true') {
-    const sources = 'espn';
-    search = `https://newsapi.org/v2/top-headlines?sources=${sources}&apiKey=${process.env.NEWS_KEY}`;
-  // if we are looking for specific headlines
-  } else {
-    const { source, sortBy, topic } = request.query;
+  const { sortBy, selectedSources, topics } = request.query;
 
-    // format source and topic for url-encoding
-    // switch spaces on source to '-', since we don't have source codes yet
-    // encode all other spaces as '%20'
-    const formattedSource = source.join(',').split(' ').join('-');
-    const formattedTopic = topic.join('%20OR%20').split(' ').join('%20');
+  const sources = selectedSources || defaultSources;
+
+  const formattedSource = sources.join(',').split(' ').join('-');
+
+  if (topics) {
+    const formattedTopic = topics.join('%20OR%20').split(' ').join
     search = `https://newsapi.org/v2/everything?q=${formattedTopic}&sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
+  } else {
+    search = `https://newsapi.org/v2/everything?sources=${sources}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
   }
 
   // Request information from newsAPI

@@ -9,7 +9,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mostPopular: true,
+      sortBy: 'popularity',
       articles: [],
       selectedSources: [],
       topics: [],
@@ -24,21 +24,29 @@ class Home extends React.Component {
 
   componentDidMount() {
     const options = {
-      topic: null,
-      source: null,
-      sortBy: null,
-      topHeadlines: true,
+      topics: [],
+      selectedSources: [],
+      sortBy: 'popularity',
     };
     this.getArticles(options);
   }
 
   onRefreshClick() {
-    // trigger get request to server '/load' route
+    const { topics, selectedSources, sortBy } = this.state;
+    const options = {
+      topics, selectedSources, sortBy,
+    };
+    this.getArticles(options);
   }
 
   onToggleClick() {
-    this.setState({ mostPopular: !this.state.mostPopular });
-    // trigger get request to server to '/popular' or '/recent' routes as necessary
+    this.setState({ sortBy: this.state.sortBy === 'popularity' ? 'publishedAt' : 'popularity' }, () => {
+      const { topics, selectedSources, sortBy } = this.state;
+      const options = {
+        topics, selectedSources, sortBy,
+      };
+      this.getArticles(options);
+    });
   }
 
 
@@ -49,31 +57,25 @@ class Home extends React.Component {
   }
 
   onTopicRemoval(index) {
-    const { topics, selectedSources } = this.state;
+    const { topics, selectedSources, sortBy } = this.state;
     topics.splice(index, 1);
     this.setState({ topics });
-
+    // not sure why this is repeated
     this.setState({ topics });
 
-    const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
-      topic: topics,
-      sortBy: sorting,
-      source: selectedSources,
+      topics, selectedSources, sortBy,
     };
     this.getArticles(options);
   }
 
   onTopicSearch(topic) {
-    const { topics, selectedSources } = this.state;
+    const { topics, selectedSources, sortBy } = this.state;
     topics.push(topic);
     this.setState({ topics });
 
-    const sorting = this.state.mostPopular ? 'popularity' : 'publishedAt';
     const options = {
-      topic: topics,
-      sortBy: sorting,
-      source: selectedSources,
+      topics, selectedSources, sortBy,
     };
     this.getArticles(options);
   }
@@ -96,7 +98,7 @@ class Home extends React.Component {
         <Header
           onRefreshClick={this.onRefreshClick}
           onToggleClick={this.onToggleClick}
-          mostPopular={this.state.mostPopular}
+          sortBy={this.state.sortBy}
         />
         <Topics
           className="topics"
