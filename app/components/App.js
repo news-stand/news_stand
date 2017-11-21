@@ -105,12 +105,6 @@ class App extends React.Component {
           onToggleClick={this.onToggleClick}
           mostPopular={this.state.mostPopular}
         />
-        <Topics
-          className="topics"
-          topics={this.state.topics}
-          onTopicSearch={this.onTopicSearch}
-          onTopicRemoval={this.onTopicRemoval}
-        />
         {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
         {/* <div id="accounts">
           <div><Link to="/signup"></Link></div>
