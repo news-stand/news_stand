@@ -3,7 +3,6 @@ import TopicsListItem from './TopicsListItem';
 
 const TopicsList = props => (
   <div className="topics list">
-    <h5 className="topics list">Selected Topics:</h5>
     <div className="topics list">
       {props.topics && props.topics.map((topic, key) => (
         <TopicsListItem
