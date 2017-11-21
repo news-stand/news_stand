@@ -145,12 +145,17 @@ class AddSource extends React.Component {
     });
   };
 
+  handleClick() {
+    this.props.onAddSource(this.state.value);
+    this.setState({value: ''});
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <div className="addSourceContainer">
-        <button className="source btn" id="add-source" onClick={() => this.props.onAddSource(this.state.value)}>+</button>
+        <button className="source btn" id="add-source" onClick={this.handleClick.bind(this)}>+</button>
         <Autosuggest
           theme={{
             container: classes.container,
