@@ -1,4 +1,23 @@
 import React from 'react';
+import TextField from 'material-ui/TextField';
+
+function renderInput(inputProps) {
+  const { classes, autoFocus, value, ref, ...other } = inputProps;
+
+  return (
+    <TextField
+      autoFocus={autoFocus}
+      className={classes.textField}
+      value={value}
+      InputProps={{
+        classes: {
+          input: classes.input,
+        },
+        ...other,
+      }}
+    />
+  );
+}
 
 class TopicsSearch extends React.Component {
   constructor(props) {
@@ -28,12 +47,13 @@ class TopicsSearch extends React.Component {
     return (
       <div className="topics search">
         <form className="topics search" onSubmit={(event) => { this.onSearch(event); }} >
-          <input
-            className="topics search"
-            placeholder="Search a Topic"
-            value={this.state.searchTerm}
-            onChange={(event) => { this.handleBarChange(event); }}
-          />
+          {renderInput({
+            autoFocus: true,
+            classes: 'topics search',
+            placeholder: 'Search a topic',
+            value: this.state.searchTerm,
+            onChange: this.handleBarChange,
+          })}
           <button type="submit" className="topics search btn">Add Topic</button>
         </form>
       </div>
