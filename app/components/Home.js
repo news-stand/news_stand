@@ -94,7 +94,7 @@ class Home extends React.Component {
       });
   }
 
-  rener() {
+  render() {
     return (
       <div>
         <Header

@@ -78,8 +78,8 @@ class App extends React.Component {
 >>>>>>> Moved all code from App.js to Home.js.  Next step is to figure out how to render components server-side
           <Switch>
             <Route
+              exact
               path="/"
-              exactly
               component={Home}
             />
             <Route
