@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { mount, shallow } from 'enzyme';
+import Enzyme, { mount, shallow, unmount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import App from '../../app/components/App';
@@ -33,20 +33,24 @@ describe('<App />', function () {
   it('should have an initial mostPopular state of true', function() {
     const wrapper = mount(<App />);
     expect(wrapper.state().mostPopular).toBe(true);
+    unmount(<App />);
   });
 
   it('contains a <Header/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(Header).length).toEqual(1);
+    unmount(<App />);
   });
 
   it('contains a <NewsList/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(NewsList).length).toEqual(1);
+    unmount(<App />);
   });
 
   it('contains a <Topics/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(Topics).length).toEqual(1);
+    unmount(<App />);
   });
 });
