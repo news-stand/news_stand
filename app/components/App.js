@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
-import HomeWithSearch from './Home';
+import HomeWithSearch from './HomeWithSearch';
 import Login from './Login';
 import NotFound from './NotFound';
 
