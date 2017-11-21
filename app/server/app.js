@@ -1,7 +1,6 @@
 import path from 'path';
 import express from 'express';
 import searchArticles from './middleware/bySource';
-import router from './router';
 
 const app = express();
 
