@@ -32,23 +32,23 @@ padding: 10px;
 
 }
 
+#add-source, .topics .btn {
+  font-size: 24px;
+}
 
 /* ---------------------------- */
 /*    Material-UI Component     */
 /* ---------------------------- */
 .addSourceContainer {
-  width: 250px;
   display: inline-block;
   vertical-align:top;
 }
 
 .AddSource-container-1 {
-  width: 150px;
   display: inline-block;
 }
 
 .AddSource-container-20 {
-  width: 150px;
   display: inline-block;
 }
 
@@ -57,12 +57,9 @@ padding: 10px;
 /*      Selectetd Sources       */
 /* ---------------------------- */
 .selectedSourcesContainer {
-  display: inline-block;
-  width: 200px;
-  height: 300px;
+  display: block;
 }
 
 .selectedSources {
   display: inline-block;
-  width: 200px;
 }

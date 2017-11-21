@@ -97,7 +97,6 @@ const styles = theme => ({
   container: {
     flexGrow: 1,
     position: 'relative',
-    height: 200,
   },
   suggestionsContainerOpen: {
     position: 'absolute',
@@ -151,7 +150,7 @@ class AddSource extends React.Component {
 
     return (
       <div className="addSourceContainer">
-        <button className="source btn" onClick={() => this.props.onAddSource(this.state.value)}>+</button>
+        <button className="source btn" id="add-source" onClick={() => this.props.onAddSource(this.state.value)}>+</button>
         <Autosuggest
           theme={{
             container: classes.container,
