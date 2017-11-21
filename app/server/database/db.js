@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
 import Source from './models/source';
-import keys from '../../config/keys';
+import keys from '../config/keys';
 
 // connect to mlab db
 mongoose.connect(keys.mongodb.URI);
 
 const db = mongoose.connection;
 
-db.on('error', console.log('connection error:'));
+db.on('error', (error) => {
+  console.log('connection error : ', error);
+});
 
 db.once('open', () => {
   console.log('connection to mongoDb open');
