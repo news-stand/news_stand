@@ -97,7 +97,6 @@ const styles = theme => ({
   container: {
     flexGrow: 1,
     position: 'relative',
-    height: 200,
   },
   suggestionsContainerOpen: {
     position: 'absolute',
@@ -146,11 +145,17 @@ class AddSource extends React.Component {
     });
   };
 
+  handleClick() {
+    this.props.onAddSource(this.state.value);
+    this.setState({value: ''});
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <div className="addSourceContainer">
+        <button className="source btn" id="add-source" onClick={this.handleClick.bind(this)}>+</button>
         <Autosuggest
           theme={{
             container: classes.container,
@@ -168,12 +173,12 @@ class AddSource extends React.Component {
           inputProps={{
             autoFocus: true,
             classes,
-            placeholder: "Search a country (start with a)",
+            placeholder: "Search a news source",
             value: this.state.value,
             onChange: this.handleChange.bind(this)
           }}
         />
-        <button onClick={() => this.props.onAddSource(this.state.value)}>Add Source</button>
+
       </div>
     );
   }
