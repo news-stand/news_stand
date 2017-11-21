@@ -34,7 +34,7 @@ class TopicsSearch extends React.Component {
             value={this.state.searchTerm}
             onChange={(event) => { this.handleBarChange(event); }}
           />
-          <button type="submit" className="topics search button">Search</button>
+          <button type="submit" className="topics search btn">Add Topic</button>
         </form>
       </div>
     );
