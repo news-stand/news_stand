@@ -14,15 +14,13 @@ const publicPath = express.static(path.join(__dirname, '../'));
 const indexPath = path.join(__dirname, '../index.html');
 
 app.use(publicPath);
-app.use('/auth', authRoutes);
-
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey],
 }));
-
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/auth', authRoutes);
 
 app.get('/articles', searchArticles, (request, response) => {
   const { articles } = request;

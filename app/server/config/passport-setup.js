@@ -16,8 +16,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GoogleStrategy({
   clientID: keys.google.clientID,
   clientSecret: keys.google.clientSecret,
-  callbackURL: '/auth/google/redirect',
-  passReqToCallback: true,
+  callbackURL: 'http://localhost:8080/auth/google/redirect',
 }, (accessToken, refreshToken, profile, done) => {
   User.findOne({ googleId: profile.id })
     .then((currentUser) => {
@@ -32,5 +31,8 @@ passport.use(new GoogleStrategy({
             done(null, newUser);
           });
       }
+    })
+    .catch((err) => {
+      console.log('catch error', err);
     });
 }));
