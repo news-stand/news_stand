@@ -47,6 +47,7 @@ class TopicsSearch extends React.Component {
     return (
       <div className="topics search">
         <form className="topics search" onSubmit={(event) => { this.onSearch(event); }} >
+          <button type="submit" className="topics search btn">+</button>
           {renderInput({
             autoFocus: true,
             classes: 'topics search',
@@ -54,7 +55,6 @@ class TopicsSearch extends React.Component {
             value: this.state.searchTerm,
             onChange: this.handleBarChange,
           })}
-          <button type="submit" className="topics search btn">Add Topic</button>
         </form>
       </div>
     );
