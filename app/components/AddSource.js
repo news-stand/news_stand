@@ -173,7 +173,7 @@ class AddSource extends React.Component {
             onChange: this.handleChange.bind(this)
           }}
         />
-        <button onClick={() => this.props.onAddSource(this.state.value)}>Add Source</button>
+        <button className="source btn" onClick={() => this.props.onAddSource(this.state.value)}>Add Source</button>
       </div>
     );
   }
