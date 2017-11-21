@@ -1,11 +1,9 @@
 import React from 'react';
-import axios from 'axios';
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
-import search from './helpers/search';
 
 class Home extends React.Component {
   constructor() {
