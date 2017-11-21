@@ -64,9 +64,3 @@ describe('<NewsList />', function() {
     expect(wrapper.find(NewsItem).length).toEqual(2);
   })
 })
-
-
-// should receive props
-// should receive property 'newsArticles' on props
-// newsArticles should be an array of objects
-// NewsItem should be created for each object in newsArticles
