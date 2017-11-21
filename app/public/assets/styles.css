@@ -71,7 +71,7 @@ padding: 10px;
 }
 
 .selectedSources {
-  display: inline-block;
+  display: block;
 }
 
 /* ---------------------------- */
