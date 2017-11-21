@@ -10,11 +10,6 @@ const indexPath = path.join(__dirname, '../index.html');
 
 app.use(publicPath);
 
-// we want every request to go through the router function
-// app.get(*, router);
-
-
-
 app.get('/articles', searchArticles, (request, response) => {
   const { articles } = request;
   response.json(articles);

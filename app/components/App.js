@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import React from 'react';
 // import axios from 'axios';
 
-// import NotFound from './NotFound';
+import NotFound from './NotFound';
 import Login from './Login';
 import Home from './Home';
 
@@ -87,7 +87,7 @@ class App extends React.Component {
               component={Login}
             />
             {/* <Route path="/signup" component={Signup} /> */}
-            {/* <Route path="/404" component={NotFound} /> */}
+            <Route component={NotFound} />
           </Switch>
         </div>
       </Router>
