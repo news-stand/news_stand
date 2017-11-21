@@ -7,10 +7,6 @@ import NewsList from './NewsList';
 import Header from './Header';
 import search from './helpers/search';
 
-const HomeWithSearch = () => (
-  <Home search={search} />
-);
-
 class Home extends React.Component {
   constructor() {
     super();
@@ -126,4 +122,4 @@ class Home extends React.Component {
   }
 }
 
-export default HomeWithSearch;
+export default Home;
