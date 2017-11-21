@@ -53,7 +53,7 @@ describe('<Home />', function () {
 
   it('should have an initial mostPopular state of true', function() {
     const wrapper = shallow(<Home search={dummySearch} />);
-    expect(wrapper.state().mostPopular).toBe(true);
+    expect(wrapper.state().sortBy).toBe('popularity');
   });
 
   it('contains a <Header/> component', function() {

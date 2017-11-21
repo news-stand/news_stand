@@ -60,8 +60,6 @@ class Home extends React.Component {
     const { topics, selectedSources, sortBy } = this.state;
     topics.splice(index, 1);
     this.setState({ topics });
-    // not sure why this is repeated
-    this.setState({ topics });
 
     const options = {
       topics, selectedSources, sortBy,
