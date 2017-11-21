@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
 
-import HomeWithSearch from './HomeWithSearch';
+import search from './helpers/search';
+import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
 
@@ -19,7 +20,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            component={HomeWithSearch}
+            render={() => <Home search={search} />}
           />
           <Route
             path="/login"
