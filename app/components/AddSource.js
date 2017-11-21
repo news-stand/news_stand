@@ -151,6 +151,7 @@ class AddSource extends React.Component {
 
     return (
       <div className="addSourceContainer">
+        <button className="source btn" onClick={() => this.props.onAddSource(this.state.value)}>+</button>
         <Autosuggest
           theme={{
             container: classes.container,
@@ -173,7 +174,7 @@ class AddSource extends React.Component {
             onChange: this.handleChange.bind(this)
           }}
         />
-        <button className="source btn" onClick={() => this.props.onAddSource(this.state.value)}>Add Source</button>
+
       </div>
     );
   }
