@@ -32,18 +32,32 @@ padding: 10px;
 
 }
 
+#add-source, .topics .btn {
+  font-size: 24px;
+}
+
+.topics-list .btn {
+  font-size: 12px;
+}
+
+.topics-list .btn:hover {
+  color: blue;
+}
+
 
 /* ---------------------------- */
 /*    Material-UI Component     */
 /* ---------------------------- */
 .addSourceContainer {
-  width: 250px;
   display: inline-block;
   vertical-align:top;
 }
 
 .AddSource-container-1 {
-  width: 150px;
+  display: inline-block;
+}
+
+.AddSource-container-20 {
   display: inline-block;
 }
 
@@ -52,12 +66,18 @@ padding: 10px;
 /*      Selectetd Sources       */
 /* ---------------------------- */
 .selectedSourcesContainer {
-  display: inline-block;
-  width: 200px;
-  height: 300px;
+  display: block;
+  margin-left: 40px;
 }
 
 .selectedSources {
   display: inline-block;
-  width: 200px;
+}
+
+/* ---------------------------- */
+/*      Topics Containers       */
+/* ---------------------------- */
+
+.topics-list-container {
+  margin-left: 25px;
 }
