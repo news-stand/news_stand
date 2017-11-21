@@ -105,15 +105,18 @@ class Home extends React.Component {
         </div> */}
 
         <hr />
-        <Topics
-          className="topics"
-          topics={this.state.topics}
-          onTopicSearch={this.onTopicSearch}
-          onTopicRemoval={this.onTopicRemoval}
-        />
 
-        <AddSource onAddSource={this.onAddSource} />
-        <SelectedSources selectedSources={this.state.selectedSources} />
+        <div>
+          <Topics
+            className="topics"
+            topics={this.state.topics}
+            onTopicSearch={this.onTopicSearch}
+            onTopicRemoval={this.onTopicRemoval}
+          />
+
+          <AddSource onAddSource={this.onAddSource} />
+          <SelectedSources selectedSources={this.state.selectedSources} />
+        </div>
 
         <hr />
         <NewsList newsArticles={this.state.articles} />

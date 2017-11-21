@@ -36,6 +36,15 @@ padding: 10px;
   font-size: 24px;
 }
 
+.topics-list .btn {
+  font-size: 12px;
+}
+
+.topics-list .btn:hover {
+  color: blue;
+}
+
+
 /* ---------------------------- */
 /*    Material-UI Component     */
 /* ---------------------------- */
@@ -58,6 +67,7 @@ padding: 10px;
 /* ---------------------------- */
 .selectedSourcesContainer {
   display: block;
+  margin-left: 40px;
 }
 
 .selectedSources {
@@ -65,9 +75,9 @@ padding: 10px;
 }
 
 /* ---------------------------- */
-/*      Selectetd Sources       */
+/*      Topics Containers       */
 /* ---------------------------- */
 
-.topics-list-container, .selectedSourcesContainer {
-  margin-left: 40px;
+.topics-list-container {
+  margin-left: 25px;
 }
