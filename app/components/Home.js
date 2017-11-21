@@ -98,12 +98,6 @@ class Home extends React.Component {
           onToggleClick={this.onToggleClick}
           sortBy={this.state.sortBy}
         />
-        <Topics
-          className="topics"
-          topics={this.state.topics}
-          onTopicSearch={this.onTopicSearch}
-          onTopicRemoval={this.onTopicRemoval}
-        />
         {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
         {/* <div id="accounts">
           <div><Link to="/signup"></Link></div>
@@ -112,8 +106,19 @@ class Home extends React.Component {
 
         <hr />
 
-        <AddSource onAddSource={this.onAddSource} />
-        <SelectedSources selectedSources={this.state.selectedSources} />
+        <div>
+          <Topics
+            className="topics"
+            topics={this.state.topics}
+            onTopicSearch={this.onTopicSearch}
+            onTopicRemoval={this.onTopicRemoval}
+          />
+
+          <AddSource onAddSource={this.onAddSource} />
+          <SelectedSources selectedSources={this.state.selectedSources} />
+        </div>
+
+        <hr />
         <NewsList newsArticles={this.state.articles} />
       </div>
     );
