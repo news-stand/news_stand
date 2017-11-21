@@ -15,7 +15,7 @@ const searchArticles = (request, response, next) => {
     const formattedTopic = topics.join('%20OR%20').split(' ').join
     search = `https://newsapi.org/v2/everything?q=${formattedTopic}&sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
   } else {
-    search = `https://newsapi.org/v2/everything?sources=${sources}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
+    search = `https://newsapi.org/v2/everything?sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
   }
 
   // Request information from newsAPI
