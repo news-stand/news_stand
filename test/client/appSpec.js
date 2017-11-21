@@ -9,7 +9,7 @@ import Topics from '../../app/components/Topics';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<App />', function () {
+xdescribe('<App />', function () {
   it('should have onReferchClick function defined', function () {
     const wrapper = shallow(<App />);
     expect(wrapper.props().onRefreshClick).toBe.defined;
@@ -30,25 +30,25 @@ describe('<App />', function () {
     expect(wrapper.props().onTopicSearch).toBe.defined;
   });
 
-  it('should have an initial mostPopular state of true', function() {
+  xit('should have an initial mostPopular state of true', function() {
     const wrapper = mount(<App />);
     expect(wrapper.state().mostPopular).toBe(true);
     unmount(<App />);
   });
 
-  it('contains a <Header/> component', function() {
+  xit('contains a <Header/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(Header).length).toEqual(1);
     unmount(<App />);
   });
 
-  it('contains a <NewsList/> component', function() {
+  xit('contains a <NewsList/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(NewsList).length).toEqual(1);
     unmount(<App />);
   });
 
-  it('contains a <Topics/> component', function() {
+  xit('contains a <Topics/> component', function() {
     const wrapper = mount(<App />);
     expect(wrapper.find(Topics).length).toEqual(1);
     unmount(<App />);
