@@ -173,7 +173,7 @@ class AddSource extends React.Component {
           inputProps={{
             autoFocus: true,
             classes,
-            placeholder: "Search a country (start with a)",
+            placeholder: "Search a news source",
             value: this.state.value,
             onChange: this.handleChange.bind(this)
           }}
