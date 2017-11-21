@@ -6,8 +6,8 @@ import NewsList from './NewsList';
 import Header from './Header';
 
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       mostPopular: true,
       articles: [],
