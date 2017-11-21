@@ -79,7 +79,6 @@ class Home extends React.Component {
   }
 
   getArticles(options) {
-    console.log('options in getArticles:', options);
     const renderArticles = this.renderArticles.bind(this);
 
     this.props.search(options, (newsArticles) => {
