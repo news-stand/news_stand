@@ -1,15 +1,13 @@
 import React from 'react';
-import axios from 'axios';
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
 
-
 class Home extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       mostPopular: true,
       articles: [],
@@ -81,17 +79,15 @@ class Home extends React.Component {
   }
 
   getArticles(options) {
-    axios
-      .get('/articles', {
-        params: options,
-      })
-      .then((newsArticles) => {
-        console.log('returned articles: ', newsArticles);
-        this.setState({ articles: newsArticles.data });
-      })
-      .catch((error) => {
-        console.log('error: ', error);
-      });
+    const renderArticles = this.renderArticles.bind(this);
+
+    this.props.search(options, (newsArticles) => {
+      renderArticles(newsArticles);
+    });
+  }
+
+  renderArticles(newsArticles) {
+    this.setState({ articles: newsArticles });
   }
 
   render() {
