@@ -63,3 +63,11 @@ padding: 10px;
 .selectedSources {
   display: inline-block;
 }
+
+/* ---------------------------- */
+/*      Selectetd Sources       */
+/* ---------------------------- */
+
+.topics-list-container, .selectedSourcesContainer {
+  margin-left: 40px;
+}
