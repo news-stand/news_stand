@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TopicsListItem = props => (
   <div className="topics list-item">
@@ -12,5 +13,10 @@ const TopicsListItem = props => (
     {props.topic}
   </div>
 );
+
+TopicsListItem.propTypes = {
+  onTopicRemoval: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default TopicsListItem;
