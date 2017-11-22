@@ -1,3 +1,4 @@
+/* eslint-disable */
 require('jasmine-expect');
 
 const axios = require('axios');
@@ -111,3 +112,4 @@ describe('News Stand Server', function() {
   });
 
 });
+/* eslint-enable */
