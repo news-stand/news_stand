@@ -1,25 +1,19 @@
 import React from 'react';
+import defaultImage from '../public/assets/defaultImage.js';
 
 const NewsItem = ({ article }) => (
   <div className="newsItem">
     {
       article.urlToImage ?
-        <img
-          src={article.urlToImage}
-          className="articleImg"
-          alt="#" onClick={() => {
-            window.open(`${article.url}`, "_blank");
-          }}/> :
-        null
+        <a href={article.url} target="_blank"> <img src={article.urlToImage} className="articleImg" alt="#" /></a>
+        :
+        <a href={article.url} target="_blank"> <img src={defaultImage} alt="#" /></a>
     }
 
     {
       article.title ?
-        <h3 className="articleTitle" onClick={() => {
-          window.open(`${article.url}`, "_blank");
-        }}>
-          {article.title}
-        </h3> :
+        <a href={article.url} target="_blank"> <h3 className="articleTitle"> {article.title} </h3></a>
+        :
         null
     }
 
