@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-module.exports = (request, response, next) => {
+export default (request, response, next) => {
   axios
     .get(`https://newsapi.org/v2/sources?apiKey=${process.env.NEWS_KEY}`)
     .then((newsAPI) => {
@@ -12,7 +12,7 @@ module.exports = (request, response, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
+      console.log('error', err);
     })
     .then(() => next());
 };

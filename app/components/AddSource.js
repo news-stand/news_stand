@@ -127,6 +127,7 @@ class AddSource extends React.Component {
     axios
       .get('/sources')
       .then((sources) => {
+        console.log('sources -->', sources)
         suggestions = sources.data;
       })
       .catch((err) => {
