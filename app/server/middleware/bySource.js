@@ -12,7 +12,7 @@ const searchArticles = (request, response, next) => {
   const formattedSource = sources.join(',').split(' ').join('-');
 
   if (topics) {
-    const formattedTopic = topics.join('%20OR%20').split(' ').join
+    const formattedTopic = topics.join('%20OR%20').split(' ').join('%20');
     search = `https://newsapi.org/v2/everything?q=${formattedTopic}&sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
   } else {
     search = `https://newsapi.org/v2/everything?sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
