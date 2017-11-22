@@ -50,13 +50,13 @@ const NewsItem = ({ article }) => (
 // still needs setting default proptypes for ones (all) not required
 NewsItem.propTypes = {
   article: PropTypes.shape({
-    urlToImage: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    urlToImage: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
     source: PropTypes.shape({
-      name: PropTypes.string.isRequired,
+      name: PropTypes.string,
     }),
-    author: PropTypes.string.isRequired,
+    author: PropTypes.string,
     url: PropTypes.string.isRequired,
   }).isRequired,
 };
