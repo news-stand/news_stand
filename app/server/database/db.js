@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import Source from './models/source';
-import keys from '../config/keys';
+dotenv.config();
 
-// connect to mlab db
-mongoose.connect(keys.mongodb.URI);
+mongoose.connect(process.env.MONGODB_URI);
 
 const db = mongoose.connection;
 

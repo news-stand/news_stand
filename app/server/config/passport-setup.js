@@ -1,7 +1,9 @@
 import passport from 'passport';
 import GoogleStrategy from 'passport-google-oauth20';
-import keys from './keys';
+import dotenv from 'dotenv';
 import User from '../database/models/user';
+
+dotenv.config();
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -14,8 +16,8 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(new GoogleStrategy({
-  clientID: keys.google.clientID,
-  clientSecret: keys.google.clientSecret,
+  clientID: process.env.CLIENT_ID,
+  clientSecret: process.env.CLIENT_SECRET,
   callbackURL: 'http://localhost:8080/auth/google/redirect',
 }, (accessToken, refreshToken, profile, done) => {
   User.findOne({ googleId: profile.id })
