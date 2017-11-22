@@ -1,9 +1,11 @@
 /* eslint-disable */
 require('jasmine-expect');
+require('dotenv').config()
 
 const axios = require('axios');
+const PORT = process.env.PORT || 8080;
 
-const baseUrl = 'http://localhost:8080';
+const baseUrl = `http://localhost:${PORT}`;
 
 describe('News Stand Server', function() {
 
