@@ -36,3 +36,4 @@ node_modules/
 
 # Desktop services store
 .DS_Store
+app/.DS_Store
