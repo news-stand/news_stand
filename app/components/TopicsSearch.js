@@ -1,5 +1,6 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
+import PropTypes from 'prop-types';
 
 function renderInput(inputProps) {
   const { classes, autoFocus, value, ref, ...other } = inputProps;
@@ -60,5 +61,9 @@ class TopicsSearch extends React.Component {
     );
   }
 }
+
+TopicsSearch.propTypes = {
+  onTopicSearch: PropTypes.func.isRequired,
+};
 
 export default TopicsSearch;
