@@ -1,5 +1,6 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 /* eslint-disable react/no-array-index-key */
+import axios from 'axios';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
@@ -10,12 +11,7 @@ import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import { withStyles } from 'material-ui/styles';
 
-import sources from '../dummy-data/sources_v2';
-
-
-const suggestions = sources.sources.map((source) => {
-  return { label: source.name };
-});
+let suggestions;
 
 function renderInput(inputProps) {
   const { classes, autoFocus, value, ref, ...other } = inputProps;
@@ -124,30 +120,51 @@ class AddSource extends React.Component {
     this.state = {
       value: '',
       suggestions: [],
+      selected: {},
     };
   }
+
+  componentDidMount() {
+    axios
+      .get('/sources')
+      .then((sources) => {
+        console.log('sources -->', sources)
+        suggestions = sources.data;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
 
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
       suggestions: getSuggestions(value),
     });
-  };
+  }
 
   handleSuggestionsClearRequested() {
     this.setState({
       suggestions: [],
     });
-  };
+  }
 
   handleChange(event, { newValue }) {
     this.setState({
       value: newValue,
     });
-  };
+  }
 
   handleClick() {
-    this.props.onAddSource(this.state.value);
-    this.setState({value: ''});
+    const selected = suggestions.filter(source => source.label === this.state.value);
+    if (selected.length) {
+      this.setState({
+        value: '',
+        selected: selected[0],
+      }, () => {
+        this.props.onAddSource(this.state.selected);
+      });
+    }
   }
 
   render() {
