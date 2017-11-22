@@ -57,6 +57,7 @@ Note: This starts the Webpack bundler and Babel transpiler, which run in paralle
 - mongoose
 - react
 - react-dom
+- react-router
 
 
 ## Development
@@ -68,6 +69,32 @@ From within the root directory:
 ```sh
 npm install
 ```
+
+### Setting Environment Variables
+
+This project uses the [dotenv](https://www.npmjs.com/package/dotenv) module to read and configure environment variables from a .env file. The .env is included in .gitignore and where you should store your API keys.
+
+The .env reads bash commands, so set environment variables like you would in the terminal.
+
+```sh
+# for example:
+NEWS_KEY=yourKeyHere
+```
+
+You then can access the environment variables in your JavaScript files.
+
+```node
+// for example:
+search = `https://newsapi.org/v2/everything?q=art&sources=bbc-news&sortBy=popularity&apiKey=${process.env.NEWS_KEY}`
+```
+
+### News API
+
+This project uses information from [NewsAPI](https://newsapi.org/). For development, you'll need an API key that you set in your environment variables. 
+
+Endpoints:
+  - [/v2/everything](https://newsapi.org/docs/endpoints/everything): For articles searches
+  - [/v2/sources](https://newsapi.org/docs/endpoints/sources): For an up-to-date list of possible sources to query
 
 ### Roadmap
 
