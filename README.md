@@ -72,7 +72,7 @@ npm install
 
 ### Setting Environment Variables
 
-This project uses the [dotenv](https://www.npmjs.com/package/dotenv) module to read and configure environment variables from a .env file. The .env is included in .gitignore and where you should store your API keys.
+This project uses the [dotenv](https://www.npmjs.com/package/dotenv) module to read and configure environment variables from a .env file. The .env is included in .gitignore and is where you should store your API keys.
 
 The .env reads bash commands, so set environment variables like you would in the terminal.
 
