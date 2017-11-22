@@ -161,7 +161,6 @@ class AddSource extends React.Component {
   }
 
   handleClick() {
-<<<<<<< HEAD
     const selected = suggestions.filter(source => source.label === this.state.value);
     if (selected.length) {
       this.setState({
@@ -171,15 +170,10 @@ class AddSource extends React.Component {
         this.props.onAddSource(this.state.selected);
       });
     }
-=======
-    this.props.onAddSource(this.state.value);
-    this.setState({ value: '' });
->>>>>>> Made some changes to play nice with the linter. Verified additional prop
   }
 
   render() {
     const { classes } = this.props;
-    // props validation for classes above will not work
 
     return (
       <div className="addSourceContainer">
@@ -214,6 +208,7 @@ class AddSource extends React.Component {
 
 AddSource.propTypes = {
   onAddSource: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(AddSource);
