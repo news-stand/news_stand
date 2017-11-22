@@ -7,14 +7,17 @@ const NewsItem = ({ article }) => (
         <img
           src={article.urlToImage}
           className="articleImg"
-          alt="#"
-        /> :
+          alt="#" onClick={() => {
+            window.open(`${article.url}`, "_blank");
+          }}/> :
         null
     }
 
     {
       article.title ?
-        <h3 className="articleTitle">
+        <h3 className="articleTitle" onClick={() => {
+          window.open(`${article.url}`, "_blank");
+        }}>
           {article.title}
         </h3> :
         null
