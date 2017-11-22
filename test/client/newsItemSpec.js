@@ -10,54 +10,148 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('<NewsItem />', function() {
   const article = {
     "source": {
-      "id": null,
-      "name": "Salesforce.com"
+      "name": "x"
     },
-    "author": null,
-    "title": "Data Manager - Import Data",
-    "description": "Hello,<br><br>I am trying to import data to saleforce. I have done twice but when I checked the challenge. It still shows that &quot;All the contact records from the CSV file were not found in the Org.&quot;<br>The Recent Import Jobs shows both of my import&#…",
+    "author": "x",
+    "title": "x",
+    "description": "x",
     "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
     "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
     "publishedAt": "2017-11-15T22:33:06Z"
   };
 
   it('creates a newsitem component with a class of newsItem', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.hasClass('newsItem'));
+    const wrapper = mount(<NewsItem article={article} />);
+      // console.log('"It has a class of newsItem": ', wrapper.find('.newsItem').exists());
+    expect(wrapper.find('.newsItem').exists()).toBe(true);
   });
 
-  it('has an image when it should', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.find('.articleImg').exists()).to.equal(true);
+  it('should have an image', function() {
+    const wrapper = mount(<NewsItem article={article} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleImg').exists()).toBe(true);
   });
 
-  it('has a title when it should', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.find('.atricleTitle').exists()).to.equal(true);
+  it('should not have an image', function() {
+    const wrapper = mount(<NewsItem article={{
+      "source": {
+        "name": "x"
+      },
+      "author": "x",
+      "title": "x",
+      "description": "x",
+      "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
+      "publishedAt": "2017-11-15T22:33:06Z"
+    }} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleImg').exists()).toBe(false);
   });
 
-  it('has a description when it should', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.find('.articleDescription').exists()).to.equal(true);
+  it('should have a title', function() {
+    const wrapper = mount(<NewsItem article={article} />);
+      // console.log('This should be true: ', wrapper.find('.articleTitle').exists());
+    expect(wrapper.find('.articleTitle').exists()).toBe(true);
   });
 
-  it('has a source when it should', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.find('.atricleSource').exists()).to.equal(true);
+  it('should not have a title', function() {
+    const wrapper = mount(<NewsItem article={{
+      "source": {
+        "name": "x"
+      },
+      "author": "x",
+      "description": "x",
+      "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
+      "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
+      "publishedAt": "2017-11-15T22:33:06Z"
+    }} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleTitle').exists()).toBe(false);
   });
 
-  it('has a author when it should', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.find('.atricleAuthor').exists()).to.equal(true);
+  it('should have a description', function() {
+    const wrapper = mount(<NewsItem article={article} />);
+    expect(wrapper.find('.articleDescription').exists()).toBe(true);
   });
 
-  it('has a url when it should', function() {
-    const wrapper = mount(<NewItem article={article} />);
-    expect(wrapper.find('.atricleUrl').exists()).to.equal(true);
+  it('should not have a description', function() {
+    const wrapper = mount(<NewsItem article={{
+      "source": {
+        "name": "x"
+      },
+      "author": "x",
+      "title": "x",
+      "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
+      "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
+      "publishedAt": "2017-11-15T22:33:06Z"
+    }} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleDescription').exists()).toBe(false);
   });
+
+  it('should have a source', function() {
+    const wrapper = mount(<NewsItem article={article} />);
+    expect(wrapper.find('.articleSource').exists()).toBe(true);
+  });
+
+  it('should not have a source', function() {
+    const wrapper = mount(<NewsItem article={{
+      "source": {},
+      "author": "x",
+      "title": "x",
+      "description": "x",
+      "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
+      "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
+      "publishedAt": "2017-11-15T22:33:06Z"
+    }} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleSource').exists()).toBe(false);
+  });
+
+  it('should have a author', function() {
+    const wrapper = mount(<NewsItem article={article} />);
+      // console.log('This should be false: ', wrapper.find('.articleAuthor').exists());
+    expect(wrapper.find('.articleAuthor').exists()).toBe(true);
+  });
+
+  it('should not have an author', function() {
+    const wrapper = mount(<NewsItem article={{
+      "source": {
+        "name": "x"
+      },
+      "title": "x",
+      "description": "x",
+      "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
+      "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
+      "publishedAt": "2017-11-15T22:33:06Z"
+    }} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleAuthor').exists()).toBe(false);
+  });
+
+  it('should have a url', function() {
+    const wrapper = mount(<NewsItem article={article} />);
+    expect(wrapper.find('.articleUrl').exists()).toBe(true);
+  });
+
+  it('should not have a url', function() {
+    const wrapper = mount(<NewsItem article={{
+      "source": {
+        "name": "x"
+      },
+      "author": "x",
+      "title": "x",
+      "description": "x",
+      "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
+      "publishedAt": "2017-11-15T22:33:06Z"
+    }} />);
+      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
+    expect(wrapper.find('.articleUrl').exists()).toBe(false);
+  });
+
 })
-// renders all components to the div when passed a proper article
-// creates nothing if it's passed nothing
-// Doesn't render components when they are absent from the news article
+
+// TODO: Add a sample photo (no photo provided) when there is no photo with the article
+
+
 
 
