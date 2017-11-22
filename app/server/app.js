@@ -2,12 +2,13 @@ import path from 'path';
 import express from 'express';
 import searchArticles from './middleware/bySource';
 import getSources from './middleware/getSources';
+import morgan from 'morgan';
 
 const app = express();
 
 const publicPath = express.static(path.join(__dirname, '../'));
 const indexPath = path.join(__dirname, '../index.html');
-
+app.use(morgan('tiny'));
 app.use(publicPath);
 
 app.get('/articles', searchArticles, (request, response) => {
@@ -15,13 +16,13 @@ app.get('/articles', searchArticles, (request, response) => {
   response.json(articles);
 });
 
+app.get('/sources', getSources, (request, response) => {
+  response.json(request.sources);
+});
+
 app.get('*', (request, response) => {
   response.sendFile(indexPath);
 });
 
-app.get('/sources', getSources, (request, response) => {
-  console.log('sources: ', request.sources);
-  response.json(request.sources);
-});
 
 export default app;
