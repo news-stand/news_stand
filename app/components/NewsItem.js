@@ -1,5 +1,7 @@
 import React from 'react';
-import defaultImage from '../public/assets/defaultImage.js';
+import PropTypes from 'prop-types';
+import defaultImage from '../public/assets/defaultImage';
+
 
 const NewsItem = ({ article }) => (
   <div className="newsItem">
@@ -44,6 +46,19 @@ const NewsItem = ({ article }) => (
     <br />
   </div>
 );
+
+NewsItem.propTypes = {
+  article: PropTypes.share({
+    urlToImage: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    source: PropTypes.share({
+      name: PropTypes.string.isRequired,
+    }),
+    author: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 
 export default NewsItem;
