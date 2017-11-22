@@ -22,13 +22,12 @@ describe('News Stand Server', function() {
     });
   });
 
-  describe('GET /articles for top headlines', function() {
+  describe('GET /articles for multiple topics and sources', function() {
     const options = {
       params: {
-        topic: null,
-        source: null,
-        sortBy: null,
-        topHeadlines: true,
+        topics: ['art', 'music'],
+        selectedSources: ['bbc-news', 'cnn'],
+        sortBy: 'popularity',
       },
     };
 
@@ -67,13 +66,12 @@ describe('News Stand Server', function() {
 
   });
 
-  describe('GET /articles for topics and sources search', function() {
+  describe('GET /articles for multiple sources, but no topics', function() {
     const options = {
       params: {
-        topic: ['art', 'music'],
-        source: ['bbc-news', 'cnn'],
+        topics: [],
+        selectedSources: ['bbc-news', 'cnn'],
         sortBy: 'popularity',
-        topHeadlines: false,
       },
     };
 
@@ -88,11 +86,65 @@ describe('News Stand Server', function() {
         });
     });
 
-    //not totally sure if this is how it works
     it('returns an array', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
           expect(response.data).toBeArray();
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+    it('returns an array of objects', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.data).toBeArrayOfObjects();
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+  });
+
+  describe('GET /articles for multiple topics and, but no sources', function() {
+    const options = {
+      params: {
+        topic: ['art', 'music'],
+        selectedSources: [],
+        sortBy: 'popularity',
+      },
+    };
+
+    it('returns status code 200', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.status).toBe(200);
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+    it('returns an array', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.data).toBeArray();
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+    it('returns articles with a default source of espn', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.data[0].source.name.toLowerCase()).toBe('espn');
           done();
         })
         .catch((err) => {
@@ -114,4 +166,5 @@ describe('News Stand Server', function() {
   });
 
 });
+
 /* eslint-enable */
