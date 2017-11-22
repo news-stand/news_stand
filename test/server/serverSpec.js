@@ -19,6 +19,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route / ', err);
+          done();
         });
     });
   });
@@ -27,7 +28,16 @@ describe('News Stand Server', function() {
     const options = {
       params: {
         topics: ['art', 'music'],
-        selectedSources: ['bbc-news', 'cnn'],
+        selectedSources: [
+          {
+            id: 'bbc-news',
+            label: 'BBC News',
+          },
+          {
+            id: 'cnn',
+            label: 'CNN',
+          }
+        ],
         sortBy: 'popularity',
       },
     };
@@ -40,6 +50,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -51,6 +62,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -71,7 +83,16 @@ describe('News Stand Server', function() {
     const options = {
       params: {
         topics: [],
-        selectedSources: ['bbc-news', 'cnn'],
+        selectedSources: [
+          {
+            id: 'bbc-news',
+            label: 'BBC News',
+          },
+          {
+            id: 'cnn',
+            label: 'CNN',
+          }
+        ],
         sortBy: 'popularity',
       },
     };
@@ -84,6 +105,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -106,6 +128,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -128,6 +151,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -139,6 +163,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -150,6 +175,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -161,6 +187,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -183,6 +210,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -194,6 +222,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -205,6 +234,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -216,6 +246,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -225,7 +256,16 @@ describe('News Stand Server', function() {
     const options = {
       params: {
         topics: ['art', 'music'],
-        selectedSources: ['bbc-news', 'cnn'],
+        selectedSources: [
+          {
+            id: 'bbc-news',
+            label: 'BBC News',
+          },
+          {
+            id: 'cnn',
+            label: 'CNN',
+          }
+        ],
         sortBy: 'publishedAt',
       },
     };
@@ -238,6 +278,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -253,6 +294,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -264,6 +306,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
@@ -275,6 +318,7 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
         });
     });
 
