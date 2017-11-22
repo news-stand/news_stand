@@ -1,21 +1,19 @@
 import axios from 'axios';
 
-const defaultSources = ['espn'];
-
 const searchArticles = (request, response, next) => {
   let search;
 
   const { sortBy, selectedSources, topics } = request.query;
-
-  const sources = selectedSources || defaultSources;
-
-  const formattedSource = sources.join(',').split(' ').join('-');
+  
+  const formattedSource = selectedSources.map(source => JSON.parse(source).id).join(',');
 
   if (topics) {
     const formattedTopic = topics.join('%20OR%20').split(' ').join('%20');
     search = `https://newsapi.org/v2/everything?q=${formattedTopic}&sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
+    console.log(search);
   } else {
     search = `https://newsapi.org/v2/everything?sources=${formattedSource}&sortBy=${sortBy}&apiKey=${process.env.NEWS_KEY}`;
+    console.log(search);
   }
 
   // Request information from newsAPI
