@@ -22,13 +22,11 @@ describe('<NewsItem />', function() {
 
   it('creates a newsitem component with a class of newsItem', function() {
     const wrapper = mount(<NewsItem article={article} />);
-      // console.log('"It has a class of newsItem": ', wrapper.find('.newsItem').exists());
     expect(wrapper.find('.newsItem').exists()).toBe(true);
   });
 
   it('should have an image', function() {
     const wrapper = mount(<NewsItem article={article} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleImg').exists()).toBe(true);
   });
 
@@ -43,13 +41,11 @@ describe('<NewsItem />', function() {
       "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleImg').exists()).toBe(false);
   });
 
   it('should have a title', function() {
     const wrapper = mount(<NewsItem article={article} />);
-      // console.log('This should be true: ', wrapper.find('.articleTitle').exists());
     expect(wrapper.find('.articleTitle').exists()).toBe(true);
   });
 
@@ -64,7 +60,6 @@ describe('<NewsItem />', function() {
       "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleTitle').exists()).toBe(false);
   });
 
@@ -84,7 +79,6 @@ describe('<NewsItem />', function() {
       "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleDescription').exists()).toBe(false);
   });
 
@@ -103,13 +97,11 @@ describe('<NewsItem />', function() {
       "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleSource').exists()).toBe(false);
   });
 
   it('should have a author', function() {
     const wrapper = mount(<NewsItem article={article} />);
-      // console.log('This should be false: ', wrapper.find('.articleAuthor').exists());
     expect(wrapper.find('.articleAuthor').exists()).toBe(true);
   });
 
@@ -124,7 +116,6 @@ describe('<NewsItem />', function() {
       "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleAuthor').exists()).toBe(false);
   });
 
@@ -144,13 +135,12 @@ describe('<NewsItem />', function() {
       "urlToImage": "http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-      // console.log('Img - should be true: ', wrapper.find('.articleImg').exists());
     expect(wrapper.find('.articleUrl').exists()).toBe(false);
   });
 
 })
 
-// TODO: Add a sample photo (no photo provided) when there is no photo with the article
+// TODO: When we add a sample photo (no photo provided) when there is no photo with the article update the img test
 
 
 
