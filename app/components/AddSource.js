@@ -157,7 +157,6 @@ class AddSource extends React.Component {
 
   handleClick() {
     const selected = suggestions.filter(source => source.label === this.state.value);
-    console.log(selected.length);
     if (selected.length) {
       this.setState({
         value: '',

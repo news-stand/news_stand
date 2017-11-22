@@ -9,9 +9,12 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortBy: 'popularity',
+      sortBy: 'publishedAt',
       articles: [],
-      selectedSources: [],
+      selectedSources: [{
+        label: 'TechCrunch',
+        id: 'techcrunch',
+      }],
       topics: [],
     };
 
@@ -23,10 +26,9 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    const { topics, selectedSources, sortBy } = this.state;
     const options = {
-      topics: [],
-      selectedSources: [],
-      sortBy: 'popularity',
+      topics, selectedSources, sortBy,
     };
     this.getArticles(options);
   }
