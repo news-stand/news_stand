@@ -136,19 +136,19 @@ class AddSource extends React.Component {
     this.setState({
       suggestions: getSuggestions(value),
     });
-  };
+  }
 
   handleSuggestionsClearRequested() {
     this.setState({
       suggestions: [],
     });
-  };
+  }
 
   handleChange(event, { newValue }) {
     this.setState({
       value: newValue,
     });
-  };
+  }
 
   handleClick() {
     this.props.onAddSource(this.state.value);
@@ -157,6 +157,7 @@ class AddSource extends React.Component {
 
   render() {
     const { classes } = this.props;
+    // props validation for classes above will not work
 
     return (
       <div className="addSourceContainer">
@@ -191,7 +192,6 @@ class AddSource extends React.Component {
 
 AddSource.propTypes = {
   onAddSource: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(styles)(AddSource);

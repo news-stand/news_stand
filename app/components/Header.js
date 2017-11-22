@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = props => (
   <div className="header">
@@ -10,5 +11,11 @@ const Header = props => (
     </form>
   </div>
 );
+
+Header.propTypes = {
+  sortBy: PropTypes.string.isRequired,
+  onToggleClick: PropTypes.func.isRequired,
+  onRefreshClick: PropTypes.func.isRequired,
+};
 
 export default Header;
