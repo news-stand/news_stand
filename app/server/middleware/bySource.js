@@ -6,7 +6,7 @@ const searchArticles = (request, response, next) => {
   let search;
 
   const { sortBy, selectedSources, topics } = request.query;
-
+  console.log(request.query);
   const sources = selectedSources || defaultSources;
 
   const formattedSource = sources.join(',').split(' ').join('-');

@@ -120,6 +120,7 @@ class AddSource extends React.Component {
     this.state = {
       value: '',
       suggestions: [],
+      selected: {},
     };
   }
 
@@ -155,8 +156,16 @@ class AddSource extends React.Component {
   }
 
   handleClick() {
-    this.props.onAddSource(this.state.value);
-    this.setState({value: ''});
+    const selected = suggestions.filter(source => source.label === this.state.value);
+    console.log(selected.length);
+    if (selected.length) {
+      this.setState({
+        value: '',
+        selected: selected[0],
+      }, () => {
+        this.props.onAddSource(this.state.selected);
+      });
+    }
   }
 
   render() {
