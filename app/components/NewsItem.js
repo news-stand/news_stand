@@ -47,7 +47,6 @@ const NewsItem = ({ article }) => (
   </div>
 );
 
-// still needs setting default proptypes for ones (all) not required
 NewsItem.propTypes = {
   article: PropTypes.shape({
     urlToImage: PropTypes.string,
