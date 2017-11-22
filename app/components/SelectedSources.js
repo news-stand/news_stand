@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SourceItem from './SourceItem';
 
 export default (props) => {
@@ -11,3 +12,5 @@ export default (props) => {
     </div>
   );
 };
+
+// validate props here
