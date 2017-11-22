@@ -9,10 +9,8 @@ const NewsItem = ({ article }) => (
           className="articleImg"
           alt="#"
         /> :
-        <div
-          className="hidden"
-        />
-    }  
+        null
+    }
     {/* <img src={article.urlToImage} className="articleImg" alt="#" /> */}
 
     {
@@ -20,35 +18,35 @@ const NewsItem = ({ article }) => (
         <h3 className="articleTitle">
           {article.title}
         </h3> :
-        <h3 className="hidden">ARTICLE MISSING TITLE</h3>
+        null
     }
     {/* <h3 className="articleTitle">{article.title}</h3> */}
 
     {
       article.description ?
         <p className="articleDescription">{article.description}</p> :
-        <p className="hidden">ARTICLE MISSING DESCRIPTION</p>
+        null
     }
     {/* <p className="articleDescription">{article.description}</p> */}
 
     {
       article.source.name ?
         <p className="articleSource">{article.source.name}</p> :
-        <p className="hidden">ARTICLE MISSING SOURCE NAME</p>
+        null
     }
     {/* <p className="articleSource">{article.source.name}</p> */}
 
     {
       article.author ?
         <p className="articleAuthor">{article.author}</p> :
-        <p className="hidden">ARTICLE MISSING AUTHOR</p>
+        null
     }
     {/* <p className="articleAuthor">{article.author}</p> */}
 
     {
       article.url ?
         <p className="articleUrl">{article.url}</p> :
-        <p className="hidden">ARTICLE MISSING URL</p>
+        null
     }
     {/* <p className="articleUrl">{article.url}</p> */}
 
