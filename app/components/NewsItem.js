@@ -47,12 +47,13 @@ const NewsItem = ({ article }) => (
   </div>
 );
 
+// still needs setting default proptypes for ones (all) not required
 NewsItem.propTypes = {
-  article: PropTypes.share({
+  article: PropTypes.shape({
     urlToImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    source: PropTypes.share({
+    source: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }),
     author: PropTypes.string.isRequired,
