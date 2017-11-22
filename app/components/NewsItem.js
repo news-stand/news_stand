@@ -35,12 +35,6 @@ const NewsItem = ({ article }) => (
         null
     }
 
-    {
-      article.url ?
-        <p className="articleUrl">{article.url}</p> :
-        null
-    }
-
     <br />
   </div>
 );
