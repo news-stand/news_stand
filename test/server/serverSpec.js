@@ -167,10 +167,10 @@ describe('News Stand Server', function() {
         });
     });
 
-    it('returns articles with a default source of espn', function(done) {
+    it('returns articles with a default source of techcrunch', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
-          expect(response.data[0].source.name.toLowerCase()).toBe('espn');
+          expect(response.data[0].source.name.toLowerCase()).toBe('techcrunch');
           done();
         })
         .catch((err) => {
@@ -226,10 +226,10 @@ describe('News Stand Server', function() {
         });
     });
 
-    it('returns articles with a default source of espn', function(done) {
+    it('returns articles with a default source of techcrunch', function(done) {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
-          expect(response.data[0].source.name.toLowerCase()).toBe('espn');
+          expect(response.data[0].source.name.toLowerCase()).toBe('techcrunch');
           done();
         })
         .catch((err) => {
