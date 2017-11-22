@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SourceItem from './SourceItem';
 
-export default (props) => {
+const SelectedSources = (props) => {
   const sources = props.selectedSources.map(source => (
     <SourceItem key={source.id} source={source.label} />
   ));
@@ -13,4 +13,8 @@ export default (props) => {
   );
 };
 
-// validate props here
+SelectedSources.propTypes = {
+  selectedSources: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default SelectedSources;
