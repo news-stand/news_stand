@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TopicsListItem from './TopicsListItem';
 
 const TopicsList = props => (
@@ -16,5 +17,10 @@ const TopicsList = props => (
     </div>
   </div>
 );
+
+TopicsList.propTypes = {
+  topics: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onTopicRemoval: PropTypes.func.isRequired,
+};
 
 export default TopicsList;

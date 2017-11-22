@@ -125,57 +125,63 @@ class AddSource extends React.Component {
       value: '',
       suggestions: [],
     };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSuggestionsFetchRequested = this.handleSuggestionsFetchRequested.bind(this);
+    this.handleSuggestionsClearRequested = this.handleSuggestionsClearRequested.bind(this);
   }
 
   handleSuggestionsFetchRequested({ value }) {
     this.setState({
       suggestions: getSuggestions(value),
     });
-  };
+  }
 
   handleSuggestionsClearRequested() {
     this.setState({
       suggestions: [],
     });
-  };
+  }
 
   handleChange(event, { newValue }) {
     this.setState({
       value: newValue,
     });
-  };
+  }
 
   handleClick() {
     this.props.onAddSource(this.state.value);
-    this.setState({value: ''});
+    this.setState({ value: '' });
   }
 
   render() {
     const { classes } = this.props;
+    // props validation for classes above will not work
 
     return (
       <div className="addSourceContainer">
-        <button className="source btn" id="add-source" onClick={this.handleClick.bind(this)}>+</button>
+        <button className="source btn" id="add-source" onClick={this.handleClick}>+</button>
         <Autosuggest
           theme={{
             container: classes.container,
             suggestionsContainerOpen: classes.suggestionsContainerOpen,
             suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion
+            suggestion: classes.suggestion,
           }}
           renderInputComponent={renderInput}
           suggestions={this.state.suggestions}
-          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(this)}
-          onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(this)}
+          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
           renderSuggestionsContainer={renderSuggestionsContainer}
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={{
             autoFocus: true,
             classes,
-            placeholder: "Search a news source",
+            placeholder: 'Search a news source',
             value: this.state.value,
-            onChange: this.handleChange.bind(this)
+            onChange: this.handleChange,
           }}
         />
 
@@ -185,7 +191,7 @@ class AddSource extends React.Component {
 }
 
 AddSource.propTypes = {
-  classes: PropTypes.object.isRequired,
+  onAddSource: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(AddSource);
