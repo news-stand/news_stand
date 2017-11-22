@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 
 const sourceSchema = mongoose.Schema({
   id: 'String',
@@ -8,4 +7,4 @@ const sourceSchema = mongoose.Schema({
 
 const Source = mongoose.model('Source', sourceSchema);
 
-module.exports = Source;
+export default Source;
