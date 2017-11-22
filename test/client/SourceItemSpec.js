@@ -7,18 +7,19 @@ import SourceItem from '../../app/components/SourceItem';
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('<SourceItem />', function () {
-  let wrapper, source;
-
-  beforeEach(function () {
-    wrapper = shallow(<SourceItem source={'CNN'} />);
-    source = 'CNN';
-  });
 
   it('renders passed in source', () => {
-    expect(wrapper).find('p').text().toEqual('CNN');
+    let wrapper = shallow(<SourceItem source={'CNN'} />);
+    expect(wrapper.find('p').text()).toEqual('CNN');
+  })
+
+  it('renders only one source', () => {
+    let wrapper = shallow(<SourceItem source={'CNN'} />);
+    expect(wrapper.find('p').length).toEqual(1);
   })
 
   it('has a div with className selectedSources', () => {
-    expect(wrapper).find('.selectedSources').length.toEqual(1);
+    let wrapper = shallow(<SourceItem source={'CNN'} />);
+    expect(wrapper.find('.selectedSources').length).toEqual(1);
   })
 });
