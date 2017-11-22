@@ -1,6 +1,7 @@
 /* eslint-disable */
 require('jasmine-expect');
 require('dotenv').config()
+const moment = require('moment');
 
 const axios = require('axios');
 const PORT = process.env.PORT || 8080;
@@ -22,7 +23,7 @@ describe('News Stand Server', function() {
     });
   });
 
-  describe('GET /articles for multiple topics and sources', function() {
+  describe('GET /articles for multiple topics and sources by popularity', function() {
     const options = {
       params: {
         topics: ['art', 'music'],
@@ -66,7 +67,7 @@ describe('News Stand Server', function() {
 
   });
 
-  describe('GET /articles for multiple sources, but no topics', function() {
+  describe('GET /articles for multiple sources, but no topics by popularity', function() {
     const options = {
       params: {
         topics: [],
@@ -110,7 +111,7 @@ describe('News Stand Server', function() {
 
   });
 
-  describe('GET /articles for multiple topics, but no sources', function() {
+  describe('GET /articles for multiple topics, but no sources  by popularity', function() {
     const options = {
       params: {
         topic: ['art', 'music'],
@@ -165,7 +166,7 @@ describe('News Stand Server', function() {
 
   });
 
-  describe('GET /articles for empty topics and sources', function() {
+  describe('GET /articles for empty topics and sources by popularity', function() {
     const options = {
       params: {
         topic: [],
@@ -200,6 +201,65 @@ describe('News Stand Server', function() {
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
           expect(response.data[0].source.name.toLowerCase()).toBe('espn');
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+    it('returns an array of objects', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.data).toBeArrayOfObjects();
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+  });
+
+  describe('GET /articles for multiple topics and sources by most recent', function() {
+    const options = {
+      params: {
+        topics: ['art', 'music'],
+        selectedSources: ['bbc-news', 'cnn'],
+        sortBy: 'publishedAt',
+      },
+    };
+
+    it('returns status code 200', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.status).toBe(200);
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+    it('returns articles from today or yesterday', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          response.data.forEach((article) => {
+            const day = moment(article.publishedAt).calendar().split(' ')[0].toLowerCase();
+            const isRecent = day === 'today' || day === 'yesterday';
+            expect(isRecent).toBe(true);
+            done();
+          })
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /articles ', err);
+        });
+    });
+
+    it('returns an array', function(done) {
+      axios.get(`${baseUrl}/articles`, options)
+        .then((response) =>{
+          expect(response.data).toBeArray();
           done();
         })
         .catch((err) => {
