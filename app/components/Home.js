@@ -1,9 +1,12 @@
 import React from 'react';
+import PropsTypes from 'prop-types';
+
 import Topics from './Topics';
 import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -120,5 +123,9 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes = {
+  search: PropsTypes.func.isRequired,
+};
 
 export default Home;
