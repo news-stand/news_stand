@@ -7,7 +7,7 @@ const NewsItem = ({ article }) => (
       article.urlToImage ?
         <a href={article.url} target="_blank"> <img src={article.urlToImage} className="articleImg" alt="#" /></a>
         :
-        <a href={article.url} target="_blank"> <img src={defaultImage} alt="#" /></a>
+        <a href={article.url} target="_blank"> <img src={defaultImage} className="defaultImg" alt="#" /></a>
     }
 
     {

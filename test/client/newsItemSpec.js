@@ -30,7 +30,7 @@ describe('<NewsItem />', function() {
     expect(wrapper.find('.articleImg').exists()).toBe(true);
   });
 
-  it('should not have an image', function() {
+  it('should have default image if no image provided', function() {
     const wrapper = mount(<NewsItem article={{
       "source": {
         "name": "x"
@@ -41,7 +41,7 @@ describe('<NewsItem />', function() {
       "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
       "publishedAt": "2017-11-15T22:33:06Z"
     }} />);
-    expect(wrapper.find('.articleImg').exists()).toBe(false);
+    expect(wrapper.find('.defaultImg').exists()).toBe(true);
   });
 
   it('should have a title', function() {
@@ -119,11 +119,6 @@ describe('<NewsItem />', function() {
     expect(wrapper.find('.articleAuthor').exists()).toBe(false);
   });
 
-  it('should have a url', function() {
-    const wrapper = mount(<NewsItem article={article} />);
-    expect(wrapper.find('.articleUrl').exists()).toBe(true);
-  });
-
   it('should not have a url', function() {
     const wrapper = mount(<NewsItem article={{
       "source": {
@@ -138,10 +133,4 @@ describe('<NewsItem />', function() {
     expect(wrapper.find('.articleUrl').exists()).toBe(false);
   });
 
-})
-
-// TODO: When we add a sample photo (no photo provided) when there is no photo with the article update the img test
-
-
-
-
+});
