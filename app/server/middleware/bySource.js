@@ -3,8 +3,16 @@ import axios from 'axios';
 const searchArticles = (request, response, next) => {
   let search;
 
-  const { sortBy, selectedSources, topics } = request.query;
-  
+  const { sortBy, topics } = request.query;
+  let { selectedSources } = request.query;
+
+  const defaultSource = {
+    label: 'TechCrunch',
+    id: 'techcrunch',
+  };
+
+  selectedSources = selectedSources || [JSON.stringify(defaultSource)];
+
   const formattedSource = selectedSources.map(source => JSON.parse(source).id).join(',');
 
   if (topics) {
