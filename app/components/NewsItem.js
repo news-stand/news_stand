@@ -9,7 +9,7 @@ const NewsItem = ({ article }) => (
       article.urlToImage ?
         <a href={article.url} target="_blank"> <img src={article.urlToImage} className="articleImg" alt="#" /></a>
         :
-        <a href={article.url} target="_blank"> <img src={defaultImage} alt="#" /></a>
+        <a href={article.url} target="_blank"> <img src={defaultImage} className="defaultImg" alt="#" /></a>
     }
 
     {
@@ -34,12 +34,6 @@ const NewsItem = ({ article }) => (
     {
       article.author ?
         <p className="articleAuthor">{article.author}</p> :
-        null
-    }
-
-    {
-      article.url ?
-        <p className="articleUrl">{article.url}</p> :
         null
     }
 
