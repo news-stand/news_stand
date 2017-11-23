@@ -4,24 +4,19 @@
   },
   "env": {
     "NEWS_KEY": {
-      "description": "API key for newsAPI",
-      "value": "86b247494cf144388d71796022fcf116"
+      "description": "API key for newsAPI"
     },
     "CLIENT_ID": {
-      "description": "client ID for google+ OAuth",
-      "value": "955308957183-bvapoiummgn2slsgp8mpbca5b3aaakdn.apps.googleusercontent.com"
+      "description": "client ID for google+ OAuth"
     },
     "CLIENT_SECRET": {
-      "description": "client secret for google+ Auth.",
-      "value": "mRQzgH76aA0cXjQ--yWb-Pq"
+      "description": "client secret for google+ Auth."
     },
     "MONGODB_URI": {
-      "description": "URI for mlab DB",
-      "value": "mongodb://danny:danny@ds163705.mlab.com:63705/news-stand"
+      "description": "URI for mlab DB"
     },
     "COOKIE_KEY": {
-      "description": "key for encrypting cookies",
-      "value": "somerandomkey"
+      "description": "key for encrypting cookies"
     }
   },
   "formation": {
