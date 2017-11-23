@@ -3,6 +3,21 @@
   "scripts": {
   },
   "env": {
+    "NEWS_KEY": {
+      "description": "API key for newsAPI"
+    },
+    "CLIENT_ID": {
+      "description": "client ID for google+ OAuth"
+    },
+    "CLIENT_SECRET": {
+      "description": "client secret for google+ Auth."
+    },
+    "MONGODB_URI": {
+      "description": "URI for mlab DB"
+    },
+    "COOKIE_KEY": {
+      "description": "key for encrypting cookies"
+    }
   },
   "formation": {
   },
