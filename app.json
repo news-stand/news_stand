@@ -7,16 +7,20 @@
       "description": "API key for newsAPI"
     },
     "CLIENT_ID": {
-      "description": "client ID for google+ OAuth"
+      "description": "client ID for google+ OAuth",
+      "required": true
     },
     "CLIENT_SECRET": {
-      "description": "client secret for google+ Auth."
+      "description": "client secret for google+ Auth.",
+      "required": true
     },
     "MONGODB_URI": {
-      "description": "URI for mlab DB"
+      "description": "URI for mlab DB",
+      "required": true
     },
     "COOKIE_KEY": {
-      "description": "key for encrypting cookies"
+      "description": "key for encrypting cookies",
+      "required": true
     }
   },
   "formation": {
