@@ -68,7 +68,6 @@
     "moment": "^2.19.2",
     "nodemon": "^1.12.1",
     "parallelshell": "^3.0.2",
-    "react-addons-test-utils": "^15.6.2",
     "request": "^2.83.0"
   },
   "homepage": "https://github.com/katm201/news_stand#readme"
