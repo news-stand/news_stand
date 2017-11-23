@@ -122,6 +122,11 @@ class AddSource extends React.Component {
       suggestions: [],
       selected: {},
     };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSuggestionsFetchRequested = this.handleSuggestionsFetchRequested.bind(this);
+    this.handleSuggestionsClearRequested = this.handleSuggestionsClearRequested.bind(this);
   }
 
   componentDidMount() {
@@ -172,27 +177,27 @@ class AddSource extends React.Component {
 
     return (
       <div className="addSourceContainer">
-        <button className="source btn" id="add-source" onClick={this.handleClick.bind(this)}>+</button>
+        <button className="source btn" id="add-source" onClick={this.handleClick}>+</button>
         <Autosuggest
           theme={{
             container: classes.container,
             suggestionsContainerOpen: classes.suggestionsContainerOpen,
             suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion
+            suggestion: classes.suggestion,
           }}
           renderInputComponent={renderInput}
           suggestions={this.state.suggestions}
-          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested.bind(this)}
-          onSuggestionsClearRequested={this.handleSuggestionsClearRequested.bind(this)}
+          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
           renderSuggestionsContainer={renderSuggestionsContainer}
           getSuggestionValue={getSuggestionValue}
           renderSuggestion={renderSuggestion}
           inputProps={{
             autoFocus: true,
             classes,
-            placeholder: "Search a news source",
+            placeholder: 'Search a news source',
             value: this.state.value,
-            onChange: this.handleChange.bind(this)
+            onChange: this.handleChange,
           }}
         />
 
@@ -202,6 +207,7 @@ class AddSource extends React.Component {
 }
 
 AddSource.propTypes = {
+  onAddSource: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
