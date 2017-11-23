@@ -16,7 +16,7 @@
     "start": "npm run build:prod && NODE_ENV=production node ./build/server/index.js",
     "start:dev": "parallelshell 'npm run build:watch:server' 'npm run build:watch:client' 'nodemon ./build/server/index.js'",
     "start:dev:client": "webpack-dev-server",
-    "test": "npm run build:prod && ./node_modules/.bin/jasmine-node test/server",
+    "test": "npm run start && ./node_modules/.bin/jasmine-node test/server",
     "dev:test": "./node_modules/.bin/jasmine-node test/server"
   },
   "dependencies": {
