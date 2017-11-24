@@ -36,11 +36,11 @@ padding: 10px;
   font-size: 24px;
 }
 
-.topics-list .btn {
+.topics-list .btn, .source-item .btn {
   font-size: 12px;
 }
 
-.topics-list .btn:hover {
+.btn:hover {
   color: blue;
 }
 
@@ -67,7 +67,7 @@ padding: 10px;
 /* ---------------------------- */
 .selectedSourcesContainer {
   display: block;
-  margin-left: 40px;
+  /*margin-left: 40px;*/
 }
 
 .selectedSources {
@@ -78,6 +78,6 @@ padding: 10px;
 /*      Topics Containers       */
 /* ---------------------------- */
 
-.topics-list-container {
+.topics-list-container, .selectedSourcesContainer {
   margin-left: 25px;
 }

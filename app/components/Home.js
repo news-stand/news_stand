@@ -18,13 +18,13 @@ class Home extends React.Component {
         label: 'TechCrunch',
         id: 'techcrunch',
       }],
-      topics: [],
+      topics: ['net neutrality'],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
     this.onAddSource = this.onAddSource.bind(this);
-    this.onTopicRemoval = this.onTopicRemoval.bind(this);
+    this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
   }
 
@@ -56,19 +56,34 @@ class Home extends React.Component {
 
 
   onAddSource(source) {
-    this.setState((state) => {
-      return { selectedSources: state.selectedSources.concat([source]) };
-    });
+    const sources = this.state.selectedSources;
+    sources.push(source);
+    this.setState({ selectedSources: sources });
+
+    const { topics, sortBy } = this.state;
+    const options = {
+      topics,
+      selectedSources: sources,
+      sortBy,
+    };
+    this.getArticles(options);
   }
 
-  onTopicRemoval(index) {
+  onRemoval(index, type) {
     const { topics, selectedSources, sortBy } = this.state;
-    topics.splice(index, 1);
-    this.setState({ topics });
+
+    if (type === 'topics') {
+      topics.splice(index, 1);
+      this.setState({ topics });
+    } else {
+      selectedSources.splice(index, 1);
+      this.setState({ selectedSources });
+    }
 
     const options = {
       topics, selectedSources, sortBy,
     };
+
     this.getArticles(options);
   }
 
@@ -110,11 +125,14 @@ class Home extends React.Component {
             className="topics"
             topics={this.state.topics}
             onTopicSearch={this.onTopicSearch}
-            onTopicRemoval={this.onTopicRemoval}
+            onRemoval={this.onRemoval}
           />
 
           <AddSource onAddSource={this.onAddSource} />
-          <SelectedSources selectedSources={this.state.selectedSources} />
+          <SelectedSources
+            selectedSources={this.state.selectedSources}
+            onRemoval={this.onRemoval}
+          />
         </div>
 
         <hr />

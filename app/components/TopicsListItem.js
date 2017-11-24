@@ -6,7 +6,7 @@ const TopicsListItem = props => (
     <button
       type="button"
       className="list-item btn"
-      onClick={() => { props.onTopicRemoval(props.index); }}
+      onClick={() => { props.onRemoval(props.index, 'topics'); }}
     >
       x
     </button>
@@ -15,8 +15,9 @@ const TopicsListItem = props => (
 );
 
 TopicsListItem.propTypes = {
-  onTopicRemoval: PropTypes.func.isRequired,
+  onRemoval: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
+  topic: PropTypes.string.isRequired,
 };
 
 export default TopicsListItem;

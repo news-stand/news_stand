@@ -11,7 +11,7 @@ const TopicsList = props => (
           topic={topic}
           key={topic}
           index={key}
-          onTopicRemoval={props.onTopicRemoval}
+          onRemoval={props.onRemoval}
         />
         ))}
     </div>
@@ -20,7 +20,7 @@ const TopicsList = props => (
 
 TopicsList.propTypes = {
   topics: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTopicRemoval: PropTypes.func.isRequired,
+  onRemoval: PropTypes.func.isRequired,
 };
 
 export default TopicsList;
