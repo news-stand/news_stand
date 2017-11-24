@@ -8,14 +8,24 @@ import TopicsSearch from '../../app/components/TopicsSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-xdescribe('<TopicsSearch />', function () {
+describe('<TopicsSearch />', function () {
+  const dummyFn = () => {
+    console.log('dummy function');
+  };
+
+  const topicsSearch = (
+    <TopicsSearch
+      onTopicSearch={dummyFn}
+    />
+  );
+
   it('contains an onSearch function', function() {
-    const wrapper = shallow(<TopicsSearch />);
+    const wrapper = shallow(topicsSearch);
     expect(wrapper.props().onSearch).toBe.defined;
   });
 
-  it('contains an onSearch function', function() {
-    const wrapper = shallow(<TopicsSearch />);
+  it('contains a handleBarChange function', function() {
+    const wrapper = shallow(topicsSearch);
     expect(wrapper.props().handleBarChange).toBe.defined;
   });
 });
