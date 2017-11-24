@@ -13,7 +13,7 @@ Enzyme.configure({ adapter: new Adapter() });
 // should render 0 newsItems when passed 0 articles
 // should dynamically render newsItems (should render 2 items when passed 2 artcles)
 
-xdescribe('<NewsList />', function() {
+describe('<NewsList />', function() {
   it('contains a <NewsItem /> component', function() {
     const article = [{
       "source": {
@@ -32,7 +32,7 @@ xdescribe('<NewsList />', function() {
   })
 
   it('doesn\'t render <NewsItem /> component if no topics are passed in', function() {
-    const wrapper = shallow(<NewsList />);
+    const wrapper = shallow(<NewsList newsArticles={[]} />);
     expect(wrapper.find(NewsItem).length).toEqual(0);
   })
 
