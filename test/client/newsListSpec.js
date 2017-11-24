@@ -13,7 +13,7 @@ Enzyme.configure({ adapter: new Adapter() });
 // should render 0 newsItems when passed 0 articles
 // should dynamically render newsItems (should render 2 items when passed 2 artcles)
 
-describe('<NewsList />', function() {
+xdescribe('<NewsList />', function() {
   it('contains a <NewsItem /> component', function() {
     const article = [{
       "source": {

@@ -9,7 +9,7 @@ import Autosuggest from "react-autosuggest";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<AddSource />', function () {
+xdescribe('<AddSource />', function () {
   it('should have handleSuggestionsFetchRequested function defined', function () {
     const wrapper = shallow(<AddSource />);
     expect(wrapper.props().handleSuggestionsFetchRequested).toBe.defined;
