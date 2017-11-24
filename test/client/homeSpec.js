@@ -12,7 +12,7 @@ import v2DummyArticles from '../../app/dummy-data/articles_v2';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<Home />', function () {
+xdescribe('<Home />', function () {
   const dummySearch = (options, successCallback) => {
     const { articles } = v2DummyArticles;
     successCallback(articles);

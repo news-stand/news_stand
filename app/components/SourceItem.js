@@ -10,7 +10,7 @@ const SourceItem = props => (
     >
       x
     </button>
-    {props.source}
+    <span>{props.source}</span>
   </div>
 );
 
