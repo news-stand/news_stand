@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow, unmount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -71,3 +73,5 @@ describe('<Home />', function () {
     expect(wrapper.find(Topics).length).toEqual(1);
   });
 });
+
+/* eslint-enable */
