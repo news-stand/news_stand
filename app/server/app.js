@@ -2,12 +2,13 @@ import path from 'path';
 import express from 'express';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
+import morgan from 'morgan';
 import searchArticles from './middleware/bySource';
 import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
 import db from './database/db';
 import getSources from './middleware/getSources';
-import morgan from 'morgan';
+import authenticate from './middleware/authenticate';
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', authRoutes);
 
-app.get('/articles', searchArticles, (request, response) => {
+app.get('/articles', authenticate, searchArticles, (request, response) => {
   const { articles } = request;
   response.json(articles);
 });
