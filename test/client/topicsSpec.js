@@ -10,14 +10,27 @@ import TopicsSearch from '../../app/components/TopicsSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-xdescribe('<Topics />', function () {
+describe('<Topics />', function () {
+  const dummyFn = () => {
+    console.log('dummy function');
+  };
+
+  const topics = (
+    <Topics
+      className="topics"
+      topics={['art', 'music']}
+      onTopicSearch={dummyFn}
+      onRemoval={dummyFn}
+    />
+  );
+
   it('contains a <TopicsList /> component', function() {
-    const wrapper = shallow(<Topics />);
+    const wrapper = shallow(topics);
     expect(wrapper.find(TopicsList).length).toEqual(1);
   });
 
   it('contains a <TopicsSearch /> component', function() {
-    const wrapper = shallow(<Topics />);
+    const wrapper = shallow(topics);
     expect(wrapper.find(TopicsSearch).length).toEqual(1);
   });
 });
