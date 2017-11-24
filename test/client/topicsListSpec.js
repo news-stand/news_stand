@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -25,3 +27,5 @@ describe('<TopicsList />', function () {
     expect(wrapper.find(TopicsListItem).length).toEqual(2);
   });
 });
+
+/* eslint-enable */

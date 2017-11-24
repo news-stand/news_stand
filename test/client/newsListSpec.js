@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -64,3 +66,5 @@ describe('<NewsList />', function() {
     expect(wrapper.find(NewsItem).length).toEqual(2);
   })
 })
+
+/* eslint-enable */
