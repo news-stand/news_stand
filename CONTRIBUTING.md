@@ -6,11 +6,16 @@
 1. Pull/rebase and changes from organization master repo
 1. Cut a namespaced feature branch from master with specific prefix (see prefix examples below)
 1. Make commits to your feature branch. Prefix each commit like so: (see examples below)
-1. When you've finished with your fix or feature, rebase upstream changes into your feature branch. After resolving any conflicts, push your branch to your personal github and then submit a pull request directly to organization master. Include a description of your changes.
+1. When you’ve finished with your fix or feature, rebase upstream changes into your feature branch. After resolving any conflicts, push your branch to your personal Github  to check the build with Travis CI. If it passes, move on to #6, otherwise fix the code/tests and repeat #5 until all tests pass.
+1. To submit your changes to the central repo, push your branch up to the central repo, then submit a pull request to merge with the master branch. Include a description of your changes.
 1. Your pull request will be reviewed by another maintainer. The point of code reviews is to help keep the codebase clean and of high quality and, equally as important, to help you grow as a programmer. If your code reviewer requests you make a change you don't understand, ask them why.
 1. Fix any issues raised by your code reviwer, and push your fixes as a single new commit to your feature branch.
 1. Once the pull request has been reviewed, it will be merged by another member of the team. Do not merge your own commits.
 1. DO NOT MERGE YOUR OWN COMMITS!
+
+Note:
+  - Delete all extra branches. Once a branch has been merged to master, delete it from the central repo and your own!
+  - Don't attempt a pull request on the central repo until you've tested the build on your own forked repo
 
 ## Detailed Workflow
 
@@ -19,7 +24,7 @@
 Use github’s interface to make a fork of the repo, then add that repo as an upstream remote:
 
 ```bash
-git remote add upstream https://github.com/organization/<NAME_OF_REPO>.git
+git remote add upstream https://github.com/news-stand/news_stand.git
 ```
 
 ### Cut a namespaced feature branch from master
@@ -101,7 +106,7 @@ make sure they work also.
 If rebasing broke anything, fix it, then repeat the above process until
 you get here again and nothing is broken and all the tests pass.
 
-### Testing
+### Local Testing
 
 For testing, we have separate client- and server-side test suites. 
 
@@ -134,12 +139,46 @@ karma start
 npm run test
 ```
 
+### Travis CI Testing
+
+We use [Travis CI](https://docs.travis-ci.com) to test our builds when submitting 
+to GitHub. Be sure to sign up for an account and enable all necessary [environment 
+variables](https://docs.travis-ci.com/user/environment-variables/) in your settings 
+or else the build will fail.
+
+When you have a branch ready to test, push it up to your fork and let Travis run a build 
+on it. If it fails, make additional changes on your local repo before testing again. The 
+tests will be run again when you make a pull request later. Once you have a passing build, 
+delete the branch on your forked repo.
+
+```bash
+# to check the build with Travis
+git push origin <branch_name>
+```
+
+```bash
+# to delete the branch on your origin repo once the build passes
+git push -d origin <branch_name>
+```
+
+Note that Travis CI only tests our server-side tests right now.
+
 ### Make a pull request
 
-Make a clear pull request from your fork and branch to the upstream master
+Once you have a passing build with Travis, push the branch up to the central repo.
+
+```bash
+# to check the build with Travis
+git push upstream <branch_name>
+```
+
+Make a clear pull request from the new branch to the upstream master
 branch, detailing exactly what changes you made and what feature this
 should add. The clearer your pull request is the faster you can get
 your changes incorporated into this repo.
+
+Travis will do a build of your branch and run the tests. If they don't pass, 
+the branch won't be merged.
 
 Two other people should give your changes a code review, and once they 
 are satisfied one of them will merge your changes into upstream. If only one 
