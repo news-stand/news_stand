@@ -12,7 +12,7 @@ import v2DummyArticles from '../../app/dummy-data/articles_v2';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-xdescribe('<Home />', function () {
+describe('<Home />', function () {
   const dummySearch = (options, successCallback) => {
     const { articles } = v2DummyArticles;
     successCallback(articles);
@@ -53,9 +53,9 @@ xdescribe('<Home />', function () {
     expect(wrapper.props().renderArticles).toBe.defined;
   });
 
-  it('should have an initial mostPopular state of true', function() {
+  it('should have an initial sortBy value of publishedAt', function() {
     const wrapper = shallow(<Home search={dummySearch} />);
-    expect(wrapper.state().sortBy).toBe('popularity');
+    expect(wrapper.state().sortBy).toBe('publishedAt');
   });
 
   it('contains a <Header/> component', function() {
