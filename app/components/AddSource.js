@@ -160,7 +160,9 @@ class AddSource extends React.Component {
     });
   }
 
-  handleClick() {
+  handleClick(event) {
+    event.preventDefault();
+
     const selected = suggestions.filter(source => source.label === this.state.value);
     if (selected.length) {
       this.setState({
@@ -177,30 +179,37 @@ class AddSource extends React.Component {
 
     return (
       <div className="addSourceContainer">
-        <button className="source btn" id="add-source" onClick={this.handleClick}>+</button>
-        <Autosuggest
-          theme={{
-            container: classes.container,
-            suggestionsContainerOpen: classes.suggestionsContainerOpen,
-            suggestionsList: classes.suggestionsList,
-            suggestion: classes.suggestion,
-          }}
-          renderInputComponent={renderInput}
-          suggestions={this.state.suggestions}
-          onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
-          renderSuggestionsContainer={renderSuggestionsContainer}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          inputProps={{
-            autoFocus: true,
-            classes,
-            placeholder: 'Search a news source',
-            value: this.state.value,
-            onChange: this.handleChange,
-          }}
-        />
-
+        <form onSubmit={(event) => { this.handleClick(event); }}>
+          <button
+            className="source btn"
+            id="add-source"
+            onClick={(event) => { this.handleClick(event); }}
+          >
+            +
+          </button>
+          <Autosuggest
+            theme={{
+              container: classes.container,
+              suggestionsContainerOpen: classes.suggestionsContainerOpen,
+              suggestionsList: classes.suggestionsList,
+              suggestion: classes.suggestion,
+            }}
+            renderInputComponent={renderInput}
+            suggestions={this.state.suggestions}
+            onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+            onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+            renderSuggestionsContainer={renderSuggestionsContainer}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            inputProps={{
+              autoFocus: true,
+              classes,
+              placeholder: 'Search a news source',
+              value: this.state.value,
+              onChange: this.handleChange,
+            }}
+          />
+        </form>
       </div>
     );
   }
