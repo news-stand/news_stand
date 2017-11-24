@@ -34,12 +34,13 @@ app.get('/sources', getSources, (request, response) => {
   response.json(request.sources);
 });
 
-app.get('/preferences', getPreferences, (request, response) => {
-
-})
+app.get('/preferences', getPreferences, searchArticles, (request, response) => {
+  const { articles, preferences } = request;
+  response.json({ articles, preferences });
+});
 
 app.post('/preferences', setPreferences, (request, response) => {
-
+  response.end('Posted successfully');
 });
 
 app.get('*', (request, response) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
+import axios from 'axios';
 
 import Topics from './Topics';
 import AddSource from './AddSource';
@@ -33,7 +34,14 @@ class Home extends React.Component {
     const options = {
       topics, selectedSources, sortBy,
     };
-    this.getArticles(options);
+    axios.get('/preferences', options)
+      .then((articlesAndPreferences) => {
+        this.setState({
+          topics: articlesAndPreferences.preferences.topics,
+          selectedSources: articlesAndPreferences.preferences.selectedSources,
+          articles: articlesAndPreferences.articles,
+        });
+      });
   }
 
   onRefreshClick() {

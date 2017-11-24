@@ -6,7 +6,7 @@ const userSchema = new Schema({
   username: String,
   googleId: String,
   topics: [String],
-  sources: [{}],
+  selectedSources: [{}],
   articles: [{}], // for favorites
 });
 
