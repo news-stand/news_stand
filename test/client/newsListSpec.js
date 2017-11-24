@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -30,7 +32,7 @@ describe('<NewsList />', function() {
   })
 
   it('doesn\'t render <NewsItem /> component if no topics are passed in', function() {
-    const wrapper = shallow(<NewsList />);
+    const wrapper = shallow(<NewsList newsArticles={[]} />);
     expect(wrapper.find(NewsItem).length).toEqual(0);
   })
 
@@ -64,3 +66,5 @@ describe('<NewsList />', function() {
     expect(wrapper.find(NewsItem).length).toEqual(2);
   })
 })
+
+/* eslint-enable */
