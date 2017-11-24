@@ -161,8 +161,6 @@ git push origin <branch_name>
 git push -d origin <branch_name>
 ```
 
-Note that Travis CI only tests our server-side tests right now.
-
 ### Make a pull request
 
 Once you have a passing build with Travis, push the branch up to the central repo.
