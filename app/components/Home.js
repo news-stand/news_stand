@@ -56,9 +56,17 @@ class Home extends React.Component {
 
 
   onAddSource(source) {
-    this.setState((state) => {
-      return { selectedSources: state.selectedSources.concat([source]) };
-    });
+    const sources = this.state.selectedSources;
+    sources.push(source);
+    this.setState({ selectedSources: sources });
+
+    const { topics, sortBy } = this.state;
+    const options = {
+      topics,
+      selectedSources: sources,
+      sortBy,
+    };
+    this.getArticles(options);
   }
 
   onRemoval(index, type) {
@@ -75,6 +83,7 @@ class Home extends React.Component {
     const options = {
       topics, selectedSources, sortBy,
     };
+
     this.getArticles(options);
   }
 
