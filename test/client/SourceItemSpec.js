@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -23,3 +25,5 @@ describe('<SourceItem />', function () {
     expect(wrapper.find('.selectedSources').length).toEqual(1);
   })
 });
+
+/* eslint-enable */
