@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Header = props => (
   <div className="header">
@@ -14,6 +15,8 @@ const Header = props => (
       >Refresh
       </button>
     </form>
+    <div><Link to="/login">Login</Link></div>
+    <div><a href="/auth/logout">Logout</a></div>
   </div>
 );
 

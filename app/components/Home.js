@@ -112,14 +112,7 @@ class Home extends React.Component {
           onToggleClick={this.onToggleClick}
           sortBy={this.state.sortBy}
         />
-        {/* Space savers for the eventual 'login' and signup links we'll want to set up */}
-        {/* <div id="accounts">
-          <div><Link to="/signup"></Link></div>
-          <div><Link to="/login">Login</Link></div>
-        </div> */}
-
         <hr />
-
         <div>
           <Topics
             className="topics"
