@@ -8,8 +8,8 @@ import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
 import db from './database/db';
 import getSources from './middleware/getSources';
-import authenticate from './middleware/authenticate';
-
+import getPreferences from './middleware/getPreferences';
+import setPreferences from './middleware/setPreferences';
 const app = express();
 
 const publicPath = express.static(path.join(__dirname, '../'));
@@ -24,9 +24,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', authRoutes);
 
-app.get('/articles', authenticate, searchArticles, (request, response) => {
+app.get('/articles', getPreferences, searchArticles, (request, response) => {
   const { articles } = request;
   response.json(articles);
+});
+
+app.post('/preferences', setPreferences, (request, response) => {
+  response.redirect('/articles');
 });
 
 app.get('/sources', getSources, (request, response) => {
