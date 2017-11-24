@@ -8,6 +8,8 @@ import passportSetup from './config/passport-setup';
 import db from './database/db';
 import getSources from './middleware/getSources';
 import morgan from 'morgan';
+import getPreferences from './middleware/getPreferences';
+import setPreferences from './middleware/setPreferences';
 
 const app = express();
 
@@ -30,6 +32,14 @@ app.get('/articles', searchArticles, (request, response) => {
 
 app.get('/sources', getSources, (request, response) => {
   response.json(request.sources);
+});
+
+app.get('/preferences', getPreferences, (request, response) => {
+
+})
+
+app.post('/preferences', setPreferences, (request, response) => {
+
 });
 
 app.get('*', (request, response) => {
