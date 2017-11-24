@@ -18,7 +18,7 @@ class Home extends React.Component {
         label: 'TechCrunch',
         id: 'techcrunch',
       }],
-      topics: [],
+      topics: ['net neutrality'],
     };
 
     this.onRefreshClick = this.onRefreshClick.bind(this);
