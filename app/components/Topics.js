@@ -11,7 +11,7 @@ const Topics = props => (
     />
     <TopicsList
       topics={props.topics}
-      onTopicRemoval={props.onTopicRemoval}
+      onRemoval={props.onRemoval}
       className="topics list"
     />
   </div>
@@ -20,7 +20,7 @@ const Topics = props => (
 Topics.propTypes = {
   onTopicSearch: PropTypes.func.isRequired,
   topics: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTopicRemoval: PropTypes.func.isRequired,
+  onRemoval: PropTypes.func.isRequired,
 };
 
 export default Topics;

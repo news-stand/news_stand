@@ -6,7 +6,7 @@ const SourceItem = props => (
     <button
       type="button"
       className="source-item btn"
-      onClick={() => { props.onTopicRemoval(props.index); }}
+      onClick={() => { props.onRemoval(props.index, 'selectedSources'); }}
     >
       x
     </button>
@@ -16,10 +16,8 @@ const SourceItem = props => (
 
 SourceItem.propTypes = {
   source: PropTypes.string.isRequired,
-  onTopicRemoval: PropTypes.func.isRequired,
+  onRemoval: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };
 
 export default SourceItem;
-
-// validate props here

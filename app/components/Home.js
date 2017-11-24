@@ -24,7 +24,7 @@ class Home extends React.Component {
     this.onRefreshClick = this.onRefreshClick.bind(this);
     this.onToggleClick = this.onToggleClick.bind(this);
     this.onAddSource = this.onAddSource.bind(this);
-    this.onTopicRemoval = this.onTopicRemoval.bind(this);
+    this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
   }
 
@@ -61,10 +61,16 @@ class Home extends React.Component {
     });
   }
 
-  onTopicRemoval(index) {
+  onRemoval(index, type) {
     const { topics, selectedSources, sortBy } = this.state;
-    topics.splice(index, 1);
-    this.setState({ topics });
+
+    if (type === 'topics') {
+      topics.splice(index, 1);
+      this.setState({ topics });
+    } else {
+      selectedSources.splice(index, 1);
+      this.setState({ selectedSources });
+    }
 
     const options = {
       topics, selectedSources, sortBy,
@@ -110,13 +116,13 @@ class Home extends React.Component {
             className="topics"
             topics={this.state.topics}
             onTopicSearch={this.onTopicSearch}
-            onTopicRemoval={this.onTopicRemoval}
+            onRemoval={this.onRemoval}
           />
 
           <AddSource onAddSource={this.onAddSource} />
           <SelectedSources
             selectedSources={this.state.selectedSources}
-            onTopicRemoval={this.onTopicRemoval}
+            onRemoval={this.onRemoval}
           />
         </div>
 

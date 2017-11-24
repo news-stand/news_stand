@@ -8,7 +8,7 @@ const SelectedSources = (props) => {
       key={source.id}
       source={source.label}
       index={index}
-      onTopicRemoval={props.onTopicRemoval}
+      onRemoval={props.onRemoval}
     />
   ));
   return (
@@ -20,7 +20,7 @@ const SelectedSources = (props) => {
 
 SelectedSources.propTypes = {
   selectedSources: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onTopicRemoval: PropTypes.func.isRequired,
+  onRemoval: PropTypes.func.isRequired,
 };
 
 export default SelectedSources;
