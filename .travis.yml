@@ -1,4 +1,15 @@
 language: node_js
 node_js:
-  - "stable"
-  
+  - "8.4.0"
+addons:
+  chrome: stable
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+jobs:
+  include:
+    - stage: server tests
+      script: node ./build/server/index.js & npm run test
+    - stage: client tests
+      script: karma start
