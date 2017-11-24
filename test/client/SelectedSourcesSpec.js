@@ -9,10 +9,14 @@ import SourceItem from '../../app/components/SourceItem';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-xdescribe('<SelectedSources />', function () {
+describe('<SelectedSources />', function () {
+  const dummyFn = () => {
+    console.log('dummy function');
+  };
+
   it('contains a <SourceItem /> component for every source passed in', function () {
-    const sources = ['CNN', 'espn', 'bbc']
-    const wrapper = shallow(<SelectedSources selectedSources={sources} />);
+    const sources = [{id: 'cnn', label: 'CNN'}, {id: 'espn', label: 'ESPN'}, {id: 'bbc-news', label: 'BBC News'}];
+    const wrapper = shallow(<SelectedSources selectedSources={sources} onRemoval={dummyFn} />);
     expect(wrapper.find(SourceItem).length).toEqual(3);
   });
 });
