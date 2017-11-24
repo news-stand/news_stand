@@ -1,11 +1,9 @@
 language: node_js
 node_js:
   - "8.4.0"
-before_install:
-  - mkdir -p ~/shared
+before_script:
+  - npm run build:prod
 jobs:
   include:
-    - stage: compile
-      script: babel ./app/server -d ~/shared/build/server 
     - stage: test
-      script: node ~/shared/build/server/index.js & npm run test
+      script: node ./build/server/index.js & npm run test
