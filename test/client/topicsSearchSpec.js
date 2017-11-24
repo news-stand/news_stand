@@ -8,7 +8,7 @@ import TopicsSearch from '../../app/components/TopicsSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<TopicsSearch />', function () {
+xdescribe('<TopicsSearch />', function () {
   it('contains an onSearch function', function() {
     const wrapper = shallow(<TopicsSearch />);
     expect(wrapper.props().onSearch).toBe.defined;

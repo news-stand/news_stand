@@ -10,7 +10,7 @@ import TopicsSearch from '../../app/components/TopicsSearch';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<Topics />', function () {
+xdescribe('<Topics />', function () {
   it('contains a <TopicsList /> component', function() {
     const wrapper = shallow(<Topics />);
     expect(wrapper.find(TopicsList).length).toEqual(1);
