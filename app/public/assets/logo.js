@@ -1,0 +1,1 @@
+module.exports = 'https://i.imgur.com/mCSoavu.png';
