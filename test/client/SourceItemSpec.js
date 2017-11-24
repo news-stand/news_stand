@@ -8,7 +8,7 @@ import SourceItem from '../../app/components/SourceItem';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-xdescribe('<SourceItem />', function () {
+describe('<SourceItem />', function () {
 
   const dummyFn = () => {
     console.log('dummy function');
