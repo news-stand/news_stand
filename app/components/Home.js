@@ -114,7 +114,10 @@ class Home extends React.Component {
           />
 
           <AddSource onAddSource={this.onAddSource} />
-          <SelectedSources selectedSources={this.state.selectedSources} />
+          <SelectedSources
+            selectedSources={this.state.selectedSources}
+            onTopicRemoval={this.onTopicRemoval}
+          />
         </div>
 
         <hr />
