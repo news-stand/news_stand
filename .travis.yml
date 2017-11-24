@@ -1,4 +1,11 @@
 language: node_js
 node_js:
-  - "stable"
-  
+  - "8.4.0"
+beofre_install:
+  - mkdir -p ~/shared
+jobs:
+  include:
+    - stage: compile
+      script: babel ./app/server -d ~/shared/build/server 
+    - stage: test
+      script: node ~/shared/build/server/index.js & npm run test
