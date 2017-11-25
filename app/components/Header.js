@@ -14,6 +14,7 @@ const Header = props => (
         onClick={props.onRefreshClick}
       >Refresh
       </button>
+      <button onClick={props.onProfileClick}>profile</button>
     </form>
     <div><Link to="/login">Login</Link></div>
     <div><a href="/auth/logout">Logout</a></div>

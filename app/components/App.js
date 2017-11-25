@@ -1,10 +1,12 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import React from 'react';
+import axios from 'axios';
 
 import search from './helpers/search';
 import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
+import Profile from './Profile';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +14,11 @@ class App extends React.Component {
 
     this.state = {};
   }
+
+  componentDidMount() {
+
+  }
+
 
   render() {
     return (
@@ -25,6 +32,10 @@ class App extends React.Component {
           <Route
             path="/login"
             component={Login}
+          />
+          <Route
+            path="/profile"
+            component={test}
           />
           <Route
             component={NotFound}
