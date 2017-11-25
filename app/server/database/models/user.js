@@ -8,7 +8,7 @@ const userSchema = new Schema({
   profileImg: String,
   topics: [String],
   selectedSources: [{}],
-  articles: [{}], // for favorites
+  articles: [], // for favorites
 });
 
 const User = mongoose.model('user', userSchema);

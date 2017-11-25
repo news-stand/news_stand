@@ -2,8 +2,8 @@
 require('jasmine-expect');
 require('dotenv').config()
 const moment = require('moment');
-
 const axios = require('axios');
+
 const PORT = process.env.PORT || 8080;
 
 const baseUrl = `http://localhost:${PORT}`;
@@ -319,6 +319,45 @@ describe('News Stand Server', function() {
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
+          done();
+        });
+    });
+
+  });
+
+  describe('POST /favorites', function() {
+    const article = {
+      source: {
+        name: 'x'
+      },
+      author: 'x',
+      title: 'x',
+      description: 'x',
+      url: 'https://success.salesforce.com/answers?id=9063A000000lCJhQAM',
+      urlToImage: 'http://a2.espncdn.com/combiner/i?img=%2Fphoto%2F2017%2F1120%2Fr292170_1296x729_16%2D9.jpg',
+      publishedAt: '2017-11-15T22:33:06Z'
+    };
+
+    it('returns status code 200 if not logged in', function(done) {
+      axios.post(`${baseUrl}/favorites`, article)
+        .then((response) =>{
+          expect(response.status).toBe(200);
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /favorites ', err);
+          done();
+        });
+    });
+
+    it('returns a message asking the user to log in if not logged in', function(done) {
+      axios.post(`${baseUrl}/favorites`, article)
+        .then((response) =>{
+          expect(response.status).toBe(200);
+          done();
+        })
+        .catch((err) => {
+          throw new Error('Error with GET to route /favorites ', err);
           done();
         });
     });

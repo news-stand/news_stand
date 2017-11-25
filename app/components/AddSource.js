@@ -181,8 +181,7 @@ class AddSource extends React.Component {
       <div className="addSourceContainer">
         <form onSubmit={(event) => { this.handleClick(event); }}>
           <button
-            className="source btn"
-            id="add-source"
+            className="add btn add-remove-btn"
             onClick={(event) => { this.handleClick(event); }}
           >
             +

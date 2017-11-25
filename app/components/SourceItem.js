@@ -5,7 +5,7 @@ const SourceItem = props => (
   <div className="selectedSources">
     <button
       type="button"
-      className="source-item btn"
+      className="remove btn add-remove-btn"
       onClick={() => { props.onRemoval(props.index, 'selectedSources'); }}
     >
       x

@@ -75,7 +75,6 @@ class Home extends React.Component {
     });
   }
 
-
   onAddSource(source) {
     const sources = this.state.selectedSources;
     sources.push(source);
@@ -134,7 +133,7 @@ class Home extends React.Component {
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
-    });
+    })
   }
 
   render() {

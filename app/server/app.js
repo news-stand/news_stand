@@ -3,15 +3,16 @@ import express from 'express';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
 import BodyParser from 'body-parser';
+import morgan from 'morgan';
 
 import searchArticles from './middleware/bySource';
 import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
 import db from './database/db';
 import getSources from './middleware/getSources';
-import morgan from 'morgan';
 import getPreferences from './middleware/getPreferences';
 import setPreferences from './middleware/setPreferences';
+import addFavorite from './middleware/addFavorite';
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', authRoutes);
+
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
@@ -46,6 +48,14 @@ app.get('/preferences', getPreferences, searchArticles, (request, response) => {
 
 app.post('/preferences', setPreferences, (request, response) => {
   response.end('Posted successfully');
+});
+
+app.post('/favorites', addFavorite, (request, response) => {
+  if (request.user) {
+    response.status(201).end('favorite added');
+  } else {
+    response.status(200).end('please log in before adding to favorites');
+  }
 });
 
 app.get('*', (request, response) => {
