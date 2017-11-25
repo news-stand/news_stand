@@ -5,6 +5,7 @@ import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import NewsItem from '../../app/components/NewsItem';
+import FavoriteButton from '../../app/components/FavoriteButton';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -32,6 +33,11 @@ describe('<NewsItem />', function() {
   it('should have an image', function() {
     const wrapper = mount(<NewsItem article={article} key={url} />);
     expect(wrapper.find('.articleImg').exists()).toBe(true);
+  });
+
+  it('should have a favorite button', function() {
+    const wrapper = mount(<NewsItem article={article} key={url} />);
+    expect(wrapper.find(FavoriteButton).length).toEqual(1);
   });
 
   it('should have default image if no image provided', function() {
