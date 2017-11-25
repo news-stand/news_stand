@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow, unmount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -51,9 +53,9 @@ describe('<Home />', function () {
     expect(wrapper.props().renderArticles).toBe.defined;
   });
 
-  it('should have an initial mostPopular state of true', function() {
+  it('should have an initial sortBy value of publishedAt', function() {
     const wrapper = shallow(<Home search={dummySearch} />);
-    expect(wrapper.state().sortBy).toBe('popularity');
+    expect(wrapper.state().sortBy).toBe('publishedAt');
   });
 
   it('contains a <Header/> component', function() {
@@ -71,3 +73,5 @@ describe('<Home />', function () {
     expect(wrapper.find(Topics).length).toEqual(1);
   });
 });
+
+/* eslint-enable */
