@@ -36,6 +36,7 @@ class Home extends React.Component {
     };
     axios.get('/preferences', options)
       .then((articlesAndPreferences) => {
+        console.log('This is articlesAndPreferences: ', articlesAndPreferences);
         this.setState({
           topics: articlesAndPreferences.preferences.topics,
           selectedSources: articlesAndPreferences.preferences.selectedSources,
@@ -122,6 +123,21 @@ class Home extends React.Component {
         />
         <hr />
         <div>
+          {/* TODO: Finish making this button */}
+          <button
+            id="savePreferences"
+            onClick={() => {
+              axios.post('/preferences')
+              .then((message) => {
+                console.log(message);
+              })
+              .catch(() => {
+                console.log('There was an error saving user preferences');
+              });
+            }}
+          >
+            Make Default/Save Preferences
+          </button>
           <Topics
             className="topics"
             topics={this.state.topics}
