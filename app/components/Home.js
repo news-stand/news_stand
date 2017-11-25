@@ -130,18 +130,6 @@ class Home extends React.Component {
         console.log('There was an error saving user preferences');
       });
 
-  // onAddFavorite(article) {
-  //   console.log(article);
-
-  //   axios.post('/favorites', article)
-  //     .then((data) => {
-  //       console.log(data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
-
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
