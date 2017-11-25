@@ -109,7 +109,6 @@ class Home extends React.Component {
   }
 
   onTopicSearch(topic) {
-    debugger;
     const { topics, selectedSources, sortBy } = this.state;
     topics.push(topic);
     this.setState({ topics });

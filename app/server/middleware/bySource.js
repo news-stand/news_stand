@@ -5,17 +5,24 @@ const searchArticles = (request, response, next) => {
 
   let search;
 
-  const { sortBy, topics, selectedSources } = request.query;
-  //const { selectedSources } = request.query;
+  const { sortBy, topics } = request.query;
+  let { selectedSources } = request.query;
 
-  // const defaultSource = {
-  //   label: 'TechCrunch',
-  //   id: 'techcrunch',
-  // };
+  const defaultSource = {
+    label: 'TechCrunch',
+    id: 'techcrunch',
+  };
 
-  //selectedSources = selectedSources; //|| [defaultSource];
+  selectedSources = selectedSources || [defaultSource];
 
-  const formattedSource = selectedSources.map(source => source.id).join(',');
+  console.log('THIS IS THE SELECTED SOURCE: ', selectedSources);
+  console.log('SELECTED SOURCES TYPE: ', typeof selectedSources);
+  const formattedSource = selectedSources.map((source) => {
+    console.log('This is a source: ', source);
+    console.log('This is a typeof Source: ', typeof source);
+    return source.id
+  }).join(',');
+  console.log('THIS IS THE FORMATTEDSOURCE FOR GET REQUEST: ', formattedSource);
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
 
