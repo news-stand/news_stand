@@ -1,5 +1,6 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
+import axios from 'axios';
 
 import Topics from './Topics';
 import AddSource from './AddSource';
@@ -26,6 +27,7 @@ class Home extends React.Component {
     this.onAddSource = this.onAddSource.bind(this);
     this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
+    this.setPreferences = this.setPreferences.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +35,26 @@ class Home extends React.Component {
     const options = {
       topics, selectedSources, sortBy,
     };
-    this.getArticles(options);
+
+
+    axios.get('/preferences', { params: options })
+      .then((articlesAndPreferences) => {
+        // if user is logged in
+        if (articlesAndPreferences.data.preferences) {
+          this.setState({
+            topics: articlesAndPreferences.data.preferences.topics,
+            selectedSources: articlesAndPreferences.data.preferences.selectedSources,
+            articles: articlesAndPreferences.data.articles,
+          });
+        } else {
+          this.setState({
+            // if user isn't logged in
+            topics: this.state.topics,
+            selectedSources: this.state.selectedSources,
+            articles: articlesAndPreferences.data.articles,
+          });
+        }
+      });
   }
 
   onRefreshClick() {
@@ -98,6 +119,18 @@ class Home extends React.Component {
     this.getArticles(options);
   }
 
+  setPreferences() {
+    const { topics, selectedSources } = this.state;
+
+    axios.post('/preferences', { topics, selectedSources })
+      .then((message) => {
+        console.log(message);
+      })
+      .catch(() => {
+        console.log('There was an error saving user preferences');
+      });
+  }
+
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
@@ -114,6 +147,13 @@ class Home extends React.Component {
         />
         <hr />
         <div>
+          {/* TODO: Finish making this button */}
+          <button
+            id="savePreferences"
+            onClick={this.setPreferences}
+          >
+            Make Default/Save Preferences
+          </button>
           <Topics
             className="topics"
             topics={this.state.topics}
