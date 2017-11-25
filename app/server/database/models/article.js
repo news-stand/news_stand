@@ -13,4 +13,6 @@ const articleSchema = new Schema({
   url: String,
 });
 
-export default articleSchema;
+const Article = mongoose.model('Article', articleSchema);
+
+export default Article;

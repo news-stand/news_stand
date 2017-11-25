@@ -14,17 +14,17 @@ const addFavorite = (request, response, next) => {
       url: request.body.url,
     });
 
-    User.findOneAndUpdate(
-      { googleId: request.user.googleId },
-      { $addToSet: { articles: [favorited] } },
-      (err, doc) => {
-        if (err) {
-          console.log('There was an error updating preferences: ', err);
-        } else {
-          console.log('Successfully updated doc: ', doc);
-        }
-      },
-    );
+    const findCriteria = { googleId: request.user.googleId };
+    const toUpdate = { $addToSet: { articles: [favorited] } };
+
+    User.findOneAndUpdate(findCriteria, toUpdate)
+      .exec()
+      .then((doc) => {
+        console.log(doc);
+      })
+      .catch((err) => {
+        console.log('error adding favorite to the database: ', err);
+      });
   }
 
   next();
