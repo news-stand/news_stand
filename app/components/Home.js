@@ -8,7 +8,6 @@ import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
 
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
