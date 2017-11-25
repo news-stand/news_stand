@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
 
@@ -12,11 +12,24 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      loggedIn: false,
+      user: {},
+    };
   }
 
   componentDidMount() {
-
+    axios.get('/auth')
+      .then((authStatus) => {
+        console.log('auth user --> ', authStatus);
+        this.setState({
+          loggedIn: authStatus.data.loggedIn,
+          user: authStatus.data.user,
+        });
+      })
+      .catch((err) => {
+        console.log('could not authenticate user');
+      });
   }
 
 
@@ -35,12 +48,17 @@ class App extends React.Component {
           />
           <Route
             path="/profile"
-            component={test}
+            render={() => (
+            this.state.loggedIn ? (
+              <Profile user={this.state.user} />
+            ) : (
+              <Redirect to="/" />
+              )
+          )}
           />
           <Route
             component={NotFound}
           />
-          {/* Will want to add signup component */}
         </Switch>
       </Router>
     );

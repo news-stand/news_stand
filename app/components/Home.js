@@ -28,7 +28,6 @@ class Home extends React.Component {
     this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
     this.setPreferences = this.setPreferences.bind(this);
-    this.onProfileClick = this.onProfileClick.bind(this);
   }
 
   componentDidMount() {
@@ -136,16 +135,6 @@ class Home extends React.Component {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
     });
-  }
-
-  onProfileClick() {
-    console.log('profile clicked')
-    axios.get('/auth')
-      .then((res) => {
-      })
-      .catch((err) => {
-        console.log(err);
-      })
   }
 
   render() {

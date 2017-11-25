@@ -15,9 +15,9 @@ import setPreferences from './middleware/setPreferences';
 
 
 const app = express();
-
 const publicPath = express.static(path.join(__dirname, '../'));
 const indexPath = path.join(__dirname, '../index.html');
+
 app.use(morgan('tiny'));
 app.use(publicPath);
 app.use(cookieSession({
@@ -46,14 +46,6 @@ app.get('/preferences', getPreferences, searchArticles, (request, response) => {
 
 app.post('/preferences', setPreferences, (request, response) => {
   response.end('Posted successfully');
-});
-
-app.get('/auth', (request, response) => {
-  if (request.user) {
-    response.json(request.user);
-  } else {
-    response.end();
-  }
 });
 
 app.get('*', (request, response) => {

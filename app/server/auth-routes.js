@@ -2,10 +2,17 @@ const router = require('express').Router();
 const passport = require('passport');
 
 router.get('/', (request, response) => {
+  console.log('auth route ran')
   if (request.user) {
-    response.json(request.user);
+    response.json({
+      loggedIn: true,
+      user: request.user,
+    });
   } else {
-    response.end();
+    response.json({
+      loggedIn: false,
+      user: {},
+    });
   }
 });
 
