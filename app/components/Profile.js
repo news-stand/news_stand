@@ -12,6 +12,7 @@ class Profile extends React.Component {
       topics: this.props.user.topics,
       selectedSources: this.props.user.selectedSources,
       articles: this.props.user.articles,
+      img: this.props.user.profileImg,
     }
 
     this.capitalizeFirstLetter = this.capitalizeFirstLetter.bind(this);
@@ -27,6 +28,7 @@ class Profile extends React.Component {
     return (
       <div id="profile">
         <div className="user">
+          <img src={this.state.img} alt={this.state.username} />
           <h2>{this.state.username}</h2>
         </div>
 
