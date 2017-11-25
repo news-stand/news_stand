@@ -14,4 +14,4 @@ jobs:
     - stage: server tests
       script: node ./build/server/index.js & npm run test
     - stage: client tests
-      script: karma start
+      script: karma start --single-run
