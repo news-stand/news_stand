@@ -37,11 +37,20 @@ class Home extends React.Component {
     axios.get('/preferences', options)
       .then((articlesAndPreferences) => {
         console.log('This is articlesAndPreferences: ', articlesAndPreferences);
-        this.setState({
-          topics: articlesAndPreferences.preferences.topics,
-          selectedSources: articlesAndPreferences.preferences.selectedSources,
-          articles: articlesAndPreferences.articles,
-        });
+        if (articlesAndPreferences.preferences) {
+          this.setState({
+            topics: articlesAndPreferences.data.preferences.topics,
+            selectedSources: articlesAndPreferences.data.preferences.selectedSources,
+            articles: articlesAndPreferences.data.articles,
+          });
+        } else {
+          console.log('we are inside else');
+          this.setState({
+            topics: this.state.topics,
+            selectedSources: this.state.selectedSources,
+            articles: articlesAndPreferences.data.articles,
+          });
+        }
       });
   }
 
