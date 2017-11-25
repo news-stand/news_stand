@@ -36,10 +36,10 @@ class Home extends React.Component {
       topics, selectedSources, sortBy,
     };
 
-    console.log('THIS IS OPTIONS: ', options);
+
     axios.get('/preferences', { params: options })
       .then((articlesAndPreferences) => {
-        console.log('This is articlesAndPreferences: ', articlesAndPreferences);
+        // if user is logged in
         if (articlesAndPreferences.data.preferences) {
           this.setState({
             topics: articlesAndPreferences.data.preferences.topics,
@@ -47,8 +47,8 @@ class Home extends React.Component {
             articles: articlesAndPreferences.data.articles,
           });
         } else {
-          console.log('we are inside else');
           this.setState({
+            // if user isn't logged in
             topics: this.state.topics,
             selectedSources: this.state.selectedSources,
             articles: articlesAndPreferences.data.articles,

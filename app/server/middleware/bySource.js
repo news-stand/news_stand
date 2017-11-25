@@ -15,19 +15,15 @@ const searchArticles = (request, response, next) => {
 
   selectedSources = selectedSources || [defaultSource];
 
-  console.log('THIS IS THE SELECTED SOURCE: ', selectedSources);
-  console.log('SELECTED SOURCES TYPE: ', typeof selectedSources);
   const formattedSource = selectedSources.map((source) => {
     if (typeof source === 'object') {
-      console.log('THIS SOURCE SHOULD BE OBJECT: ', typeof source);
       return source.id;
     } else {
-      // if the type of source is string
-      console.log('THIS SOURCE SHOULD BE STRING: ', typeof source);
+      // if the type of source is string (from onTopicSearch)
       return JSON.parse(source).id;
     }
   }).join(',');
-  console.log('THIS IS THE FORMATTEDSOURCE FOR GET REQUEST: ', formattedSource);
+
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
 
