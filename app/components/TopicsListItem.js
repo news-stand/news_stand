@@ -5,7 +5,7 @@ const TopicsListItem = props => (
   <div className="topics list-item">
     <button
       type="button"
-      className="list-item btn"
+      className="remove btn add-remove-btn"
       onClick={() => { props.onRemoval(props.index, 'topics'); }}
     >
       x
