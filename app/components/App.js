@@ -6,7 +6,7 @@ import search from './helpers/search';
 import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
-import Profile from './Profile';
+// import Profile from './Profile';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,14 +21,13 @@ class App extends React.Component {
   componentDidMount() {
     axios.get('/auth')
       .then((authStatus) => {
-        console.log('auth user --> ', authStatus);
         this.setState({
           loggedIn: authStatus.data.loggedIn,
           user: authStatus.data.user,
         });
       })
       .catch((err) => {
-        console.log('could not authenticate user');
+        throw err;
       });
   }
 
