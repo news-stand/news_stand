@@ -120,7 +120,6 @@ class Home extends React.Component {
     this.getArticles(options);
   }
 
-<<<<<<< HEAD
   setPreferences() {
     const { topics, selectedSources } = this.state;
 
@@ -131,10 +130,9 @@ class Home extends React.Component {
       .catch(() => {
         console.log('There was an error saving user preferences');
       });
-=======
-  onAddFavorite() {
-    console.log('favorite button firing');
->>>>>>> (feat) add scaffolding for onAddFavorite function
+
+  onAddFavorite(article) {
+    console.log(article);
   }
 
   getArticles(options) {

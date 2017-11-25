@@ -16,7 +16,7 @@ const NewsItem = ({ article, onAddFavorite }) => (
           <img src={defaultImage} className="defaultImg" alt="#" />
         </a>
     }
-    <FavoriteButton onAddFavorite={onAddFavorite} />
+    <FavoriteButton article={article} onAddFavorite={onAddFavorite} />
     {
       article.title ?
         <a href={article.url} target="_blank">
