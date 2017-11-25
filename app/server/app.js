@@ -12,6 +12,7 @@ import db from './database/db';
 import getSources from './middleware/getSources';
 import getPreferences from './middleware/getPreferences';
 import setPreferences from './middleware/setPreferences';
+import addFavorite from './middleware/addFavorite';
 
 
 const app = express();
@@ -27,6 +28,7 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', authRoutes);
+
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
@@ -46,9 +48,10 @@ app.get('/preferences', getPreferences, searchArticles, (request, response) => {
 
 app.post('/preferences', setPreferences, (request, response) => {
   response.end('Posted successfully');
+});
 
-app.post('/favorites', (request, response) => {
-  console.log(request.body);
+app.post('/favorites', addFavorite, (request, response) => {
+  console.log('BODY: ', request.body);
   response.status(201).end('added');
 });
 
