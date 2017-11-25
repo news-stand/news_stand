@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   username: String,
   googleId: String,
+  profileImg: String,
   topics: [String],
   selectedSources: [{}],
   articles: [{}], // for favorites
