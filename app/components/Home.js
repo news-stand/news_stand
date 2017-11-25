@@ -28,7 +28,6 @@ class Home extends React.Component {
     this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
     this.setPreferences = this.setPreferences.bind(this);
-    this.onAddFavorite = this.onAddFavorite.bind(this);
   }
 
   componentDidMount() {
@@ -131,9 +130,17 @@ class Home extends React.Component {
         console.log('There was an error saving user preferences');
       });
 
-  onAddFavorite(article) {
-    console.log(article);
-  }
+  // onAddFavorite(article) {
+  //   console.log(article);
+
+  //   axios.post('/favorites', article)
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }
 
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
@@ -173,7 +180,7 @@ class Home extends React.Component {
         </div>
 
         <hr />
-        <NewsList onAddFavorite={this.onAddFavorite} newsArticles={this.state.articles} />
+        <NewsList newsArticles={this.state.articles} />
       </div>
     );
   }

@@ -2,9 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Heart from 'mui-icons/cmdi/heart';
+import axios from 'axios';
 
+const onAddFavorite = (article) => {
+  // axios.post('/favorites', article)
+  //   .then((data) => {
+  //     console.log(data);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+  console.log(article);
+};
 
-const FavoriteButton = ({ article, onAddFavorite }) => (
+const FavoriteButton = ({ article }) => (
   <div className="favorite btn">
     <IconButton onClick={() => onAddFavorite(article)}>
       <Heart />
@@ -25,5 +36,4 @@ FavoriteButton.propTypes = {
     author: PropTypes.string,
     url: PropTypes.string.isRequired,
   }).isRequired,
-  onAddFavorite: PropTypes.func.isRequired,
 };
