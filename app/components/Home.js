@@ -128,11 +128,12 @@ class Home extends React.Component {
       .catch(() => {
         console.log('There was an error saving user preferences');
       });
+  }
 
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
-    });
+    })
   }
 
   render() {
