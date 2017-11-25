@@ -40,7 +40,7 @@ class Home extends React.Component {
     axios.get('/preferences', { params: options })
       .then((articlesAndPreferences) => {
         console.log('This is articlesAndPreferences: ', articlesAndPreferences);
-        if (articlesAndPreferences.preferences) {
+        if (articlesAndPreferences.data.preferences) {
           this.setState({
             topics: articlesAndPreferences.data.preferences.topics,
             selectedSources: articlesAndPreferences.data.preferences.selectedSources,

@@ -7,7 +7,7 @@ const setPreferences = (request, response, next) => {
   if (request.user) {
     User.findOneAndUpdate(
       { googleId: request.user.googleId },
-      { $set: {topics: request.body.topics, selectedSources: request.body.selectedSources } },
+      { $set: { topics: request.body.topics, selectedSources: request.body.selectedSources } },
       (err, doc) => {
         if (err) {
           console.log('There was an error updating preferences: ', err);
