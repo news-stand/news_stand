@@ -19,7 +19,7 @@ const SelectedSources = (props) => {
 };
 
 SelectedSources.propTypes = {
-  selectedSources: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedSources: PropTypes.arrayOf(PropTypes.object).isRequired,
   onRemoval: PropTypes.func.isRequired,
 };
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import Enzyme, { mount, shallow, unmount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -12,3 +14,5 @@ Enzyme.configure({ adapter: new Adapter() });
 xdescribe('<App />', function () {
   // add <App> tests here
 });
+
+/* eslint-enable */
