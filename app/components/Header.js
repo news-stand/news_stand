@@ -15,6 +15,7 @@ const Header = props => (
       >Refresh
       </button>
     </form>
+    <button><Link to="/profile">Profile</Link></button>
     <div><Link to="/login">Login</Link></div>
     <div><a href="/auth/logout">Logout</a></div>
   </div>

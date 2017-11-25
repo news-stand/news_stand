@@ -15,9 +15,9 @@ import setPreferences from './middleware/setPreferences';
 
 
 const app = express();
-
 const publicPath = express.static(path.join(__dirname, '../'));
 const indexPath = path.join(__dirname, '../index.html');
+
 app.use(morgan('tiny'));
 app.use(publicPath);
 app.use(cookieSession({
