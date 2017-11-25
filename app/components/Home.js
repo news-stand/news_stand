@@ -28,6 +28,7 @@ class Home extends React.Component {
     this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
     this.setPreferences = this.setPreferences.bind(this);
+    this.onAddFavorite = this.onAddFavorite.bind(this);
   }
 
   componentDidMount() {
@@ -119,6 +120,7 @@ class Home extends React.Component {
     this.getArticles(options);
   }
 
+<<<<<<< HEAD
   setPreferences() {
     const { topics, selectedSources } = this.state;
 
@@ -129,6 +131,10 @@ class Home extends React.Component {
       .catch(() => {
         console.log('There was an error saving user preferences');
       });
+=======
+  onAddFavorite() {
+    console.log('favorite button firing');
+>>>>>>> (feat) add scaffolding for onAddFavorite function
   }
 
   getArticles(options) {
@@ -169,7 +175,7 @@ class Home extends React.Component {
         </div>
 
         <hr />
-        <NewsList newsArticles={this.state.articles} />
+        <NewsList onAddFavorite={this.onAddFavorite} newsArticles={this.state.articles} />
       </div>
     );
   }

@@ -4,7 +4,7 @@ import defaultImage from '../public/assets/defaultImage';
 
 import FavoriteButton from './FavoriteButton';
 
-const NewsItem = ({ article }) => (
+const NewsItem = ({ article, onAddFavorite }) => (
   <div className="newsItem">
     {
       article.urlToImage ?
@@ -16,7 +16,7 @@ const NewsItem = ({ article }) => (
           <img src={defaultImage} className="defaultImg" alt="#" />
         </a>
     }
-    <FavoriteButton />
+    <FavoriteButton onAddFavorite={onAddFavorite} />
     {
       article.title ?
         <a href={article.url} target="_blank">
@@ -59,6 +59,7 @@ NewsItem.propTypes = {
     author: PropTypes.string,
     url: PropTypes.string.isRequired,
   }).isRequired,
+  onAddFavorite: PropTypes.func.isRequired,
 };
 
 
