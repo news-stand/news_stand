@@ -18,9 +18,14 @@ const searchArticles = (request, response, next) => {
   console.log('THIS IS THE SELECTED SOURCE: ', selectedSources);
   console.log('SELECTED SOURCES TYPE: ', typeof selectedSources);
   const formattedSource = selectedSources.map((source) => {
-    console.log('This is a source: ', source);
-    console.log('This is a typeof Source: ', typeof source);
-    return source.id
+    if (typeof source === 'object') {
+      console.log('THIS SOURCE SHOULD BE OBJECT: ', typeof source);
+      return source.id;
+    } else {
+      // if the type of source is string
+      console.log('THIS SOURCE SHOULD BE STRING: ', typeof source);
+      return JSON.parse(source).id;
+    }
   }).join(',');
   console.log('THIS IS THE FORMATTEDSOURCE FOR GET REQUEST: ', formattedSource);
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
