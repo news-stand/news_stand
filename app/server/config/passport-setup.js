@@ -28,7 +28,7 @@ passport.use(new GoogleStrategy({
         new User({
           username: profile.displayName,
           googleId: profile.id,
-          profileImg: profile.image.url,
+          profileImg: profile.photos[0].value,
           topics: ['net neutrality'],
           selectedSources: [{ label: 'TechCrunch', id: 'techcrunch' }],
         }).save()
