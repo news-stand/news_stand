@@ -19,7 +19,7 @@ const setPreferences = (request, response, next) => {
   }
 
   // TODO: add feature notifying user needs to be logged in
-
+  
   next();
 };
 
