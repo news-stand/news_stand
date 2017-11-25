@@ -143,7 +143,6 @@ class Home extends React.Component {
         <Header
           onRefreshClick={this.onRefreshClick}
           onToggleClick={this.onToggleClick}
-          onProfileClick={this.onProfileClick}
           sortBy={this.state.sortBy}
         />
         <hr />
