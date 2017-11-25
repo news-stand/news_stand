@@ -27,6 +27,7 @@ class Home extends React.Component {
     this.onAddSource = this.onAddSource.bind(this);
     this.onRemoval = this.onRemoval.bind(this);
     this.onTopicSearch = this.onTopicSearch.bind(this);
+    this.setPreferences = this.setPreferences.bind(this);
   }
 
   componentDidMount() {
@@ -118,14 +119,22 @@ class Home extends React.Component {
     this.getArticles(options);
   }
 
+  setPreferences() {
+    const { topics, selectedSources } = this.state;
+
+    axios.post('/preferences', { topics, selectedSources })
+      .then((message) => {
+        console.log(message);
+      })
+      .catch(() => {
+        console.log('There was an error saving user preferences');
+      });
+  }
+
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
     });
-  }
-
-  onSetPreferences() {
-    
   }
 
   render() {
@@ -141,15 +150,7 @@ class Home extends React.Component {
           {/* TODO: Finish making this button */}
           <button
             id="savePreferences"
-            onClick={() => {
-              axios.post('/preferences', {this.state})
-              .then((message) => {
-                console.log(message);
-              })
-              .catch(() => {
-                console.log('There was an error saving user preferences');
-              });
-            }}
+            onClick={this.setPreferences}
           >
             Make Default/Save Preferences
           </button>

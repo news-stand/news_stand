@@ -5,7 +5,17 @@ const setPreferences = (request, response, next) => {
   console.log('THIS IS THE REQUEST.BODY: ', request.body);
 
   if (request.user) {
-    User.findByOneAndUpdate({ googleId: request.user.googleId }, { topics: request.body.topics, selectedSources: request.body.sources });
+    User.findOneAndUpdate(
+      { googleId: request.user.googleId },
+      { $set: {topics: request.body.topics, selectedSources: request.body.selectedSources } },
+      (err, doc) => {
+        if (err) {
+          console.log('There was an error updating preferences: ', err);
+        } else {
+          console.log('Successfully updated doc: ', doc);
+        }
+      },
+    );
   }
 
   // TODO: add feature notifying user needs to be logged in
