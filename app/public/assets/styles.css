@@ -44,6 +44,17 @@ padding: 10px;
   font-size: 12px;
 }
 
+.topicsAndSourcesContainer {
+  float: left;
+  width: 30%;
+  position: fixed;
+}
+
+.articlesContainer {
+  float: left;
+  width: 70%
+}
+
 .btn:hover {
   color: blue;
 }

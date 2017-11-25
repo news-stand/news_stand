@@ -138,14 +138,14 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="mainContainer">
         <Header
           onRefreshClick={this.onRefreshClick}
           onToggleClick={this.onToggleClick}
           sortBy={this.state.sortBy}
         />
         <hr />
-        <div>
+        <div className="topicsAndSourcesContainer">
           {/* TODO: Finish making this button */}
           <button
             id="savePreferences"
@@ -166,9 +166,9 @@ class Home extends React.Component {
             onRemoval={this.onRemoval}
           />
         </div>
-
-        <hr />
-        <NewsList newsArticles={this.state.articles} />
+        <div className="articlesContainer">
+          <NewsList newsArticles={this.state.articles} />
+        </div>
       </div>
     );
   }
