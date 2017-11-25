@@ -2,6 +2,8 @@ import path from 'path';
 import express from 'express';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
+import BodyParser from 'body-parser';
+
 import searchArticles from './middleware/bySource';
 import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
@@ -10,6 +12,7 @@ import getSources from './middleware/getSources';
 import morgan from 'morgan';
 import getPreferences from './middleware/getPreferences';
 import setPreferences from './middleware/setPreferences';
+
 
 const app = express();
 
@@ -24,6 +27,8 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/auth', authRoutes);
+app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({ extended: true }));
 
 app.get('/articles', searchArticles, (request, response) => {
   const { articles } = request;

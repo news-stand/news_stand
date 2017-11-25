@@ -34,7 +34,9 @@ class Home extends React.Component {
     const options = {
       topics, selectedSources, sortBy,
     };
-    axios.get('/preferences', options)
+
+    console.log('THIS IS OPTIONS: ', options);
+    axios.get('/preferences', { params: options })
       .then((articlesAndPreferences) => {
         console.log('This is articlesAndPreferences: ', articlesAndPreferences);
         if (articlesAndPreferences.preferences) {
@@ -122,6 +124,10 @@ class Home extends React.Component {
     });
   }
 
+  onSetPreferences() {
+    
+  }
+
   render() {
     return (
       <div>
@@ -136,7 +142,7 @@ class Home extends React.Component {
           <button
             id="savePreferences"
             onClick={() => {
-              axios.post('/preferences')
+              axios.post('/preferences', {this.state})
               .then((message) => {
                 console.log(message);
               })

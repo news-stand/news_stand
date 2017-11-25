@@ -2,19 +2,23 @@ import axios from 'axios';
 import moment from 'moment';
 
 const searchArticles = (request, response, next) => {
+
+  console.log('Firing SEARCHARTICLES ------------------------');
+  console.log('Request in "searchArticles": ', request.query);
+
   let search;
 
   const { sortBy, topics } = request.query;
   let { selectedSources } = request.query;
 
-  const defaultSource = {
-    label: 'TechCrunch',
-    id: 'techcrunch',
-  };
+  // const defaultSource = {
+  //   label: 'TechCrunch',
+  //   id: 'techcrunch',
+  // };
 
-  selectedSources = selectedSources || [JSON.stringify(defaultSource)];
+  selectedSources = selectedSources || [defaultSource];
 
-  const formattedSource = selectedSources.map(source => JSON.parse(source).id).join(',');
+  const formattedSource = selectedSources.map(source => source.id).join(',');
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
 
