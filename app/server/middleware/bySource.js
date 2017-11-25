@@ -3,20 +3,17 @@ import moment from 'moment';
 
 const searchArticles = (request, response, next) => {
 
-  console.log('Firing SEARCHARTICLES ------------------------');
-  console.log('Request in "searchArticles": ', request.query);
-
   let search;
 
-  const { sortBy, topics } = request.query;
-  let { selectedSources } = request.query;
+  const { sortBy, topics, selectedSources } = request.query;
+  //const { selectedSources } = request.query;
 
   // const defaultSource = {
   //   label: 'TechCrunch',
   //   id: 'techcrunch',
   // };
 
-  selectedSources = selectedSources || [defaultSource];
+  //selectedSources = selectedSources; //|| [defaultSource];
 
   const formattedSource = selectedSources.map(source => source.id).join(',');
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');

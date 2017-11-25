@@ -46,14 +46,10 @@
     "react-router-dom": "^4.2.2",
     "style-loader": "^0.19.0",
     "webpack": "^3.8.1",
-<<<<<<< HEAD
     "webpack-dev-server": "^2.9.4",
     "babel-preset-stage-1": "^6.24.1",
     "morgan": "^1.9.0",
     "moment": "^2.19.2"
-=======
-    "webpack-dev-server": "^2.9.4"
->>>>>>> (feat) Properly saves preferences and sources to DB. Properly defaults search to saved preferences
   },
   "devDependencies": {
     "enzyme": "^3.2.0",
