@@ -2,6 +2,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 const searchArticles = (request, response, next) => {
+
   let search;
 
   const { sortBy, topics } = request.query;
@@ -12,9 +13,17 @@ const searchArticles = (request, response, next) => {
     id: 'techcrunch',
   };
 
-  selectedSources = selectedSources || [JSON.stringify(defaultSource)];
+  selectedSources = selectedSources || [defaultSource];
 
-  const formattedSource = selectedSources.map(source => JSON.parse(source).id).join(',');
+  const formattedSource = selectedSources.map((source) => {
+    if (typeof source === 'object') {
+      return source.id;
+    } else {
+      // if the type of source is string (from onTopicSearch)
+      return JSON.parse(source).id;
+    }
+  }).join(',');
+
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
 
