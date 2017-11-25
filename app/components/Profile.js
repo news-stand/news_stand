@@ -7,25 +7,40 @@ import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import NewsItem from './NewsItem';
 
-const Profile = ({ user }) => (
-  <div id="profile">
-    <div className="user">
-      <h2>{user.username}</h2>
-    </div>
+const Profile = ({ user }) => {
 
-    {/* Favorite topics list */}
-    <div className="profileTopicsList">
-      {user.topics.map(topicString => <p>{topicString}</p>)}
-    </div>
+  function capitalizeFirstLetter(string) {
+    const stringArr = string.split(' ');
+    return stringArr.map((word) => {
+      return word[0].toUpperCase() + word.slice(1);
+    }).join(' ');
+  }
 
-    {/* Selected Sources List */}
-    <div className="profileSourcesList">
-      {user.selectedSources.map(sourceObj => <p>{sourceObj.label}</p>)}
-    </div>
+  return (
+    <div id="profile">
+      <div className="user">
+        <h2>{user.username}</h2>
+      </div>
 
-    
-  </div>
-);
+      {/* Favorite topics list */}
+      <div className="profileTopicsList">
+        <h3>Topics of Interest</h3>
+        {user.topics.map(topicString => <p>{capitalizeFirstLetter(topicString)}</p>)}
+      </div>
+
+      {/* Selected Sources List */}
+      <div className="profileSourcesList">
+        <h3>Favorite News Sources</h3>
+        {user.selectedSources.map(sourceObj => <p>{capitalizeFirstLetter(sourceObj.label)}</p>)}
+      </div>
+
+      {/* Favorite News Articles */}
+
+
+    </div>
+  );
+
+};
 
 Profile.propTypes = {
   user: PropTypes.shape({
@@ -33,3 +48,5 @@ Profile.propTypes = {
     articles: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
 }
+
+export default Profile;
