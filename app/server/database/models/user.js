@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-import articleSchema from './article';
-
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -10,7 +8,7 @@ const userSchema = new Schema({
   profileImg: String,
   topics: [String],
   selectedSources: [{}],
-  articles: [articleSchema], // for favorites
+  articles: [], // for favorites
 });
 
 const User = mongoose.model('user', userSchema);

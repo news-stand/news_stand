@@ -51,8 +51,11 @@ app.post('/preferences', setPreferences, (request, response) => {
 });
 
 app.post('/favorites', addFavorite, (request, response) => {
-  console.log('BODY: ', request.body);
-  response.status(201).end('added');
+  if (request.user) {
+    response.status(201).end('favorite added');
+  } else {
+    response.status(200).end('please log in before adding to favorites');
+  }
 });
 
 app.get('*', (request, response) => {
