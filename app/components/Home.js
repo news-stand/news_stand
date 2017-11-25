@@ -147,12 +147,11 @@ class Home extends React.Component {
         />
         <hr />
         <div>
-          {/* TODO: Finish making this button */}
           <button
             id="savePreferences"
             onClick={this.setPreferences}
           >
-            Make Default/Save Preferences
+            Save Preferences
           </button>
           <Topics
             className="topics"
