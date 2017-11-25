@@ -4,24 +4,41 @@ import IconButton from 'material-ui/IconButton';
 import Heart from 'mui-icons/cmdi/heart';
 import axios from 'axios';
 
-const onAddFavorite = (article) => {
-  axios.post('/favorites', article)
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  // console.log(article);
-};
+class FavoriteButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      favorited: false,
+    };
+    this.onAddFavorite = this.onAddFavorite.bind(this);
+  }
 
-const FavoriteButton = ({ article }) => (
-  <div className="favorite btn">
-    <IconButton onClick={() => onAddFavorite(article)}>
-      <Heart />
-    </IconButton>
-  </div>
-);
+  onAddFavorite(article) {
+    console.log(article);
+    axios.post('/favorites', article)
+      .then((response) => {
+        console.log(response);
+        if (response.data === 'favorite added') {
+          this.setState({
+            favorited: true,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        <IconButton className="btn" onClick={() => this.onAddFavorite(this.props.article)}>
+          <Heart className={this.state.favorited ? 'favorited' : 'favorite'} />
+        </IconButton>
+      </div>
+    );
+  }
+}
 
 export default FavoriteButton;
 
