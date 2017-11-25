@@ -17,7 +17,7 @@ const addFavorite = (request, response, next) => {
 
     User.findOneAndUpdate(
       { googleId: request.user.googleId },
-      { $addToSet: { articles: favorited } },
+      { $addToSet: { articles: [favorited] } },
       (err, doc) => {
         if (err) {
           console.log('There was an error updating preferences: ', err);
