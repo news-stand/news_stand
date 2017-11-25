@@ -75,7 +75,6 @@ class Home extends React.Component {
     });
   }
 
-
   onAddSource(source) {
     const sources = this.state.selectedSources;
     sources.push(source);

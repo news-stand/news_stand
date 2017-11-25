@@ -3,13 +3,13 @@ import express from 'express';
 import cookieSession from 'cookie-session';
 import passport from 'passport';
 import BodyParser from 'body-parser';
+import morgan from 'morgan';
 
 import searchArticles from './middleware/bySource';
 import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
 import db from './database/db';
 import getSources from './middleware/getSources';
-import morgan from 'morgan';
 import getPreferences from './middleware/getPreferences';
 import setPreferences from './middleware/setPreferences';
 
@@ -46,6 +46,10 @@ app.get('/preferences', getPreferences, searchArticles, (request, response) => {
 
 app.post('/preferences', setPreferences, (request, response) => {
   response.end('Posted successfully');
+
+app.post('/favorites', (request, response) => {
+  console.log(request.body);
+  response.status(201).end('added');
 });
 
 app.get('*', (request, response) => {

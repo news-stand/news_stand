@@ -5,14 +5,14 @@ import Heart from 'mui-icons/cmdi/heart';
 import axios from 'axios';
 
 const onAddFavorite = (article) => {
-  // axios.post('/favorites', article)
-  //   .then((data) => {
-  //     console.log(data);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  console.log(article);
+  axios.post('/favorites', article)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // console.log(article);
 };
 
 const FavoriteButton = ({ article }) => (
