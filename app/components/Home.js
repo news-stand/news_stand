@@ -43,13 +43,6 @@ class Home extends React.Component {
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
           articles: articlesAndPreferences.data.articles,
         });
-      } else {
-        // if user isn't logged in
-        this.setState({
-          topics: this.state.topics,
-          selectedSources: this.state.selectedSources,
-          articles: articlesAndPreferences.data.articles,
-        });
       }
     });
   }
