@@ -1,8 +1,6 @@
 import User from '../database/models/user';
 
 const setPreferences = (request, response, next) => {
-  // console.log('THIS IS THE REQUEST.USER: ', request.user);
-  console.log('THIS IS THE REQUEST.BODY: ', request.body);
 
   if (request.user) {
     User.findOneAndUpdate(
@@ -19,7 +17,6 @@ const setPreferences = (request, response, next) => {
   }
 
   // TODO: add feature notifying user needs to be logged in
-  
   next();
 };
 
