@@ -74,11 +74,31 @@ npm install
 
 This project uses the [dotenv](https://www.npmjs.com/package/dotenv) module to read and configure environment variables from a .env file. The .env is included in .gitignore and is where you should store your API keys.
 
+```sh
+# in your root directory, to create the file:
+touch .env
+```
+
 The .env reads bash commands, so set environment variables like you would in the terminal.
 
 ```sh
 # for example:
 NEWS_KEY=yourKeyHere
+```
+
+At the top of the file where you're using the environment
+variables (or at the root of your project), import or require
+the dotenv module and use it to make your variables set in the
+.env file available to your code.
+
+```node
+// in ES5:
+var dotenv = require('dotenv');
+dotenv.config();
+
+// in ES6:
+import dotenv from 'dotenv';
+dotenv.config();
 ```
 
 You then can access the environment variables in your JavaScript files.
