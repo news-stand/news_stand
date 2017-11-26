@@ -15,7 +15,7 @@ const addFavorite = (request, response, next) => {
     });
 
     const findCriteria = { googleId: request.user.googleId };
-    const toUpdate = { $addToSet: { articles: [favorited] } };
+    const toUpdate = { $addToSet: { articles: favorited } };
 
     User.findOneAndUpdate(findCriteria, toUpdate)
       .exec()
