@@ -11,7 +11,6 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('<SelectedSources />', function () {
   const dummyFn = () => {
-    console.log('dummy function');
   };
 
   it('contains a <SourceItem /> component for every source passed in', function () {

@@ -14,10 +14,8 @@ class FavoriteButton extends React.Component {
   }
 
   onAddFavorite(article) {
-    console.log(article);
     axios.post('/favorites', article)
       .then((response) => {
-        console.log(response);
         if (response.data === 'favorite added') {
           this.setState({
             favorited: true,
