@@ -41,9 +41,9 @@ class Home extends React.Component {
         this.setState({
           topics: articlesAndPreferences.data.preferences.topics,
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
-          articles: articlesAndPreferences.data.articles,
         });
       }
+      this.setState({ articles: articlesAndPreferences.data.articles });
     });
   }
 

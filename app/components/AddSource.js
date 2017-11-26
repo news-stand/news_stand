@@ -130,7 +130,7 @@ class AddSource extends React.Component {
 
   componentDidMount() {
     this.props.getSources((sources) => {
-      suggestions = sources;
+      suggestions = sources.data;
     });
   }
 
