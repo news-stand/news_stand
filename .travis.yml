@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8.4.0"
+  - 8.4.0
 addons:
   chrome: stable
 before_install:
@@ -15,3 +15,11 @@ jobs:
       script: node ./build/server/index.js & npm run test
     - stage: client tests
       script: karma start --single-run
+deploy:
+  provider: heroku
+  api_key:
+    secure: BsKFSXizsS9hqsZMnM5XtyBIBlzOKBt+hI9+J5Sy/Ejmoh2vqmPje1NYUNCjsgOjMTu+tdsvJWmsc0ZpUYz1VpxRYFdmig0KEirrf2u74UseTPw1k8A3nhWKUNnlBI8coVlYVybdqtF9Qjck1ssOGpYVr6DC3Q/9ZhJCLs+Lz4JwCDbM8sNXFEx0wkxCWbnxBdSOUyo5w4D84N7NGBFY451RIoWgbUo0EiKKEFQeiTGCR+0t9Bi1seheB2UAa9RMt6VrEeP8pyoVQGng3cr7UB743VZ/rnF1Lk3tgQyvC5rPHK3H8Nx3qoObjJEWr4EVHvskRO2Vtv6V8M3SVlfld1Jmn7ealciuDLsONKx1bdxIyeYav4n8+/Zi3dVCwnrE6sbPwFjhrK0zaEabt/85zdHdWPAcs5qKF2zecKC6OQQnANjxWsKKlwmshPKJ+RyKq0k3M2xgx10t2Am390OoH5kNeavIB4MjPOK2z/lj8RCbV2Y3zWWga5Dw0FK/2ADg1kXb1s0fWdChmLDPn8Xay82t0OxJcsIOHGs4+NVE3qAd/L8CySTIhj6/UUXfaOCA7lVew54BxI6yNVZ4R/j4usuODSoco93YDBDd38O1eRHKWFqntVDimxrkaAxY2PTsMXWI1mr7/oHbgoEPJ/31C3ICIamVldzgSu2xQUpX8Ok=
+  app: 
+    master: news-stand-hr-staging
+  on:
+    repo: news-stand/news_stand
