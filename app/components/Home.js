@@ -7,7 +7,7 @@ import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
-
+import getSources from './helpers/getSources';
 
 class Home extends React.Component {
   constructor(props) {
@@ -35,26 +35,16 @@ class Home extends React.Component {
     const options = {
       topics, selectedSources, sortBy,
     };
-
-
-    axios.get('/preferences', { params: options })
-      .then((articlesAndPreferences) => {
+    this.props.getPreferences(options, (articlesAndPreferences) => {
+      if (articlesAndPreferences.data.preferences) {
         // if user is logged in
-        if (articlesAndPreferences.data.preferences) {
-          this.setState({
-            topics: articlesAndPreferences.data.preferences.topics,
-            selectedSources: articlesAndPreferences.data.preferences.selectedSources,
-            articles: articlesAndPreferences.data.articles,
-          });
-        } else {
-          this.setState({
-            // if user isn't logged in
-            topics: this.state.topics,
-            selectedSources: this.state.selectedSources,
-            articles: articlesAndPreferences.data.articles,
-          });
-        }
-      });
+        this.setState({
+          topics: articlesAndPreferences.data.preferences.topics,
+          selectedSources: articlesAndPreferences.data.preferences.selectedSources,
+          articles: articlesAndPreferences.data.articles,
+        });
+      }
+    });
   }
 
   onRefreshClick() {
@@ -159,7 +149,7 @@ class Home extends React.Component {
             onRemoval={this.onRemoval}
           />
 
-          <AddSource onAddSource={this.onAddSource} />
+          <AddSource onAddSource={this.onAddSource} getSources={getSources} />
           <SelectedSources
             selectedSources={this.state.selectedSources}
             onRemoval={this.onRemoval}
@@ -175,6 +165,7 @@ class Home extends React.Component {
 
 Home.propTypes = {
   search: PropsTypes.func.isRequired,
+  getPreferences: PropsTypes.func.isRequired,
 };
 
 export default Home;

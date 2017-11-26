@@ -6,9 +6,7 @@ const search = (options, successCallback) => {
       params: options,
     })
     .then((newsArticles) => {
-      console.log('returned articles: ', newsArticles);
       successCallback(newsArticles.data);
-      // this.setState({ articles: newsArticles.data });
     })
     .catch((error) => {
       console.log('error: ', error);

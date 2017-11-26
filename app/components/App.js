@@ -7,6 +7,7 @@ import Home from './Home';
 import Login from './Login';
 import NotFound from './NotFound';
 import Profile from './Profile';
+import getPreferences from './helpers/getPreferences';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Home search={search} />}
+            render={() => <Home search={search} getPreferences={getPreferences} />}
           />
           <Route
             path="/login"

@@ -3,18 +3,20 @@
 import React from 'react';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import Autosuggest from "react-autosuggest";
 
 import AddSource from '../../app/components/AddSource';
-import Autosuggest from "react-autosuggest";
+import dummySources from '../../app/dummy-data/sources_v2';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('<AddSource />', function () {
-  const dummyFn = () => {
-    console.log('dummy function');
+
+  const dummyFn = (callback) => {
+    callback(dummySources);
   };
 
-  const addSource = (<AddSource onAddSource={dummyFn} />);
+  const addSource = (<AddSource onAddSource={dummyFn} getSources={dummyFn} />);
 
   it('should have handleSuggestionsFetchRequested function defined', function () {
     const wrapper = shallow(addSource);
