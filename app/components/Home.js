@@ -36,14 +36,15 @@ class Home extends React.Component {
       topics, selectedSources, sortBy,
     };
     this.props.getPreferences(options, (articlesAndPreferences) => {
+      console.log(articlesAndPreferences);
       if (articlesAndPreferences.data.preferences) {
         // if user is logged in
         this.setState({
           topics: articlesAndPreferences.data.preferences.topics,
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
-          articles: articlesAndPreferences.data.articles,
         });
       }
+      this.setState({ articles: articlesAndPreferences.data.articles });
     });
   }
 
