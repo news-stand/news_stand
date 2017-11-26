@@ -29,14 +29,44 @@ describe('<NewsList />', function() {
     }];
     const wrapper = shallow(<NewsList newsArticles={article} /> )
     expect(wrapper.find(NewsItem).length).toEqual(1);
-  })
+  });
 
   it('doesn\'t render <NewsItem /> component if no topics are passed in', function() {
     const wrapper = shallow(<NewsList newsArticles={[]} />);
     expect(wrapper.find(NewsItem).length).toEqual(0);
-  })
+  });
 
   it('should dynamically render <NewsItem /> components based on the number of articles passed in', function() {
+    const articles = [{
+        "source": {
+          "id": null,
+          "name": "Salesforce.com"
+        },
+        "author": null,
+        "title": "Data Manager - Import Data",
+        "description": "Hello,<br><br>I am trying to import data to saleforce. I have done twice but when I checked the challenge. It still shows that &quot;All the contact records from the CSV file were not found in the Org.&quot;<br>The Recent Import Jobs shows both of my import&#…",
+        "url": "https://success.salesforce.com/answers?id=QAM",
+        "urlToImage": null,
+        "publishedAt": "2017-11-15T22:33:06Z"
+      }, 
+      {
+      "source": {
+        "id": null,
+        "name": "Salesforce.com"
+      },
+      "author": null,
+      "title": "Data Manager - Import Data",
+      "description": "Hello,<br><br>I am trying to import data to saleforce. I have done twice but when I checked the challenge. It still shows that &quot;All the contact records from the CSV file were not found in the Org.&quot;<br>The Recent Import Jobs shows both of my import&#…",
+      "url": "https://success.salesforce.com/answers?id=9063A000000lCJhQAM",
+      "urlToImage": null,
+      "publishedAt": "2017-11-15T22:33:06Z"
+      }
+    ];
+    const wrapper = shallow(<NewsList newsArticles={articles} />);
+    expect(wrapper.find(NewsItem).length).toEqual(2);
+  });
+
+  it('should not render duplicate <NewsItem /> components', function() {
     const articles = [{
         "source": {
           "id": null,
@@ -63,8 +93,8 @@ describe('<NewsList />', function() {
       }
     ];
     const wrapper = shallow(<NewsList newsArticles={articles} />);
-    expect(wrapper.find(NewsItem).length).toEqual(2);
-  })
+    expect(wrapper.find(NewsItem).length).toEqual(1);
+  });
 })
 
 /* eslint-enable */
