@@ -5,7 +5,7 @@ import passport from 'passport';
 import BodyParser from 'body-parser';
 import morgan from 'morgan';
 
-import searchArticles from './middleware/bySource';
+import searchArticles from './middleware/searchArticles';
 import authRoutes from './auth-routes';
 import passportSetup from './config/passport-setup';
 import db from './database/db';
