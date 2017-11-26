@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import Source from './models/source';
+
 dotenv.config();
 
 mongoose.connect(process.env.MONGODB_URI);
