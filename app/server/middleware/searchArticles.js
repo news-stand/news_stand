@@ -18,10 +18,9 @@ const searchArticles = (request, response, next) => {
   const formattedSource = selectedSources.map((source) => {
     if (typeof source === 'object') {
       return source.id;
-    } else {
-      // if the type of source is string (from onTopicSearch)
-      return JSON.parse(source).id;
     }
+    // if the type of source is string (from onTopicSearch)
+    return JSON.parse(source).id;
   }).join(',');
 
   const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
