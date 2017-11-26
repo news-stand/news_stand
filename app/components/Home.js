@@ -7,7 +7,7 @@ import AddSource from './AddSource';
 import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
-
+import getSources from './helpers/getSources';
 
 class Home extends React.Component {
   constructor(props) {
@@ -159,7 +159,7 @@ class Home extends React.Component {
             onRemoval={this.onRemoval}
           />
 
-          <AddSource onAddSource={this.onAddSource} />
+          <AddSource onAddSource={this.onAddSource} getSources={getSources} />
           <SelectedSources
             selectedSources={this.state.selectedSources}
             onRemoval={this.onRemoval}
