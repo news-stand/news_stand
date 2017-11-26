@@ -1,10 +1,9 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-
 // route to check if a user is logged in
-// If a user is logged in, Passport creates a user object on the request object.
-// the user object come from the 'users' collection in the database (i.e. they are the same)
+// If a user is logged in, Passport middleware creates a user object on the request object.
+// the user object comes from the 'users' collection in the database (i.e. they are the same)
 router.get('/', (request, response) => {
   if (request.user) {
     // is user is logged in
@@ -43,6 +42,7 @@ router.get('/google/redirect', passport.authenticate('google', { failureRedirect
   response.redirect('/');
 });
 
+// Destroy users session (cookie) and redirect to home
 router.get('/logout', (request, response) => {
   request.logout();
   response.redirect('/');

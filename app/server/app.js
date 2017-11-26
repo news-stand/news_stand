@@ -22,8 +22,8 @@ const indexPath = path.join(__dirname, '../index.html');
 app.use(morgan('tiny'));
 app.use(publicPath);
 
-// ---- ORDER OF PASSPORT MIDDLEWARE IS IMPORTANT ----
-// sets up cookie expiration (1 day) and key for encrypting googleId into a cookie
+// ---- ORDER OF PASSPORT MIDDLEWARE IS IMPORTANT ---- //
+// sets up both cookie expiration (1 day) and key for encrypting googleId into a cookie
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [process.env.COOKIE_KEY],
@@ -34,7 +34,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // set up routes from  auth-routes.js
-// prefixes all routes found in auth-routes with '/auth'
 app.use('/auth', authRoutes);
 
 app.use(BodyParser.json());
