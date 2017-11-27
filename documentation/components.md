@@ -196,7 +196,7 @@ AddSource is a stateful component created with MaterialUI [TextField](http://www
 
 #### Default State ####
 
-AddSource keeps track of the value of the search bar, the suggestions populated from the server, and the selected source. It is initialized with all of those empty:
+AddSource keeps track of the value of the search bar, the current suggestions based on user input, and the selected source. It is initialized with all of those empty:
 
 ```node
 this.state = {
@@ -206,28 +206,35 @@ this.state = {
 };
 ``` 
 
-The suggestions state gets filled in with a request to the server from a componentDidMount lifecycle method.
-
 #### Methods ####
 
-TODO: Danny to fill in
-
 1. componentDidMount
+    - uses the `getSources` helper function to retreive all the possible sources from the [newsAPI.org](https://newsapi.org/) API
+    - updates a variable labeled "suggestions" defined at the top of the file outside the scope of any functions or components.
 1. handleSuggestionsFetchRequested
+    - gets suggestions based of off user input and updates the state
 1. handleSuggestionsClearRequested
+    - clears suggestions after a user submits a source 
 1. handleChange
+    - updates the `value` property of state as the user types in the input field
 1. handleClick
+    - resets the state of `value` to be empty
+    - triggers the `onAddSource` function passed down through props to add the submitted source to the `home.js` state
 
 #### Helper Functions ####
 
-___TODO: Danny to fill in
-
 1. getSources
+    - makes a request to the newsAPI's `/sources` endpoint to retreive all possible sources
 1. renderInput
+    - returns the Material UI TextField component
 1. renderSuggestion
+    - returns a component that renders the autocomplete suggestions as a dropdown menu
 1. renderSuggestionsContainer
+    - a function passed into the `AutoComplete` component that returns a container
 1. getSuggestionValue
+    - returs the `label` property from a suggestion object
 1. getSuggestions
+    - filters the the array of suggestions and returs those that match what the user is typing
 
 ### SelectedSources ###
 
