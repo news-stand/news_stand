@@ -123,7 +123,7 @@ class Home extends React.Component {
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
-    })
+    });
   }
 
   render() {

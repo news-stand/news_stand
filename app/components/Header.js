@@ -16,9 +16,17 @@ const Header = props => (
       <button type="button" className="btn btn-primary" onClick={props.onToggleClick}>{props.sortBy === 'popularity' ? 'View most recent' : 'View trending'} </button>
 
     </form>
-    <button><Link to="/profile">Profile</Link></button>
-    <div><Link to="/login">Login</Link></div>
-    <div><a href="/auth/logout">Logout</a></div>
+    <nav>
+      <div className="nav-bar">
+        <Link to="/profile">Profile</Link>
+      </div>
+      <div className="nav-bar">
+        <Link to="/login">Login</Link>
+      </div>
+      <div className="nav-bar">
+        <a href="/auth/logout">Logout</a>
+      </div>
+    </nav>
   </div>
 );
 
