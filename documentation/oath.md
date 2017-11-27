@@ -4,7 +4,7 @@ The News Stand application uses Google's OAuth2.0 API in conjunction with the NP
 
 Passport is a flexible framework that can handle many different types of authentication. Passport is configured by selection and implementation of a specific [Strategy](http://www.passportjs.org/packages/)
 
-Our strateg is defined in `./app/server/config/passport-setup.js` as:
+Our strategy is defined in `./app/server/config/passport-setup.js` as:
 
 ```node
 passport.use(new GoogleStrategy({
