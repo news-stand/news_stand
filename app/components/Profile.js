@@ -59,7 +59,7 @@ class Profile extends React.Component {
 
                 {/* Selected Sources List */}
                 <div className="profileSourcesList">
-                  <h4>Favorite News Sources</h4>
+                  <h4>Saved Sources</h4>
                   {this.state.selectedSources.map(sourceObj =>
                     <p key={sourceObj.label} >{capitalizeFirstLetter(sourceObj.label)}</p>)}
                 </div>
@@ -70,7 +70,7 @@ class Profile extends React.Component {
         <div className="col-2-3">
           {/* Favorite News Articles */}
           <div className="profileFavoriteArticles">
-            <h2>Favorites</h2>
+            <h2>Favorite Articles</h2>
             {/* turnary operator to show if now articles are liked */}
             {this.state.articles.length === 0 ?
               <p>Articles you like will be shown here</p> :
