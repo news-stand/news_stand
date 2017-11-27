@@ -140,6 +140,7 @@ class Home extends React.Component {
           <div className="topicsAndSourcesContainer">
             <button
               id="savePreferences"
+              className="btn btn-primary"
               onClick={this.setPreferences}
             >
               Save Preferences
