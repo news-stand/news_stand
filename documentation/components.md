@@ -293,8 +293,6 @@ Note that favorited status (and thus the styling) is kept on the client side and
 
 ## Profile ##
 
-___TODO: Patrick to fill in
-
 Profile is the component that is rendered when a user clicks on Home's 'Profile' button. It is a stateful component. It can only be viewed after a user has logged in. 
 
 It shows the users name and associated Google-profile image.  It also shows the current preferred topics and sources, as well as rendering a list of all articles that the user has liked.
