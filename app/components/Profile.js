@@ -23,10 +23,11 @@ class Profile extends React.Component {
       articles: uniqArticles,
       img: this.props.user.profileImg,
     };
+    this.firstName = this.state.username.split(' ')[0];
+    this.lastName = this.state.username.split(' ')[1];
   }
 
   render() {
-    console.log(this.state.articles);
     return (
       <div id="profile">
         <div className="col-1-3">
@@ -40,24 +41,28 @@ class Profile extends React.Component {
             <div className="user-info">
               <div className="user">
                 <img className="profile-pic" src={this.state.img} alt={this.state.username} />
-                <h4>{this.state.username}</h4>
+                <div className="user-name">
+                  <p>{this.firstName}<br />
+                  {this.lastName}</p>
+                </div>
               </div>
+              <div className="topics-sources">
+                {/* Favorite topics list */}
+                <div className="profileTopicsList">
+                  <h4>Saved Topics</h4>
+                  {this.state.topics.map(topicString => (
+                    <p key={topicString}>
+                      {capitalizeFirstLetter(topicString)}
+                    </p>
+                  ))}
+                </div>
 
-              {/* Favorite topics list */}
-              <div className="profileTopicsList">
-                <h4>Saved Topics</h4>
-                {this.state.topics.map(topicString => (
-                  <p key={topicString}>
-                    {capitalizeFirstLetter(topicString)}
-                  </p>
-                ))}
-              </div>
-
-              {/* Selected Sources List */}
-              <div className="profileSourcesList">
-                <h4>Favorite News Sources</h4>
-                {this.state.selectedSources.map(sourceObj =>
-                  <p key={sourceObj.label} >{capitalizeFirstLetter(sourceObj.label)}</p>)}
+                {/* Selected Sources List */}
+                <div className="profileSourcesList">
+                  <h4>Favorite News Sources</h4>
+                  {this.state.selectedSources.map(sourceObj =>
+                    <p key={sourceObj.label} >{capitalizeFirstLetter(sourceObj.label)}</p>)}
+                </div>
               </div>
             </div>
           </div>
