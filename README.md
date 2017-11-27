@@ -48,16 +48,15 @@ npm run start:dev
 Note: This starts the Webpack bundler and Babel transpiler, which run in parallel with nodemon to run your server. You only need one open "running" terminal, rather than three. All three will watch for changes, so you don't need to re-run or re-start any of the processes.
 
 
-## Requirements
+## Main Technologies
 
 - node 8.4.0
 - express 
-- body-parser
 - mongodb
 - mongoose
 - react
-- react-dom
 - react-router
+- material-ui
 
 
 ## Development
