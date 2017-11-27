@@ -21,9 +21,11 @@ This middleware is used by the AddSource component. It is called when AddSource 
 
 ## getPreferences ##
 
-Middlware used in a GET request to '/preferences' to generate a query and user preference property. The middleware takes request object, response object, and 'next' as paramaters. During the function a 'query' property and a 'preferences' property are added to the request object. Please see below for more details:
+This function is used in a GET request to the '/preferences' endpoint to generate query and user preference properties. The middleware takes request object, response object, and 'next' as arguments. During the function a 'query' property and a 'preferences' property are added to the request object. Please see below for more details:
 
 ## setPreferences ##
+
+This function is used in a POST reqeust to the '/preferences' endpoint.  The middleware takes a request object, response object, and 'next' as arguments. It is used to set the currently selected preferences of a logged in user.  By looking up the user in the database via their goodleID the currently selected 'topics' and 'selectedSources' are saved to their account.
 
 ## addFavorite ##
 
