@@ -18,6 +18,8 @@ const searchArticles = (request, response, next) => {
       return JSON.parse(source).id;
     }).join(',');
     URL += `&sources=${formattedSource}`;
+  } else if (!selectedSources && !topics) {
+    URL += '&sources=techcrunch';
   }
 
   // Request information from newsAPI
