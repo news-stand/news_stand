@@ -7,24 +7,24 @@ const searchArticles = (request, response, next) => {
 
   const beginDate = moment().subtract(3, 'weeks').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
-  let URL = `https://newsapi.org/v2/everything/?from=${beginDate}&to=${endDate}&sortBy=${sortBy}&language=en&apiKey=${process.env.NEWS_KEY}`;
+  let url = `https://newsapi.org/v2/everything/?from=${beginDate}&to=${endDate}&sortBy=${sortBy}&language=en&apiKey=${process.env.NEWS_KEY}`;
 
   if (topics) {
     const formattedTopic = topics.join('%20OR%20').split(' ').join('%20');
-    URL += `&q=${formattedTopic}`;
+    url += `&q=${formattedTopic}`;
   }
   if (selectedSources) {
     const formattedSource = selectedSources.map((source) => {
       return JSON.parse(source).id;
     }).join(',');
-    URL += `&sources=${formattedSource}`;
+    url += `&sources=${formattedSource}`;
   } else if (!selectedSources && !topics) {
-    URL += '&sources=techcrunch';
+    url += '&sources=techcrunch';
   }
 
-  // Request information from newsAPI
+  // Request information from newsAPI`
   axios
-    .get(URL)
+    .get(url)
     .then((newsResponse) => {
       request.articles = newsResponse.data.articles;
     })
