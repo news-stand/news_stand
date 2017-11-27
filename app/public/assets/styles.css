@@ -163,6 +163,15 @@
   display: inline-block;
 }
 
+.AddSource-container-120 {
+  display: inline-block;
+}
+
+#add-source-container {
+  display: inline-block;
+  vertical-align:top;
+}
+
 /* ---------------------------- */
 /*      Selectetd Sources       */
 /* ---------------------------- */
