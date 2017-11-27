@@ -15,7 +15,10 @@ const searchArticles = (request, response, next) => {
   }
   if (selectedSources) {
     const formattedSource = selectedSources.map((source) => {
-      const parsedSource = JSON.parse(source);
+      let parsedSource = source;
+      if (typeof parsedSource === 'string') {
+        parsedSource = JSON.parse(parsedSource);
+      }
       return parsedSource.id;
     }).join(',');
     url += `&sources=${formattedSource}`;
