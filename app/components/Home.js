@@ -123,7 +123,7 @@ class Home extends React.Component {
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
       this.setState({ articles: newsArticles });
-    })
+    });
   }
 
   render() {
@@ -140,6 +140,7 @@ class Home extends React.Component {
           <div className="topicsAndSourcesContainer">
             <button
               id="savePreferences"
+              className="btn btn-primary"
               onClick={this.setPreferences}
             >
               Save Preferences

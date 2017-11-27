@@ -4,15 +4,41 @@
 .header {
   border: 1px solid black;
   padding: 10px;
+  width: 100%;
 }
 
 .headerContainer {
   height: 150px;
+  width: 100%;
 }
 
 .btn {
 
 }
+
+.refresh {
+  float: right;
+}
+
+.divider {
+  width: 100%;
+}
+
+.viewing {
+  float: right;
+}
+
+.viewing p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.nav-bar {
+  display: inline-block;
+  margin: 10px 5px;
+}
+
+.
 
 .btn-refresh {
   float: right;
@@ -23,21 +49,37 @@
   clear: both;
 }
 
+#savePreferences {
+  margin-left: 15px;
+}
+
 .contentContainer {
   top: 150px;
   position: absolute;
   overflow-y: scroll;
+  width: 100%;
 }
 
 .topicsAndSourcesContainer {
   position: fixed;
   float: left;
-  width: 30%
+  width: 25%;
 }
 
 .articlesContainer {
-  float: left;
-  width: 70%
+  float: right;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.newsList {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#no-articles {
+  margin: 15px auto;
+  width: 50%;
 }
 
 .newsItem {
@@ -45,8 +87,8 @@
   margin: 30px auto;
 }
 .articleImg {
-  height: 200px;
-  width: 300px;
+  height: auto;
+  width: 100%;
   margin: auto;
 }
 
@@ -64,8 +106,8 @@
 
 .articleDescription, .articleAuthor, .articleUrl, .articleSource {
 /* border: 1px solid black; */
-padding: 10px;
-
+  padding: 10px 0;
+  margin: auto;
 }
 
 .articleAuthor {
@@ -74,6 +116,10 @@ padding: 10px;
 }
 
 .articleUrl {
+
+}
+
+.articleDescription {
 
 }
 
