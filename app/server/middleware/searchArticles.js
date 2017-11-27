@@ -3,39 +3,28 @@ import moment from 'moment';
 
 const searchArticles = (request, response, next) => {
 
-  let search;
+  const { sortBy, topics, selectedSources } = request.query;
 
-  const { sortBy, topics } = request.query;
-  let { selectedSources } = request.query;
-
-  const defaultSource = {
-    label: 'TechCrunch',
-    id: 'techcrunch',
-  };
-
-  selectedSources = selectedSources || [defaultSource];
-
-  const formattedSource = selectedSources.map((source) => {
-    if (typeof source === 'object') {
-      return source.id;
-    }
-    // if the type of source is string (from onTopicSearch)
-    return JSON.parse(source).id;
-  }).join(',');
-
-  const beginDate = moment().subtract(1, 'weeks').format('YYYY-MM-DD');
+  const beginDate = moment().subtract(3, 'weeks').format('YYYY-MM-DD');
   const endDate = moment().format('YYYY-MM-DD');
+  let url = `https://newsapi.org/v2/everything/?from=${beginDate}&to=${endDate}&sortBy=${sortBy}&language=en&apiKey=${process.env.NEWS_KEY}`;
 
   if (topics) {
     const formattedTopic = topics.join('%20OR%20').split(' ').join('%20');
-    search = `https://newsapi.org/v2/everything?q=${formattedTopic}&sources=${formattedSource}&sortBy=${sortBy}&from=${beginDate}&to=${endDate}&language=en&apiKey=${process.env.NEWS_KEY}`;
-  } else {
-    search = `https://newsapi.org/v2/everything?sources=${formattedSource}&sortBy=${sortBy}&from=${beginDate}&to=${endDate}&language=en&apiKey=${process.env.NEWS_KEY}`;
+    url += `&q=${formattedTopic}`;
+  }
+  if (selectedSources) {
+    const formattedSource = selectedSources.map((source) => {
+      return JSON.parse(source).id;
+    }).join(',');
+    url += `&sources=${formattedSource}`;
+  } else if (!selectedSources && !topics) {
+    url += '&sources=techcrunch';
   }
 
-  // Request information from newsAPI
+  // Request information from newsAPI`
   axios
-    .get(search)
+    .get(url)
     .then((newsResponse) => {
       request.articles = newsResponse.data.articles;
     })
@@ -46,3 +35,4 @@ const searchArticles = (request, response, next) => {
 };
 
 export default searchArticles;
+
