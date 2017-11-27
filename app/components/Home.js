@@ -129,35 +129,39 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Header
-          onRefreshClick={this.onRefreshClick}
-          onToggleClick={this.onToggleClick}
-          sortBy={this.state.sortBy}
-        />
-        <hr />
-        <div>
-          <button
-            id="savePreferences"
-            onClick={this.setPreferences}
-          >
-            Save Preferences
-          </button>
-          <Topics
-            className="topics"
-            topics={this.state.topics}
-            onTopicSearch={this.onTopicSearch}
-            onRemoval={this.onRemoval}
-          />
-
-          <AddSource onAddSource={this.onAddSource} getSources={getSources} />
-          <SelectedSources
-            selectedSources={this.state.selectedSources}
-            onRemoval={this.onRemoval}
+        <div className="headerContainer">
+          <Header
+            onRefreshClick={this.onRefreshClick}
+            onToggleClick={this.onToggleClick}
+            sortBy={this.state.sortBy}
           />
         </div>
+        <div className="contentContainer">
+          <div className="topicsAndSourcesContainer">
+            <button
+              id="savePreferences"
+              onClick={this.setPreferences}
+            >
+              Save Preferences
+            </button>
+            <Topics
+              className="topics"
+              topics={this.state.topics}
+              onTopicSearch={this.onTopicSearch}
+              onRemoval={this.onRemoval}
+            />
 
-        <hr />
-        <NewsList newsArticles={this.state.articles} />
+            <AddSource onAddSource={this.onAddSource} getSources={getSources} />
+            <SelectedSources
+              selectedSources={this.state.selectedSources}
+              onRemoval={this.onRemoval}
+            />
+          </div>
+
+          <div className="articlesContainer">
+            <NewsList newsArticles={this.state.articles} />
+          </div>
+        </div>
       </div>
     );
   }
