@@ -5,7 +5,7 @@ require('dotenv').config()
 const axios = require('axios');
 const Moment = require('moment');
 const MomentRange = require('moment-range');
-
+ 
 const moment = MomentRange.extendMoment(Moment);
 
 const PORT = process.env.PORT || 8080;
@@ -285,16 +285,20 @@ describe('News Stand Server', function() {
         });
     });
 
-    // need a better way to check for recent
-    xit('returns articles from today or yesterday', function(done) {
+    it('returns articles from the last week', function(done) {
+      const beginDate = moment().subtract(1, 'weeks');
+      const endDate = moment().add(1, 'days');
+      const dateRange = moment().range(beginDate, endDate);
+
       axios.get(`${baseUrl}/articles`, options)
         .then((response) =>{
           response.data.forEach((article) => {
-            const day = moment(article.publishedAt).calendar().split(' ')[0].toLowerCase();
-            const isRecent = day === 'today' || day === 'yesterday';
+            const date = moment(article.publishedAt);
+            const isRecent = date.within(dateRange);
             expect(isRecent).toBe(true);
             done();
           })
+          done();
         })
         .catch((err) => {
           throw new Error('Error with GET to route /articles ', err);
