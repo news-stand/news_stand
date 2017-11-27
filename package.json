@@ -69,6 +69,7 @@
     "karma-nyan-reporter": "^0.2.5",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.6",
+    "moment-range": "^3.0.3",
     "nodemon": "^1.12.1",
     "parallelshell": "^3.0.2",
     "request": "^2.83.0"

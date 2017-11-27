@@ -1,11 +1,14 @@
 /* eslint-disable */
 require('jasmine-expect');
 require('dotenv').config()
-const moment = require('moment');
+
 const axios = require('axios');
+const Moment = require('moment');
+const MomentRange = require('moment-range');
+
+const moment = MomentRange.extendMoment(Moment);
 
 const PORT = process.env.PORT || 8080;
-
 const baseUrl = `http://localhost:${PORT}`;
 
 describe('News Stand Server', function() {
