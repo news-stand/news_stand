@@ -1,7 +1,6 @@
 import User from '../database/models/user';
 
 const setPreferences = (request, response, next) => {
-
   if (request.user) {
     User.findOneAndUpdate(
       { googleId: request.user.googleId },
