@@ -32,6 +32,8 @@ POST requests to the '/preferences' route use the getPreferences and searchArtic
 
 ### POST /favorites ###
 
+POST requests to the '/favorites' route occur when a user clicks the 'favorite' button. The handler checks if a user is signed in and, if so, uses the addFavorite middleware to to add the article to the database. 
+
 ### GET * ###
 
 This is our catch-all route and simply sends back our static HTML page.
