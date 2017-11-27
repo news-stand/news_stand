@@ -6,14 +6,23 @@ const Header = props => (
   <div className="header">
     <form>
       <img src="https://i.imgur.com/mCSoavu.png" alt="news stand" className="logo" />
-      Viewing {props.sortBy === 'popularity' ? 'most popular' : 'most recent'} news.
 
-      <button
-        type="button"
-        className="btn btn-primary btn-refresh"
-        onClick={props.onRefreshClick}>Refresh
-      </button>
-      <button type="button" className="btn btn-primary" onClick={props.onToggleClick}>{props.sortBy === 'popularity' ? 'View most recent' : 'View trending'} </button>
+      <div className="viewing">
+        <p> Viewing {props.sortBy === 'popularity' ? 'most popular' : 'most recent'} news.</p>
+
+        <button type="button" className="btn btn-primary" onClick={props.onToggleClick}>{props.sortBy === 'popularity' ? 'View most recent' : 'View trending'} </button>
+      </div>
+
+      <div className="divider"></div>
+
+      <div className="refresh">
+        <button
+          type="button"
+          className="btn btn-primary btn-refresh"
+          onClick={props.onRefreshClick}
+        >Refresh
+        </button>
+      </div>
 
     </form>
     <nav>

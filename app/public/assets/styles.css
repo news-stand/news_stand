@@ -16,10 +16,29 @@
 
 }
 
+.refresh {
+  float: right;
+}
+
+.divider {
+  width: 100%;
+}
+
+.viewing {
+  float: right;
+}
+
+.viewing p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 .nav-bar {
   display: inline-block;
-  margin: 5px;
+  margin: 10px 5px;
 }
+
+.
 
 .btn-refresh {
   float: right;
