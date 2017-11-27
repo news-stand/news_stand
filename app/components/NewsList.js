@@ -5,9 +5,9 @@ import uniq from 'node-uniq';
 import NewsItem from './NewsItem';
 
 const NewsList = props => (
-  <div>
+  <div className="news-list">
     {props.newsArticles.length === 0 ?
-      <div>No articles found. Please try another search</div> :
+      <div id="no-articles">No articles found. Please try another search</div> :
       props.newsArticles && uniq(props.newsArticles, i => i.url)
         .map(article => (
           <NewsItem article={article} key={article.url} />
