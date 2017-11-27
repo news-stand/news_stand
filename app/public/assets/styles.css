@@ -5,12 +5,48 @@
   border: 1px solid black;
   padding: 10px;
 }
+
+.headerContainer {
+  height: 150px;
+}
+
+.btn {
+
+}
+
+.btn-refresh {
+  float: right;
+}
+
+.favbtn {
+  float: right;
+  clear: both;
+}
+
+.contentContainer {
+  top: 150px;
+  position: absolute;
+  overflow-y: scroll;
+}
+
+.topicsAndSourcesContainer {
+  position: fixed;
+  float: left;
+  width: 30%
+}
+
+.articlesContainer {
+  float: left;
+  width: 70%
+}
+
 .newsItem {
   width: 50%;
   margin: 30px auto;
 }
 .articleImg {
   height: 200px;
+  width: 300px;
   margin: auto;
 }
 
@@ -22,14 +58,19 @@
 
 }
 
+.articleSource {
+  font-weight: bold;
+}
+
 .articleDescription, .articleAuthor, .articleUrl, .articleSource {
-border: 1px solid black;
+/* border: 1px solid black; */
 padding: 10px;
 
 }
 
 .articleAuthor {
-
+  display: inline-block;
+  font-weight: normal;
 }
 
 .articleUrl {

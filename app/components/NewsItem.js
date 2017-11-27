@@ -34,13 +34,10 @@ const NewsItem = ({ article }) => (
 
     {
       article.source.name ?
-        <p className="articleSource">{article.source.name}</p> :
-        null
-    }
-
-    {
-      article.author ?
-        <p className="articleAuthor">{article.author}</p> :
+        <div className="articleSource">{article.source.name} |      {article.author ?
+          <p className="articleAuthor">{article.author}</p> :
+        null}
+        </div> :
         null
     }
 

@@ -30,7 +30,7 @@ class FavoriteButton extends React.Component {
   render() {
     return (
       <div>
-        <IconButton className="btn" onClick={() => this.onAddFavorite(this.props.article)}>
+        <IconButton className="favbtn" onClick={() => this.onAddFavorite(this.props.article)}>
           <Heart className={this.state.favorited ? 'favorited' : 'favorite'} />
         </IconButton>
       </div>
