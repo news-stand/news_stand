@@ -21,6 +21,8 @@ This middleware is used by the AddSource component. It is called when AddSource 
 
 ## getPreferences ##
 
+Middlware used in a GET request to '/preferences' to generate a query and user preference property. The middleware takes request object, response object, and 'next' as paramaters. During the function a 'query' property and a 'preferences' property are added to the request object. Please see below for more details:
+
 ## setPreferences ##
 
 ## addFavorite ##
