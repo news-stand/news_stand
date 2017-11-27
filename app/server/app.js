@@ -7,8 +7,8 @@ import morgan from 'morgan';
 
 import searchArticles from './middleware/searchArticles';
 import authRoutes from './auth-routes';
-import passportSetup from './config/passport-setup';
-import db from './database/db';
+import passportSetup from './config/passport-setup'; // not used, but needs to be required to run file
+import db from './database/db'; // not used, but gets DB up and running
 import getSources from './middleware/getSources';
 import getPreferences from './middleware/getPreferences';
 import setPreferences from './middleware/setPreferences';
@@ -21,12 +21,19 @@ const indexPath = path.join(__dirname, '../index.html');
 
 app.use(morgan('tiny'));
 app.use(publicPath);
+
+// ---- ORDER OF PASSPORT MIDDLEWARE IS IMPORTANT ---- //
+// sets up both cookie expiration (1 day) and key for encrypting googleId into a cookie
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [process.env.COOKIE_KEY],
 }));
+
+// gets passport running (not really sure beyond that)
 app.use(passport.initialize());
 app.use(passport.session());
+
+// set up routes from  auth-routes.js
 app.use('/auth', authRoutes);
 
 app.use(BodyParser.json());
@@ -58,6 +65,7 @@ app.post('/favorites', addFavorite, (request, response) => {
   }
 });
 
+// catch-all route for implementing React Router
 app.get('*', (request, response) => {
   response.sendFile(indexPath);
 });

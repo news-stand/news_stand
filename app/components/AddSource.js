@@ -10,6 +10,12 @@ import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
 import { withStyles } from 'material-ui/styles';
 
+/*
+|--------------------------------------------------
+| Material UI Component - https://material-ui-next.com/demos/autocomplete/
+|--------------------------------------------------
+*/
+
 let suggestions;
 
 function renderInput(inputProps) {
