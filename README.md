@@ -47,17 +47,31 @@ npm run start:dev
 ```
 Note: This starts the Webpack bundler and Babel transpiler, which run in parallel with nodemon to run your server. You only need one open "running" terminal, rather than three. All three will watch for changes, so you don't need to re-run or re-start any of the processes.
 
+## Transpiling / Scripts
+Our two main `package.json` scripts for transpiling our es6 syntax into es5 produciton code are:
 
-## Requirements
+```node
+"build:server": "babel ./app/server -d build/server",
+```
+
+```node
+"build:client": "webpack --config ./webpack.config.js/"
+```
+
+`build:client` triggers webpack to transpile and bundle all of our client side code into a `bundle.js` file found inside the `build` folder.
+
+`build:server` uses babel to transpile our server side code into the `build` folder. This is how we are able to use es6 syntax in our server side code. It is important to note that any relative paths used in server-side code are in realtion to the code found in the `build` folder.
+
+
+## Main Technologies
 
 - node 8.4.0
 - express 
-- body-parser
 - mongodb
 - mongoose
 - react
-- react-dom
 - react-router
+- material-ui
 
 
 ## Development

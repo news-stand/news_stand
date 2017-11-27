@@ -9,7 +9,7 @@ All middleware is located in:
 ``` 
 
 ## authRoutes ##
-__TODO: Danny
+for information on authentication routes please see the [oauth](https://github.com/news-stand/news_stand/blob/master/documentation/oath.md) section
 
 ## searchArticles ##
 
