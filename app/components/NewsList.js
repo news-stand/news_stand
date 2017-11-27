@@ -6,7 +6,9 @@ import NewsItem from './NewsItem';
 
 const NewsList = props => (
   <div>
-    {props.newsArticles && uniq(props.newsArticles, i => i.url)
+    {props.newsArticles.length === 0 ?
+      <div>No articles found. Please try another search</div> :
+      props.newsArticles && uniq(props.newsArticles, i => i.url)
         .map(article => (
           <NewsItem article={article} key={article.url} />
         ))
