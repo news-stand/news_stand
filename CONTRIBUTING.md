@@ -161,6 +161,12 @@ git push origin <branch_name>
 git push -d origin <branch_name>
 ```
 
+For more details on Travis, please look at the documentation at:
+
+```bash
+./documentation/travis.md
+```
+
 ### Make a pull request
 
 Once you have a passing build with Travis, push the branch up to the central repo.
@@ -190,6 +196,8 @@ process again from rebasing onwards.
 Once you get back here, make a comment requesting further review and
 someone will look at your code again. If they like it, it will get merged,
 else, just repeat again.
+
+Once a pull request gets merged to master, Travis will automatically deploy to the Heroku staging app for the whole team's review.
 
 Thanks for contributing!
 
