@@ -21,3 +21,5 @@ The primary GET request to the NewsAPI's 'Top Headlines' and 'Everything' endpoi
 ## setPreferences ##
 
 ## addFavorite ##
+
+This function is called from the '/favorites' POST route. If a user is signed in when clicking the 'favorite' button, this middleware will format the article and update the database as a favorited article based on the users googleId. 
