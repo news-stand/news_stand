@@ -216,7 +216,7 @@ class AddSource extends React.Component {
 AddSource.propTypes = {
   onAddSource: PropTypes.func.isRequired,
   getSources: PropTypes.func.isRequired,
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired, // classes is created by materialsUI => cannot verify its property proptypes
 };
 
 export default withStyles(styles)(AddSource);
