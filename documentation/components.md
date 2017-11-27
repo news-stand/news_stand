@@ -74,11 +74,11 @@ this.state = {
 
 1. topics and selectedSources:
 
-Home comes preloaded with one default source and one default topic, to show the user how to search for more and to make rendering articles easier. Sources are objects made up of a label and id, since some labels and ids don't cleanly translate, so you need to keep track of both.
+Home comes preloaded with one default source and one default topic, to show the user how to search for more and to make rendering articles easier. Topics is an array of string topics. SelectedSources is an array of sources objects and each object is made up of a label and id (some labels and ids don't cleanly translate so you need to keep track of both).
 
 2. articles
 
-Articles starts out as an empty array that populates on a search performed during the componentDidMount lifecycle method.
+Articles starts out as an empty array that populates with article objects on a search performed during the componentDidMount lifecycle method. These objects are then rendered on home page as the articles you see.
 
 3. sortBy
 
@@ -88,7 +88,7 @@ Default sorting is by most recent, though the user can toggle by popularity with
 
 1. componentDidMount
     - gets the preferences of a logged in user
-    - displays the articles for either the default topics and sources or the user's preferred topics and sources (if logged in)
+    - displays the articles for either the default topics and sources ('net neutrality' and 'TechCrunch') or the user's preferred topics and sources (if logged in)
 1. onRefreshClick
     - when the refresh button is clicked, onRefreshClick fires off a request to the server to get new articles
 1. onToggleClick
@@ -150,7 +150,11 @@ Topics is a stateless component that serves as the umbrella for all topics-relat
 ./app/components/Topics.js
 ``` 
 
-It contains nested components.
+Topics contains nested components. A tree of these nested components can be found below:
+    - Topics.js
+        - TopicsSearch.js
+        - TopicsList.js
+            - TopicsListItem.js
 
 ### TopicsSearch ###
 
@@ -289,18 +293,26 @@ Note that favorited status (and thus the styling) is kept on the client side and
 
 ## Profile ##
 
-___TODO: Patrick to fill in
+Profile is the component that is rendered when a user clicks on Home's 'Profile' button. It is a stateful component. It can only be viewed after a user has logged in. 
+
+It shows the users name and associated Google-profile image.  It also shows the current preferred topics and sources, as well as rendering a list of all articles that the user has liked.
+
+It is located at:
+
+```sh
+./app/components/Profile.js
+```
 
 #### Default State ####
 
-___TODO: Patrick to fill in
+Profile is a component that needs to update with every topic or source that's added/removed, as well as with any article that's liked.  The values of it's state (which are detailed below) are all pulled from the database and passed in as props.
 
 ```node
 this.state = {
   username: this.props.user.username,
   topics: this.props.user.topics,
   selectedSources: this.props.user.selectedSources,
-  articles: this.props.user.articles,
+  articles: uniqArticles, // uniqueArticles is generated from this.props.user.articles prior to setting state
   img: this.props.user.profileImg,
 };
 ``` 
