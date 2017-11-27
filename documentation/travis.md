@@ -60,7 +60,11 @@ Tells the shell to start up our server file using node and run the npm testing s
 
 Lines 16-17: Sets up our client tests build and runs the script to start Karma. Note that you *MUST* call --single-run as Karma is default set to watch for changes and won't complete otherwise.
 
+[Official docs](https://docs.travis-ci.com/user/customizing-the-build/) for customizing your build.
+
 #### Deployment Config ####
+
+[Official docs](https://docs.travis-ci.com/user/deployment/heroku/) for deploying to heroku.
 
 To enable continuous deployment to the staging app, add the following after the 'jobs' section in the .yml file:
 
@@ -93,4 +97,10 @@ Lines 8-9: Tells Travis which Github repo to use.
 
 ### Testing ###
 
+Travis will run your two testing builds separately and let you know if both pass. 
+
 ### Deployment ###
+
+Setting up auto deployment with Travis requires putting your heroku API key in your config file, so you should go through the Travis command line client to set it up securely.
+
+A good [tutorial](https://kendaleiv.com/build-and-deploy-nodejs-with-travis-ci-and-heroku/) with step by step instructions.
