@@ -4,7 +4,7 @@ The News Stand application uses Google's OAuth2.0 API in conjunction with the NP
 
 Passport is a flexible framework that can handle many different types of authentication. Passport is configured by selection and implementation of a specific [Strategy](http://www.passportjs.org/packages/)
 
-Our strateg is defined in `./app/server/config/passport-setup.js` as:
+Our strategy is defined in `./app/server/config/passport-setup.js` as:
 
 ```node
 passport.use(new GoogleStrategy({
@@ -21,10 +21,10 @@ These routes utilize the passport middleware to handle sessions, cookie creation
 
 ## Routes ##
 
-there are 4 main routes that deal with handling initial authentication.
+There are four main routes that deal with handling initial authentication.
 
 ### Step 1 ###
-Redirect user to Google's sign in page and specify what information you are requesting through the `Scope` value. Google will send back a token that can be exchnaged for a user's profile info on a subsequent request. This token comes back as a parameter in the URL.
+Redirect user to Google's sign in page and specify what information you are requesting through the `scope` value. Google will send back a token that can be exchnaged for a user's profile info on a subsequent request. This token comes back as a parameter in the URL.
 ```node
 router.get('/google', passport.authenticate('google', {
   scope: ['profile'],
@@ -42,7 +42,7 @@ router.get('/google/redirect', passport.authenticate('google', { failureRedirect
 ```
 
 ### Step 3 ###
-When Google responds with the requested profile infomration the callback function defined in the strategy runs. We check to see if we alredy have the user in the database, or we create a new user. Either way, a user profile is passed to the next middleware function.
+When Google responds with the requested profile information the callback function defined in the strategy runs. We check to see if we alredy have the user in the database, or we create a new user. Either way, a user profile is passed to the next middleware function.
 
 ```node
 passport.use(new GoogleStrategy({
@@ -65,7 +65,7 @@ passport.use(new GoogleStrategy({
 ```
 
 ### Step 4 ###
-Passport uses the profile ID to create an encrypted sessin token and adds it to the cookie on the response object.
+Passport uses the profile ID to create an encrypted session token and adds it to the cookie on the response object.
 ```node
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -115,7 +115,7 @@ app.use(cookieSession({
 ```
 
 ### Initialize ###
-initilaize passport middleware
+Initilaize passport middleware
 ```node
 app.use(passport.initialize());
 app.use(passport.session());

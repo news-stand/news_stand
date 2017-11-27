@@ -1,12 +1,12 @@
 # News Stand Database #
 
-News Stand uses a MongoDB database with Mongoose ORM. We utilized [mlab](https://mlab.com/) as a hosted DB solution, but it could easily be setup to run on a local database if preffered.
+News Stand uses a MongoDB database with Mongoose ORM. We utilized [mlab](https://mlab.com/) as a hosted DB solution, but it could easily be setup to run on a local database if preferred.
 
 Our database is configured in:
 ```sh
 ./app/server/database/db.js
 ``` 
-mlab makes it easy to setup and use a mongo database from multiple machines. Opening a connection in the terminal is as easy as running your own specific version of:
+Mlab makes it easy to setup and use a Mongo database from multiple machines. Opening a connection in the terminal is as easy as running your own specific version of:
 
 ```sh
 mongo mongodb://<username>:<password>@ds163705.mlab.com:63705/news-stand

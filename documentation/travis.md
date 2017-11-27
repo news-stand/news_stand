@@ -12,7 +12,7 @@ News Stand uses the Travis CI tool for continuous integration--both testing and 
 
 ### Config File ###
 
-To you Travis, you need to set up your .travis.yml file. 
+To use Travis, you will need to set up your .travis.yml file. 
 
 #### Testing Config ####
 
@@ -103,4 +103,4 @@ Travis will run your two testing builds separately and let you know if both pass
 
 Setting up auto deployment with Travis requires putting your heroku API key in your config file, so you should go through the Travis command line client to set it up securely.
 
-A good [tutorial](https://kendaleiv.com/build-and-deploy-nodejs-with-travis-ci-and-heroku/) with step by step instructions.
+Here's a good [tutorial](https://kendaleiv.com/build-and-deploy-nodejs-with-travis-ci-and-heroku/) with step by step instructions.
