@@ -16,6 +16,8 @@ The primary GET request to the NewsAPI's 'Top Headlines' and 'Everything' endpoi
 
 ## getSources ##
 
+This middleware is used by the AddSource component. It is called when AddSource loads and retrieves a list of sources from the NewsAPI 'sources' endpoint. It formats an id & label property to each source. 
+
 ## getPreferences ##
 
 ## setPreferences ##
