@@ -9,6 +9,7 @@ All middleware is located in:
 ``` 
 
 ## authRoutes ##
+__TODO: Danny
 
 ## searchArticles ##
 
