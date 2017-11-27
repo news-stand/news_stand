@@ -185,28 +185,30 @@ class AddSource extends React.Component {
           >
             +
           </button>
-          <Autosuggest
-            theme={{
-              container: classes.container,
-              suggestionsContainerOpen: classes.suggestionsContainerOpen,
-              suggestionsList: classes.suggestionsList,
-              suggestion: classes.suggestion,
-            }}
-            renderInputComponent={renderInput}
-            suggestions={this.state.suggestions}
-            onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
-            onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
-            renderSuggestionsContainer={renderSuggestionsContainer}
-            getSuggestionValue={getSuggestionValue}
-            renderSuggestion={renderSuggestion}
-            inputProps={{
-              autoFocus: true,
-              classes,
-              placeholder: 'Search a news source',
-              value: this.state.value,
-              onChange: this.handleChange,
-            }}
-          />
+          <div id="add-input-container">
+            <Autosuggest
+              theme={{
+                container: classes.container,
+                suggestionsContainerOpen: classes.suggestionsContainerOpen,
+                suggestionsList: classes.suggestionsList,
+                suggestion: classes.suggestion,
+              }}
+              renderInputComponent={renderInput}
+              suggestions={this.state.suggestions}
+              onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+              onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+              renderSuggestionsContainer={renderSuggestionsContainer}
+              getSuggestionValue={getSuggestionValue}
+              renderSuggestion={renderSuggestion}
+              inputProps={{
+                autoFocus: true,
+                classes,
+                placeholder: 'Search a news source',
+                value: this.state.value,
+                onChange: this.handleChange,
+              }}
+            />
+          </div>
         </form>
       </div>
     );

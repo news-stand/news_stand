@@ -172,6 +172,10 @@
   vertical-align:top;
 }
 
+#add-input-container {
+  display: inline-block;
+}
+
 /* ---------------------------- */
 /*      Selectetd Sources       */
 /* ---------------------------- */
