@@ -2,7 +2,7 @@
 
 The News Stand application uses Google's OAuth2.0 API in conjunction with the NPM [Passport](http://www.passportjs.org/) module.
 
-Passport is a flexible framework that can handle many different types of authentication. Passport if configured to a specific authentication imllmentation by use of they call a [Strategy](http://www.passportjs.org/packages/)
+Passport is a flexible framework that can handle many different types of authentication. Passport is configured by selection and implementation of a specific [Strategy](http://www.passportjs.org/packages/)
 
 Our strateg is defined in `./app/server/config/passport-setup.js` as:
 
@@ -24,7 +24,7 @@ These routes utilize the passport middleware to handle sessions, cookie creation
 there are 4 main routes that deal with handling initial authentication.
 
 ### Step 1 ###
-Redirect user to Google's sign in page and specify what information you are requesting through the `Scope` value. Google will send back a token that can be exchnaged for a users profile information on a subsequent request. This token comes back as a parameter in the URL.
+Redirect user to Google's sign in page and specify what information you are requesting through the `Scope` value. Google will send back a token that can be exchnaged for a user's profile info on a subsequent request. This token comes back as a parameter in the URL.
 ```node
 router.get('/google', passport.authenticate('google', {
   scope: ['profile'],
@@ -32,6 +32,7 @@ router.get('/google', passport.authenticate('google', {
 ```
 ### Step 2 ###
 **Passport Middleware (NOT the callback function)**
+
 Triggers passport middleware that will return to google with the user-specific token in exchange for profile information.
 
 ```node
@@ -64,16 +65,18 @@ passport.use(new GoogleStrategy({
 ```
 
 ### Step 4 ###
-Passport uses the profiles ID to create an encrypted sessin token and put it in the cookie on the response.
+Passport uses the profile ID to create an encrypted sessin token and adds it to the cookie on the response object.
 ```node
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 ```
+
+### Step 5 ###
+**Callback function (NOT passport middleware)**
+
 our middleware finally fires and directs the user based on whether or not they were authenticated. In this case, they are both redirected to `"/"`
 
-### Step 4 ###
-**Callback function (NOT passport middleware)**
 ```node
 router.get('/google/redirect', passport.authenticate('google', { failureRedirect: '/' }), (request, response) => {
   response.redirect('/');
@@ -100,4 +103,20 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
+```
+
+### Cookie Setup ###
+Set cookie life and key for encoding and decoding google profile ID
+```node
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [process.env.COOKIE_KEY],
+}));
+```
+
+### Initialize ###
+initilaize passport middleware
+```node
+app.use(passport.initialize());
+app.use(passport.session());
 ```
