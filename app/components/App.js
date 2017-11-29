@@ -16,15 +16,18 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       user: {},
+      favorites: [],
     };
   }
 
   componentDidMount() {
     axios.get('/auth')
       .then((authStatus) => {
+        console.log('Auth Status in App.js', authStatus);
         this.setState({
           loggedIn: authStatus.data.loggedIn,
           user: authStatus.data.user,
+          favorites: authStatus.data.user.articles,
         });
       })
       .catch((err) => {
