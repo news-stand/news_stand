@@ -38,6 +38,7 @@ class App extends React.Component {
 
   onClickAddToFavorites(article) {
     this.state.favorites.push(article);
+    console.log('THIS.STATE.USER ', this.state.user);
     this.setState({
       favorites: this.state.favorites,
     });
