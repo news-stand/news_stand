@@ -35,6 +35,9 @@ const Header = props => (
       <div className="nav-bar">
         <a href="/auth/logout">Logout</a>
       </div>
+      <div className="nav-bar">
+        {props.user.username ? <p>Welcome back {props.user.username.split(' ')[0]}!</p> : <p></p>}
+      </div>
     </nav>
   </div>
 );

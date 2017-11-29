@@ -40,7 +40,14 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Home search={search} getPreferences={getPreferences} />}
+            render={() => (
+              <Home
+                search={search}
+                getPreferences={getPreferences}
+                user={this.state.user}
+                loggedIn={this.state.loggedIn}
+              />
+            )}
           />
           <Route
             path="/login"
