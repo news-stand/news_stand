@@ -134,6 +134,8 @@ class Home extends React.Component {
             onRefreshClick={this.onRefreshClick}
             onToggleClick={this.onToggleClick}
             sortBy={this.state.sortBy}
+            user={this.props.user}
+            loggedIn={this.props.loggedIn}
           />
         </div>
         <div className="contentContainer">
