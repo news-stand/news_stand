@@ -29,15 +29,20 @@ const Header = props => (
       <div className="nav-bar">
         <Link to="/profile">Profile</Link>
       </div>
-      <div className="nav-bar">
-        <Link to="/login">Login</Link>
-      </div>
-      <div className="nav-bar">
-        <a href="/auth/logout">Logout</a>
-      </div>
-      <div className="nav-bar">
-        {props.user.username ? <p>Welcome back {props.user.username.split(' ')[0]}!</p> : null}
-      </div>
+      {!props.loggedIn ? 
+        <div className="nav-bar">
+          <Link to="/login">Login</Link>
+        </div>
+        :
+        <div className="nav-bar">
+          <div className="nav-bar">
+            <a href="/auth/logout">Logout</a>
+          </div>
+          <div className="nav-bar">
+            {props.user.username ? <span>Welcome back {props.user.username.split(' ')[0]}!</span> : null}
+          </div>
+        </div>
+      }
     </nav>
   </div>
 );

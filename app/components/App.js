@@ -18,12 +18,13 @@ class App extends React.Component {
       user: {},
       favorites: [],
     };
+
+    this.onClickAddToFavorites = this.onClickAddToFavorites.bind(this);
   }
 
   componentDidMount() {
     axios.get('/auth')
       .then((authStatus) => {
-        console.log('Auth Status in App.js', authStatus);
         this.setState({
           loggedIn: authStatus.data.loggedIn,
           user: authStatus.data.user,
@@ -33,6 +34,13 @@ class App extends React.Component {
       .catch((err) => {
         throw err;
       });
+  }
+
+  onClickAddToFavorites(article) {
+    this.state.favorites.push(article);
+    this.setState({
+      favorites: this.state.favorites,
+    });
   }
 
 

@@ -130,7 +130,6 @@ class Home extends React.Component {
     return (
       <div>
         <div className="headerContainer">
-           {console.log('STAATE IN HOME', this.props)}
           <Header
             onRefreshClick={this.onRefreshClick}
             onToggleClick={this.onToggleClick}
