@@ -5,7 +5,7 @@ export default function (state = {}, action) {
   console.log('Action in user-reducer', action);
   switch (action.type) {
     case LOAD_USER:
-      console.log('Triggering in correct Case', action.payload);
+      console.log('Triggering in correct Case', action.payload.articles);
       return action.payload;
     default:
       return state;
