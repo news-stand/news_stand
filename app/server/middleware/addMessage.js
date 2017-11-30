@@ -3,10 +3,11 @@ import Message from '../database/models/message';
 
 const addMessage = (request, response) => {
   if (request.user) {
-    console.log(request.body.userName,'       ', request.body.articleTitle);
+    console.log(request.body.userName, '       ', request.body.articleTitle);
     const newMessage = new Message({
       userName: request.body.userName,
       message: request.body.message,
+      img: request.body.img,
     });
 
     const findCriteria = { articleTitle: request.body.articleTitle };
