@@ -19,6 +19,7 @@ deploy:
   provider: heroku
   api_key:
     secure: KuH3mV469RbkUoCcoWzQtlZahACsmJlky2nvUkugo4cR0fexW+m6Ee6wfoXSLz8+uMdngQp+TtuOzaF+SuwvNNmZ372x+IV5px7geCFa4ej6MWMdSWW02ZYz4eIqNiDlvakrVJ3ASw+GLUCrWYStR88Xz5/zAVKTIv7CBCGjFWGPnRYCXEYnTzAwWNB70UHkA+P7lPVwy922oAgDubuV0z4SS+TjwMmpsZ4+kBrHOrueeQ2Nzd04B8rf/uxM2KWJUY0ccN12wPcRFhgL/HL5ytzY0c6HktNn8G7I5wKDeEzgq5c8BhC0Ph6y2hdPWsyp4a1aZhA9ZPF/F6LY9kc5oRJXYlgf8RvnLV86/3uRF44hIO1J/eEM9Mh0W4uQup9qwDpsstaGPBWuh10My3IHQ7kSJhpsH+mowLLxL3KeTRpDNl6AERuuDnILrzBs6FSirW4PaVlPQp9VG3tH7pwtFDjN4b1OLaUajJVJ+OHLnlVkR+akzUURkBdC26a2hnlFnv6s0FX+l7qne7GcZ5nLGQkc4CAViFWflv0UtzzXE1itw0YOOGQrcUmKvl6A3tEWiL+DY/laT2u6V1I2aRG318duMR2vhRNLckPWqpFEDBsnyj6ThcIPIUfbbapoqAakiao1vZkEbty/5NQonHE836UEq4iBttSr8mPJs8J1K0Q=
-  app: newsstandbetav2
+  app:
+    master: newsstandbetav2
   on:
     repo: daybydayaddictionfree/news_stand
