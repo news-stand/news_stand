@@ -30,8 +30,6 @@ const searchArticles = (request, response, next) => {
   axios
     .get(url)
     .then((newsResponse) => {
-      console.log('++++++++++++++');
-      console.log(newsResponse.data);
       request.articles = newsResponse.data.articles;
     })
     .catch((err) => {
