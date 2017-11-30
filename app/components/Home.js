@@ -14,6 +14,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       sortBy: 'publishedAt',
+      articlesLoaded: false,
       articles: [],
       selectedSources: [{
         label: 'TechCrunch',
@@ -43,7 +44,7 @@ class Home extends React.Component {
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
         });
       }
-      this.setState({ articles: articlesAndPreferences.data.articles });
+      this.setState({ articles: articlesAndPreferences.data.articles, articlesLoaded: true });
     });
   }
 
@@ -122,7 +123,7 @@ class Home extends React.Component {
 
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
-      this.setState({ articles: newsArticles });
+      this.setState({ articles: newsArticles, articlesLoaded: true });
     });
   }
 
@@ -163,6 +164,7 @@ class Home extends React.Component {
 
           <div className="articlesContainer">
             <NewsList
+              loading={!this.state.articlesLoaded}
               newsArticles={this.state.articles}
               user={this.props.user}
               loggedIn={this.props.loggedIn}

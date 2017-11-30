@@ -96,6 +96,13 @@
   width: 50%;
   margin: 30px auto;
 }
+
+/* --------STYLING FOR LOADING SPINNER---------- */
+.css-15s48b {
+  margin: auto;
+}
+/* --------STYLING FOR LOADING SPINNER---------- */
+
 .articleImg {
   height: auto;
   width: 100%;
