@@ -26,15 +26,13 @@ const Header = props => (
 
     </form>
     <nav>
-      <div className="nav-bar">
-        <Link to="/profile">Profile</Link>
-      </div>
-      {!props.loggedIn ? 
+      {!props.loggedIn ?
         <div className="nav-bar">
           <Link to="/login">Login</Link>
         </div>
         :
         <div className="nav-bar">
+          <Link to="/profile">Profile</Link>
           <div className="nav-bar">
             <a href="/auth/logout">Logout</a>
           </div>
