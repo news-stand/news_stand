@@ -27,18 +27,18 @@ const Header = props => (
     </form>
     <nav>
       {!props.loggedIn ?
-        <div className="nav-bar">
-          <Link to="/login">Login</Link>
+        <div className="nav-bar" >
+          <Link to="/login" style={{ marginLeft: '4px' }}>Login</Link>
         </div>
         :
-        <div className="nav-bar">
-          <Link to="/profile">Profile</Link>
-          <div className="nav-bar">
+        <div className="nav-bar" >
+          <Link to="/profile" style={{ marginLeft: '4px' }}>Profile</Link>
+          <span className="nav-item" >
             <a href="/auth/logout">Logout</a>
-          </div>
-          <div className="nav-bar">
+          </span>
+          <span className="nav-item" >
             {props.user.username ? <span>Welcome back {props.user.username.split(' ')[0]}!</span> : null}
-          </div>
+          </span>
         </div>
       }
     </nav>

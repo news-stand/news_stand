@@ -46,7 +46,9 @@
   margin: 10px 5px;
 }
 
-.
+.nav-item {
+  margin-left: 40px;
+}
 
 .btn-refresh {
   float: right;
@@ -342,4 +344,3 @@
   display: block;
   margin-top: 50px;
 }
-
