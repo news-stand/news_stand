@@ -13,6 +13,8 @@ import getSources from './middleware/getSources';
 import getPreferences from './middleware/getPreferences';
 import setPreferences from './middleware/setPreferences';
 import addFavorite from './middleware/addFavorite';
+import addMessage from './middleware/addMessage';
+import grabMessage from './middleware/grabMessages';
 
 
 const app = express();
@@ -64,6 +66,9 @@ app.post('/favorites', addFavorite, (request, response) => {
     response.status(200).end('please log in before adding to favorites');
   }
 });
+
+app.post('/message', addMessage);
+app.post('/messages', grabMessage);
 
 // catch-all route for implementing React Router
 app.get('*', (request, response) => {
