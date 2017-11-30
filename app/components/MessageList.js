@@ -1,10 +1,12 @@
 import React from 'react';
-import Message from './Message.js';
+import { Card } from 'material-ui';
+import Message from './Message';
+
 
 const MessageList = props => (
-  <div>
+  <Card>
     {props.messages.map((item, index) => <Message message={item} key={index} />)}
-  </div>
+  </Card>
 );
 
 export default MessageList;

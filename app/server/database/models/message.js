@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const messageSchema = mongoose.Schema({
   userName: 'String',
   message: 'String',
+  img: 'String',
   date: { type: Date, default: Date.now },
 });
 

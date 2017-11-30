@@ -45,10 +45,10 @@ class NewsItem extends React.Component {
     if (this.state.comment !== '') {
       const addComment = this.state.comments;
       const input = this.state.comment;
-      addComment.push({ userName: this.props.user.username, message: input });
+      addComment.push({ userName: this.props.user.username, message: input, img: this.props.user.profileImg});
       this.setState({ comments: addComment });
       this.setState({ comment: '' });
-      axios.post('/message', { message: input, articleTitle: this.state.article.title, userName: this.props.user.username })
+      axios.post('/message', { message: input, articleTitle: this.state.article.title, userName: this.props.user.username, img: this.props.user.profileImg })
         .then((response) => {
           console.log('succesful add message', response);
         })
@@ -128,21 +128,9 @@ class NewsItem extends React.Component {
               </div> :
               this.state.clicked ?
                 <div>
-                  <Input
-                    inputProps={{
-                      'aria-label': 'Description',
-                    }}
-                    onChange={this.changeCommentState}
-                  />
                   <Button raised onClick={this.clicked}>Hide Comments</Button>
                 </div> :
                 <div>
-                  <Input
-                    inputProps={{
-                      'aria-label': 'Description',
-                    }}
-                    onChange={this.changeCommentState}
-                  />
                   <Button raised onClick={this.clicked}>See Comments</Button>
                 </div>
         }
