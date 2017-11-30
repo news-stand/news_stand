@@ -2,6 +2,7 @@ import User from '../database/models/user';
 import Article from '../database/models/article';
 
 const addFavorite = (request, response, next) => {
+  console.log('REQUEST USER', request.user);
   if (request.user) {
     const favorited = new Article({
       urlToImage: request.body.urlToImage,

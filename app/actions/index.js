@@ -17,9 +17,10 @@ export const FETCH_USER = 'FETCH_USER';
 // }
 
 export function fetchUser() {
-  const userRequest = axios.get('/auth');
+  console.log('DID THIS FUNCTION GET CALLED?');
+  const userRequest = axios.get('/user');
   return {
-    type: FETCH_FAVS,
+    type: FETCH_USER,
     payload: userRequest,
   };
 }
