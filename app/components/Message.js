@@ -3,7 +3,6 @@ import React from 'react';
 
 const Message = props => (
   <Card style={{ width: '66%', margin: '5px auto' }}>
-    {console.log(props.message)}
     <CardHeader
       subtitle={props.message.timestamp}
       title={props.message.userName}
