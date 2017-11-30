@@ -33,7 +33,7 @@ class App extends React.Component {
           user: authStatus.data.user,
           favorites: authStatus.data.user.articles,
         });
-
+        this.props.loadUser(authStatus.data.user);
       })
       .catch((err) => {
         throw err;
