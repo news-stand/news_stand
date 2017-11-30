@@ -6,10 +6,10 @@ const removeFavorite = (request, response, next) => {
       {googleId: request.user.googleId},
       {$pull: { 'articles': {title: request.body.title }}}
     )
-    .then(() => {
-      next();
-    })
-
+      .then(() => {
+        next();
+      });
+  }
 };
 
 export default removeFavorite;
