@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from '../public/assets/defaultImage';
+import axios from 'axios';
 
 import FavoriteButton from './FavoriteButton';
 import MessageList from './MessageList';
@@ -13,7 +14,7 @@ class NewsItem extends React.Component {
     this.state = {
       clicked: false,
       article: this.props.article,
-      comments: [{ name: 'Aman', text: 'hello' }, { name: 'Beast', text: 'Cant wait to finish' }, { name: 'Aman', text: 'Getting There' }],
+      comments: [],
       comment: '',
     };
     this.clicked = this.clicked.bind(this);
@@ -27,6 +28,15 @@ class NewsItem extends React.Component {
       this.setState({ clicked: true });
     }
   }
+  componentDidMount() {
+    axios.post('/messages', { articleTitle: this.state.article.title })
+      .then((messages) => {
+        this.setState({comments: messages.data});
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
   changeCommentState(e) {
     this.setState({ comment: e.target.value });
   }
@@ -34,9 +44,16 @@ class NewsItem extends React.Component {
     if (this.state.comment !== '') {
       const addComment = this.state.comments;
       const input = this.state.comment;
-      addComment.push({ name: 'RandomFix', text: input });
+      addComment.push({ name: this.props.user.username, text: input });
       this.setState({ comments: addComment });
       this.setState({ comment: '' });
+      axios.post('/message', { message: input, articleTitle: this.state.article.title, userName: this.props.user.username })
+        .then((response) => {
+          console.log('succesful add message', response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
   render() {
