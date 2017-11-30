@@ -87,7 +87,7 @@ class App extends React.Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({});
+  return bindActionCreators({ loadUser }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(App);
