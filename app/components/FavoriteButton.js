@@ -48,16 +48,15 @@ class FavoriteButton extends React.Component {
 
   render() {
 
-    console.log('Is it in favorites?', this.props.user.articles);
-    console.log('THE ARticle', this.props.article);
+    // console.log('Is it in favorites?', this.props.user.articles);
+    // console.log('THE ARticle', this.props.article);
     return (
       <div>
         <IconButton 
           className="favbtn"
           onClick={() => { if (this.state.favorited) { this.onRemoveFavorite(this.props.article); } else { this.onAddFavorite(this.props.article); } }}
         >
-          <Heart className={this.props.user.articles.includes(this.props.article) ? 'favorited' : 'favorite'} />
-          {/* <Heart className={this.state.favorited ? 'favorited' : 'favorite'} /> */}
+          <Heart className={this.props.user[1].includes(this.props.article.title) ? 'favorited' : 'favorite'} />
         </IconButton>
       </div>
     );

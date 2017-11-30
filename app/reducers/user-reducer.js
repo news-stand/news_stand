@@ -1,14 +1,16 @@
 import { LOAD_USER, ADD_ARTICLE } from '../actions/index';
 
-export default function (state = {}, action) {
+export default function (state = [], action) {
   console.log('Action in user-reducer', action);
   let newUser;
+  let titles = [];
   switch (action.type) {
     case LOAD_USER:
-      console.log('Triggering in LOAD USER', action.payload);
-      return action.payload;
+      titles = action.payload.articles.map(article => article.title);
+      console.log('New user store', [action.payload, titles]);
+      return [action.payload, titles];
     case ADD_ARTICLE:
-      console.log('Triggering in ARTICLE REDUCER', action.payload);
+    
       newUser = Object.assign({}, state);
       newUser.articles.push(action.payload);
       return newUser;
