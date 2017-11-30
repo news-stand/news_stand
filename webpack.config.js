@@ -25,6 +25,11 @@ module.exports = {
         loader: 'style-loader!css-loader',
         include: path.join(__dirname, 'app/public/assets/styles.css'),
       },
+      {
+        test: /favicon\.ico$/,
+        loader: 'url',
+        include: path.join(__dirname, 'app/public/assets/favicon.ico'),
+      },
     ],
   },
   plugins: [
