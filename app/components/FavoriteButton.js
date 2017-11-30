@@ -26,6 +26,7 @@ class FavoriteButton extends React.Component {
             favorited: true,
           });
         }
+        this.props.addToFavorites(article);
       })
       .catch((err) => {
         console.log(err);
