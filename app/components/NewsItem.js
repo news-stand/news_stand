@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import defaultImage from '../public/assets/defaultImage';
 import axios from 'axios';
+import moment from 'moment';
 
 import FavoriteButton from './FavoriteButton';
 import MessageList from './MessageList';
@@ -91,8 +92,9 @@ class NewsItem extends React.Component {
               this.state.article.author ?
                 <p className="articleAuthor">| {this.state.article.author}</p> :
             null}
+            <div>{moment(this.props.article.publishedAt).format('MMMM Do YYYY, h:mm a')}</div>
             </div> :
-            null
+            <div>{this.props.article.publishedAt}</div>
         }
 
         {
