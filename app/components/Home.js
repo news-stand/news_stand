@@ -1,6 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 import axios from 'axios';
+import Button from 'material-ui/Button';
 
 import Topics from './Topics';
 import AddSource from './AddSource';
@@ -8,6 +9,10 @@ import SelectedSources from './SelectedSources';
 import NewsList from './NewsList';
 import Header from './Header';
 import getSources from './helpers/getSources';
+
+const buttonStyle = {
+  fontSize: 11,
+};
 
 class Home extends React.Component {
   constructor(props) {
@@ -141,25 +146,20 @@ class Home extends React.Component {
         </div>
         <div className="contentContainer">
           <div className="topicsAndSourcesContainer">
-            <button
-              id="savePreferences"
-              className="btn btn-primary"
-              onClick={this.setPreferences}
-            >
-              Save Preferences
-            </button>
             <Topics
               className="topics"
               topics={this.state.topics}
               onTopicSearch={this.onTopicSearch}
               onRemoval={this.onRemoval}
             />
-
             <AddSource onAddSource={this.onAddSource} getSources={getSources} />
             <SelectedSources
               selectedSources={this.state.selectedSources}
               onRemoval={this.onRemoval}
             />
+          <Button id="savePreferences" raised color="primary" style={buttonStyle} onClick={this.setPreferences} >
+              Save Preferences
+            </Button>
           </div>
 
           <div className="articlesContainer">

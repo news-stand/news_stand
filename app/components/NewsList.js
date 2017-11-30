@@ -7,7 +7,7 @@ import NewsItem from './NewsItem';
 const NewsList = props => (
   <div className="news-list">
     <div>
-      <RingLoader color={'#4286f4'} size={100} loading={props.loading} />
+      <RingLoader color="primary" size={100} loading={props.loading} />
     </div>
     {props.newsArticles.length === 0 && !props.loading ?
       <div id="no-articles">
