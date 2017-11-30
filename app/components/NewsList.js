@@ -9,7 +9,7 @@ const NewsList = props => (
     <div>
       <RingLoader color={'#4286f4'} size={100} loading={props.loading} />
     </div>
-    {props.newsArticles.length === 0 ?
+    {props.newsArticles.length === 0 && !props.loading ?
       <div id="no-articles">
         No articles found. Please try another search
       </div> :
