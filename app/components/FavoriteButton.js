@@ -56,7 +56,6 @@ class FavoriteButton extends React.Component {
   }
 }
 
-export default FavoriteButton;
 
 FavoriteButton.propTypes = {
   article: PropTypes.shape({
@@ -70,3 +69,10 @@ FavoriteButton.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
 };
+
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addToFavorites }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(FavoriteButton);
