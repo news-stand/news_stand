@@ -10,6 +10,7 @@ import Login from './Login';
 import NotFound from './NotFound';
 import Profile from './Profile';
 import getPreferences from './helpers/getPreferences';
+import { loadUser } from '../actions/index';
 
 class App extends React.Component {
   constructor(props) {
