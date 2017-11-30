@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
-import { connect } from 'redux';
-import { bindActionCreators } from 'react-redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import search from './helpers/search';
 import Home from './Home';
