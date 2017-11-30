@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'redux';
+import { bindActionCreators } from 'react-redux';
 
 import search from './helpers/search';
 import Home from './Home';
@@ -30,6 +32,7 @@ class App extends React.Component {
           user: authStatus.data.user,
           favorites: authStatus.data.user.articles,
         });
+
       })
       .catch((err) => {
         throw err;
@@ -83,4 +86,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({});
+}
+
+export default connect(null, mapDispatchToProps)(App);

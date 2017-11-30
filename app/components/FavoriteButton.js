@@ -14,6 +14,7 @@ class FavoriteButton extends React.Component {
   }
 
   onAddFavorite(article) {
+    console.log('ADD TO FAVORITES');
     axios.post('/favorites', article)
       .then((response) => {
         if (response.data === 'favorite added') {
@@ -26,11 +27,24 @@ class FavoriteButton extends React.Component {
         console.log(err);
       });
   }
+  
+  onRemoveFavorite(article) {
+    console.log('remove frome FAVORITES');
+    axios.post('/remove', article)
+      .then(() => {
+        this.setState({
+          favorited: false,
+        });
+      });
+  }
 
   render() {
     return (
       <div>
-        <IconButton className="favbtn" onClick={() => this.onAddFavorite(this.props.article)}>
+        <IconButton 
+          className="favbtn"
+          onClick={() => { if (this.state.favorited) { this.onRemoveFavorite(this.props.article); } else { this.onAddFavorite(this.props.article); } }}
+        >
           <Heart className={this.state.favorited ? 'favorited' : 'favorite'} />
         </IconButton>
       </div>
