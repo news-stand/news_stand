@@ -16,7 +16,10 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       user: {},
+      favorites: [],
     };
+
+    this.onClickAddToFavorites = this.onClickAddToFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -25,11 +28,19 @@ class App extends React.Component {
         this.setState({
           loggedIn: authStatus.data.loggedIn,
           user: authStatus.data.user,
+          favorites: authStatus.data.user.articles,
         });
       })
       .catch((err) => {
         throw err;
       });
+  }
+
+  onClickAddToFavorites(article) {
+    this.state.favorites.push(article);
+    this.setState({
+      favorites: this.state.favorites,
+    });
   }
 
 
@@ -40,7 +51,14 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Home search={search} getPreferences={getPreferences} />}
+            render={() => (
+              <Home
+                search={search}
+                getPreferences={getPreferences}
+                user={this.state.user}
+                loggedIn={this.state.loggedIn}
+              />
+            )}
           />
           <Route
             path="/login"
