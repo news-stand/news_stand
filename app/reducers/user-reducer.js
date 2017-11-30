@@ -1,11 +1,12 @@
-import { FETCH_USER } from '../actions/index';
+import { LOAD_USER } from '../actions/index';
+
 
 export default function (state = {}, action) {
-  console.log('Action in user-reducer', action)
+  console.log('Action in user-reducer', action);
   switch (action.type) {
-    case FETCH_USER:
-      console.log('Triggering in correct Case');
-      return action.payload.data[0];
+    case LOAD_USER:
+      console.log('Triggering in correct Case', action.payload);
+      return action.payload;
     default:
       return state;
   }
