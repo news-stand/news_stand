@@ -16,26 +16,11 @@ class FavoriteButton extends React.Component {
     };
     this.onAddFavorite = this.onAddFavorite.bind(this);
   }
-  
-  // checkIfFavorite() {
-  //    if ()
-  // // }
+
   onAddFavorite(article) {
-    console.log('ADD TO FAVORITES');
-    axios.post('/favorites', article)
-      .then((response) => {
-        if (response.data === 'favorite added') {
-          this.setState({
-            favorited: true,
-          });
-        }
-        this.props.addToFavorites(article);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.props.addToFavorites(article);
   }
-  
+
   onRemoveFavorite(article) {
     console.log('remove frome FAVORITES');
     axios.post('/remove', article)
@@ -47,22 +32,18 @@ class FavoriteButton extends React.Component {
   }
 
   render() {
-
-    // console.log('Is it in favorites?', this.props.user.articles);
-    // console.log('THE ARticle', this.props.article);
     return (
       <div>
         <IconButton 
           className="favbtn"
           onClick={() => { if (this.state.favorited) { this.onRemoveFavorite(this.props.article); } else { this.onAddFavorite(this.props.article); } }}
         >
-          <Heart className={this.props.user[1].includes(this.props.article.title) ? 'favorited' : 'favorite'} />
+          {this.props.user.length > 0 && <Heart className={this.props.user[1].includes(this.props.article.title) ? 'favorited' : 'favorite'} />}
         </IconButton>
       </div>
     );
   }
 }
-
 
 FavoriteButton.propTypes = {
   article: PropTypes.shape({

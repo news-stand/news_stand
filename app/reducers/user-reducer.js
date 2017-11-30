@@ -10,10 +10,9 @@ export default function (state = [], action) {
       console.log('New user store', [action.payload, titles]);
       return [action.payload, titles];
     case ADD_ARTICLE:
-    
-      newUser = Object.assign({}, state);
+      newUser = Object.assign({}, state[0]);
       newUser.articles.push(action.payload);
-      return newUser;
+      return [newUser, state[1].concat([action.payload.title])];
     default:
       return state;
   }

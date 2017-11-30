@@ -13,7 +13,7 @@ export function loadUser(user) {
 }
 
 export function addToFavorites(article) {
-  // axios.post('/favorites', article);
+  axios.post('/favorites', article);
 console.log('ADD TO FAV IN ACTIONS');
   return {
     type: ADD_ARTICLE,
