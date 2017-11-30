@@ -23,7 +23,7 @@ console.log('ADD TO FAV IN ACTIONS');
 }
 
 export function removeFromFavorites(article) {
-  axios.post('/favorites', article);
+  axios.post('/remove', article);
   return {
     type: REMOVE_ARTICLE,
     payload: article,

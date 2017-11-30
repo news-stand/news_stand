@@ -1,22 +1,39 @@
 import { LOAD_USER, ADD_ARTICLE, REMOVE_ARTICLE } from '../actions/index';
 
-export default function (state = [], action) {
-  console.log('Action in user-reducer', action);
+export default function (state = [], { type, payload }) {
+  // console.log('Action in user-reducer', type, payload);
   let newUser;
+  let title;
+  let index;
   let titles = [];
-  switch (action.type) {
+  let articles = [];
+  switch (type) {
     case LOAD_USER:
-      titles = action.payload.articles.map(article => article.title);
-      return [action.payload, titles];
+      titles = payload.articles.map(article => article.title);
+      return [payload, titles];
     case ADD_ARTICLE:
       newUser = Object.assign({}, state[0]);
-      newUser.articles.push(action.payload);
-      return [newUser, state[1].concat([action.payload.title])];
+      newUser.articles.push(payload);
+      return [newUser, state[1].concat([payload.title])];
     case REMOVE_ARTICLE:
+      title = payload.title;
+      console.log('Title', title);
+      // find index of obj in article
+      // create new copy of object
       newUser = Object.assign({}, state[0]);
-      newUser = newUser.articles.splice(newUser.articles.indexOf(action.payload), 1);
-      titles = state[1].splice(state[1].indexOf(action.payload.title), 1);
-      return [newUser, titles];
+      // Save array in variable;
+      // arr = newUser.articles;
+      // Get index
+      index = Object.values(newUser.articles).indexOf(title);
+      // remove obj
+      newUser.articles.splice(index, 1);
+      // remove item 
+      // remove title from titles array
+      state[1].splice(index, 1);
+      // index = newUser.articles.map(article => Object.values(article).indexOf(payload.title) !== -1);
+      // newUser = 
+      // console.log('INDEX', newUser.articles.indexOf(payload));
+      return [newUser, state[1].splice(index, 1)];
     default:
       return state;
   }
