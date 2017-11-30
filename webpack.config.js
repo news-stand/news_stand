@@ -27,13 +27,14 @@ module.exports = {
       },
       {
         test: /favicon\.ico$/,
-        loader: 'url',
+        loader: 'file',
         include: path.join(__dirname, 'app/public/assets/favicon.ico'),
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './app/public/assets/favicon.ico',
       template: './app/public/index.html',
       filename: 'index.html',
       inject: 'body',
