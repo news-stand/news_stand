@@ -6,7 +6,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-// import { addToFavorites } from '../actions/index';
+import { addToFavorites } from '../actions/index';
 
 class FavoriteButton extends React.Component {
   constructor(props) {
