@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-export const FETCH_USER = 'FETCH_USER';
+export const LOAD_USER = 'LOAD_USER';
+// export const ADD_ARTICLE = 'ADD_ARTICLE';
 
-export function fetchUser() {
-  console.log('DID THIS FUNCTION GET CALLED?');
-  const userRequest = axios.get('/user');
+export function loadUser(user) {
+  console.log('DID THIS FUNCTION GET CALLED?', user);
+  // const userRequest = axios.get('/user');
   return {
-    type: FETCH_USER,
-    payload: userRequest,
+    type: LOAD_USER,
+    payload: user,
   };
 }
