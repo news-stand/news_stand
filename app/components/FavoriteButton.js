@@ -6,7 +6,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { addToFavorites } from '../actions/index';
+import { addToFavorites, removeFromFavorites } from '../actions/index';
 
 class FavoriteButton extends React.Component {
   constructor(props) {
@@ -22,13 +22,7 @@ class FavoriteButton extends React.Component {
   }
 
   onRemoveFavorite(article) {
-    console.log('remove frome FAVORITES');
-    axios.post('/remove', article)
-      .then(() => {
-        this.setState({
-          favorited: false,
-        });
-      });
+    this.props.removeFromFavorites(article);
   }
 
   render() {
@@ -62,7 +56,7 @@ function mapStateToProps({ user }) {
   return { user };
 }
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addToFavorites }, dispatch);
+  return bindActionCreators({ addToFavorites, removeFromFavorites }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriteButton);
