@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Heart from 'mui-icons/cmdi/heart';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+// import { addToFavorites } from '../actions/index';
 
 class FavoriteButton extends React.Component {
   constructor(props) {
