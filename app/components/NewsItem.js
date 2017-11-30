@@ -44,7 +44,7 @@ class NewsItem extends React.Component {
     if (this.state.comment !== '') {
       const addComment = this.state.comments;
       const input = this.state.comment;
-      addComment.push({ name: this.props.user.username, text: input });
+      addComment.push({ userName: this.props.user.username, message: input });
       this.setState({ comments: addComment });
       this.setState({ comment: '' });
       axios.post('/message', { message: input, articleTitle: this.state.article.title, userName: this.props.user.username })
