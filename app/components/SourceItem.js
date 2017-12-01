@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Chip from 'material-ui/Chip';
 
 const SourceItem = props => (
   <div className="selectedSources">
-    <button
-      type="button"
+    <Chip
+      style={{ fontSize: '12px', marginBottom: '5px' }}
+      label={props.source}
+      onRequestDelete={() => { props.onRemoval(props.index, 'selectedSources'); }}
       className="remove btn add-remove-btn"
-      onClick={() => { props.onRemoval(props.index, 'selectedSources'); }}
-    >
-      x
-    </button>
-    <span>{props.source}</span>
+    />
   </div>
 );
 

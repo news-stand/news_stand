@@ -1,6 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 import axios from 'axios';
+import Button from 'material-ui/Button';
 
 import Topics from './Topics';
 import AddSource from './AddSource';
@@ -9,11 +10,16 @@ import NewsList from './NewsList';
 import Header from './Header';
 import getSources from './helpers/getSources';
 
+const buttonStyle = {
+  fontSize: '10px',
+};
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       sortBy: 'publishedAt',
+      articlesLoaded: false,
       articles: [],
       selectedSources: [{
         label: 'TechCrunch',
@@ -43,7 +49,7 @@ class Home extends React.Component {
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
         });
       }
-      this.setState({ articles: articlesAndPreferences.data.articles });
+      this.setState({ articles: articlesAndPreferences.data.articles, articlesLoaded: true });
     });
   }
 
@@ -122,7 +128,7 @@ class Home extends React.Component {
 
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
-      this.setState({ articles: newsArticles });
+      this.setState({ articles: newsArticles, articlesLoaded: true });
     });
   }
 
@@ -140,29 +146,25 @@ class Home extends React.Component {
         </div>
         <div className="contentContainer">
           <div className="topicsAndSourcesContainer">
-            <button
-              id="savePreferences"
-              className="btn btn-primary"
-              onClick={this.setPreferences}
-            >
-              Save Preferences
-            </button>
+            {this.props.loggedIn ?
+              <Button id="savePreferences" style={buttonStyle} onClick={this.setPreferences} >Save Preferences</Button > :
+              <div />
+            }
             <Topics
               className="topics"
               topics={this.state.topics}
               onTopicSearch={this.onTopicSearch}
               onRemoval={this.onRemoval}
             />
-
             <AddSource onAddSource={this.onAddSource} getSources={getSources} />
             <SelectedSources
               selectedSources={this.state.selectedSources}
               onRemoval={this.onRemoval}
             />
           </div>
-
           <div className="articlesContainer">
             <NewsList
+              loading={!this.state.articlesLoaded}
               newsArticles={this.state.articles}
               user={this.props.user}
               loggedIn={this.props.loggedIn}
