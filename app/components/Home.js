@@ -11,7 +11,7 @@ import Header from './Header';
 import getSources from './helpers/getSources';
 
 const buttonStyle = {
-  fontSize: 11,
+  fontSize: '10px',
 };
 
 class Home extends React.Component {
@@ -146,6 +146,9 @@ class Home extends React.Component {
         </div>
         <div className="contentContainer">
           <div className="topicsAndSourcesContainer">
+            <Button id="savePreferences" style={buttonStyle} onClick={this.setPreferences} >
+              Save Preferences
+            </Button>
             <Topics
               className="topics"
               topics={this.state.topics}
@@ -157,9 +160,6 @@ class Home extends React.Component {
               selectedSources={this.state.selectedSources}
               onRemoval={this.onRemoval}
             />
-          <Button id="savePreferences" raised color="primary" style={buttonStyle} onClick={this.setPreferences} >
-              Save Preferences
-            </Button>
           </div>
 
           <div className="articlesContainer">
