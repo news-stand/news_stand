@@ -179,12 +179,6 @@ class AddSource extends React.Component {
     return (
       <div className="addSourceContainer" id="add-source-container">
         <form onSubmit={(event) => { this.handleClick(event); }}>
-          <button
-            className="add btn add-remove-btn"
-            onClick={(event) => { this.handleClick(event); }}
-          >
-            +
-          </button>
           <div id="add-input-container">
             <Autosuggest
               theme={{
@@ -203,12 +197,18 @@ class AddSource extends React.Component {
               inputProps={{
                 autoFocus: true,
                 classes,
-                placeholder: 'Search a news source',
+                placeholder: 'Add news source',
                 value: this.state.value,
                 onChange: this.handleChange,
               }}
             />
           </div>
+          <button
+            className="add btn add-remove-btn"
+            onClick={(event) => { this.handleClick(event); }}
+            >
+            +
+          </button>
         </form>
       </div>
     );

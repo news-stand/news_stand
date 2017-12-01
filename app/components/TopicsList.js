@@ -7,7 +7,7 @@ const TopicsList = props => (
     <div className="topics-list">
       {props.topics && props.topics.map((topic, key) => (
         <TopicsListItem
-          className="topics list-item"
+          className="list-item"
           topic={topic}
           key={topic}
           index={key}
