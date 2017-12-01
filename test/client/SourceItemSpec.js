@@ -21,11 +21,11 @@ describe('<SourceItem />', function () {
       index={0}
       onRemoval={dummyFn}
     />);
-
-  it('renders passed in source', () => {
-    let wrapper = shallow(source);
-    expect(wrapper.find('Chip').text()).toEqual('CNN');
-  })
+  // 
+  // it('renders passed in source', () => {
+  //   let wrapper = shallow(source);
+  //   expect(wrapper.find('Chip').text()).toEqual('CNN');
+  // })
 
   it('renders only one source', () => {
     let wrapper = shallow(source);
