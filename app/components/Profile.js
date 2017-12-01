@@ -75,7 +75,7 @@ class Profile extends React.Component {
             {/* turnary operator to show if now articles are liked */}
             {this.state.articles.length === 0 ?
               <p>Articles you like will be shown here</p> :
-              this.props.fetchedUser[0].articles && <NewsList newsArticles={this.props.fetchedUser[0].articles} />
+              this.props.fetchedUser[0].articles && <NewsList newsArticles={this.props.fetchedUser[0].articles} user={this.props.fetchedUser[0]} loggedIn={true} />
             }
           </div>
         </div>
