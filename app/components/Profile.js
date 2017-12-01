@@ -29,7 +29,6 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div id="profile">
         <div className="col-1-3">
