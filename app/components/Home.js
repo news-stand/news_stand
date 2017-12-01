@@ -146,9 +146,10 @@ class Home extends React.Component {
         </div>
         <div className="contentContainer">
           <div className="topicsAndSourcesContainer">
-            <Button id="savePreferences" style={buttonStyle} onClick={this.setPreferences} >
-              Save Preferences
-            </Button>
+            {this.props.loggedIn ?
+              <Button id="savePreferences" style={buttonStyle} onClick={this.setPreferences} >Save Preferences</Button > :
+              <div />
+            }
             <Topics
               className="topics"
               topics={this.state.topics}
@@ -161,7 +162,6 @@ class Home extends React.Component {
               onRemoval={this.onRemoval}
             />
           </div>
-
           <div className="articlesContainer">
             <NewsList
               loading={!this.state.articlesLoaded}

@@ -47,6 +47,7 @@
 
 .nav-item {
   margin-left: 40px;
+  color: '#3f51b5';
 }
 
 .btn-refresh {
@@ -59,7 +60,7 @@
 }
 
 #savePreferences {
-  margin-left: 15px;
+  margin-left: 0px;
 }
 
 .contentContainer {
@@ -166,6 +167,8 @@
 .addSourceContainer {
   display: inline-block;
   vertical-align:top;
+  margin-left: 18px;
+  margin-top: 24px;
 }
 
 .AddSource-container-1 {
@@ -203,6 +206,7 @@
 
 .selectedSources {
   display: block;
+  margin-left: 18px;
 }
 
 /* ---------------------------- */
@@ -210,7 +214,7 @@
 /* ---------------------------- */
 
 .topics-list-container, .selectedSourcesContainer {
-  margin-left: 25px;
+
 }
 
 /* ---------------------------- */
@@ -343,6 +347,10 @@
 
 .user-name p {
   margin: auto 0;
+}
+
+.topics {
+  margin-left: 18px;
 }
 
 .topics-sources {

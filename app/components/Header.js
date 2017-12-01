@@ -28,16 +28,16 @@ const Header = props => (
     <nav>
       {!props.loggedIn ?
         <div className="nav-bar" >
-          <Link to="/login" style={{ marginLeft: '4px' }}>Login</Link>
+          <Link to="/login" style={{ marginLeft: '4px', color: '#3f51b5' }}>Login</Link>
         </div>
         :
         <div className="nav-bar" >
-          <Link to="/profile" style={{ marginLeft: '4px' }}>Profile</Link>
+          <Link to="/profile" style={{ marginLeft: '4px', color: '#3f51b5'  }}>Profile</Link>
           <span className="nav-item" >
             <a href="/auth/logout">Logout</a>
           </span>
           <span className="nav-item" >
-            {props.user.username ? <span>Welcome back {props.user.username.split(' ')[0]}!</span> : null}
+            {props.user.username ? <span>Welcome {props.user.username.split(' ')[0]}!</span> : null}
           </span>
         </div>
       }

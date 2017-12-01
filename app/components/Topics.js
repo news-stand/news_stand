@@ -6,13 +6,13 @@ import TopicsList from './TopicsList';
 const Topics = props => (
   <div className="topics">
     <TopicsSearch
-      className="topics search"
+      className="search"
       onTopicSearch={props.onTopicSearch}
     />
     <TopicsList
       topics={props.topics}
       onRemoval={props.onRemoval}
-      className="topics list"
+      className="list"
     />
   </div>
 );
