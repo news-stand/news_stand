@@ -2,7 +2,7 @@ import Messages from '../database/models/messages';
 
 const addMessage = (request, response) => {
 
-  console.log(request.body.articleTitle);
+
 
   const findCriteria = { articleTitle: request.body.articleTitle };
   Messages.findOne(findCriteria)
