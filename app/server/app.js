@@ -17,6 +17,8 @@ import addMessage from './middleware/addMessage';
 import grabMessage from './middleware/grabMessages';
 import getUser from './middleware/getUser';
 import removeFavorite from './middleware/removeFavorite';
+import addOrDislike from './middleware/addOrDislike';
+import grabLikes from './middleware/grabLikes';
 
 
 const app = express();
@@ -80,6 +82,9 @@ app.get('/user', getUser, (request, response) => {
 app.post('/remove', removeFavorite, (request, response) => {
   response.end('Removed favorite');
 });
+
+app.post('/like', addOrDislike);
+app.post('/likes', grabLikes);
 
 // catch-all route for implementing React Router
 app.get('*', (request, response) => {

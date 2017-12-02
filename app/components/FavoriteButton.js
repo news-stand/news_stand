@@ -13,17 +13,29 @@ class FavoriteButton extends React.Component {
     super(props);
     this.state = {
       favorited: false,
+      likes: 0,
     };
     this.onAddFavorite = this.onAddFavorite.bind(this);
     this.onRemoveFavorite = this.onRemoveFavorite.bind(this);
   }
+  componentDidMount() {
+    axios.post('/likes', { articleTitle: this.props.article.title})
+      .then((num) => {
+        this.setState({likes: parseInt(num.data)});
+      })
+      .catch((err) => {
+        throw err;
+      });
 
-  onAddFavorite(article) {
-    this.props.addToFavorites(article);
+  }
+  onAddFavorite(article, user) {
+    this.props.addToFavorites(article, user);
+    this.setState({likes: this.state.likes+1});
   }
 
-  onRemoveFavorite(article) {
-    this.props.removeFromFavorites(article);
+  onRemoveFavorite(article, user) {
+    this.props.removeFromFavorites(article, user);
+    this.setState({likes: this.state.likes-1});
   }
 
   render() {
@@ -32,8 +44,10 @@ class FavoriteButton extends React.Component {
       <div>
         <IconButton
           className="favbtn"
-          onClick={() => { if (this.props.user[1].includes(this.props.article.title)) { this.onRemoveFavorite(this.props.article); } else { this.onAddFavorite(this.props.article); } }}
+          tooltio = {'' + this.state.likes}
+          onClick={() => { if (this.props.user[1].includes(this.props.article.title)) { this.onRemoveFavorite(this.props.article, this.props.user[0].googleId); } else { this.onAddFavorite(this.props.article, this.props.user[0].googleId); } }}
         >
+          <div>{this.state.likes}</div>
           {this.props.user.length > 0 && <Heart className={included} />}
         </IconButton>
       </div>
