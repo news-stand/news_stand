@@ -51,7 +51,7 @@ class NewsItem extends React.Component {
         comment: '',
         clicked: true,
       });
-      
+
       axios.post('/message', { message: input, articleTitle: this.state.article.title, userName: this.props.user.username, img: this.props.user.profileImg })
         .then((response) => {
           console.log('succesful add message', response);
@@ -74,7 +74,11 @@ class NewsItem extends React.Component {
               <img src={defaultImage} className="defaultImg" alt="#" />
             </a>
         }
-        <FavoriteButton article={this.state.article} />
+        {
+          this.props.loggedIn ?
+            <FavoriteButton article={this.state.article} /> :
+            null
+        }
         {
           this.state.article.title ?
             <a href={this.state.article.url} target="_blank">
