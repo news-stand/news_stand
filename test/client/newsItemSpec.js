@@ -10,7 +10,7 @@ import FavoriteButton from '../../app/components/FavoriteButton';
 Enzyme.configure({ adapter: new Adapter() });
 
 // creates a single newsItem classed div
-describe('<NewsItem />', function() {
+xdescribe('<NewsItem />', function() {
   const article = {
     source: {
       name: 'x'
