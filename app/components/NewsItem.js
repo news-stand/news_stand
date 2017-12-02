@@ -17,6 +17,7 @@ class NewsItem extends React.Component {
       article: this.props.article,
       comments: [],
       comment: '',
+      likes: 0,
     };
     this.clicked = this.clicked.bind(this);
     this.changeCommentState = this.changeCommentState.bind(this);
@@ -33,6 +34,13 @@ class NewsItem extends React.Component {
     axios.post('/messages', { articleTitle: this.state.article.title })
       .then((messages) => {
         this.setState({comments: messages.data});
+      })
+      .catch((err) => {
+        throw err;
+      });
+    axios.post('/likes', { articleTitle: this.state.article.title})
+      .then((num) => {
+        this.setState({likes: parseInt(num.data)});
       })
       .catch((err) => {
         throw err;
@@ -77,7 +85,7 @@ class NewsItem extends React.Component {
         {
           this.props.loggedIn ?
             <FavoriteButton article={this.state.article} /> :
-            null
+            <div className = "textalign">{'Likes: '+this.state.likes}</div>
         }
         {
           this.state.article.title ?
