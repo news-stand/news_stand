@@ -49,7 +49,8 @@ class Home extends React.Component {
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
         });
       }
-      this.setState({ articles: articlesAndPreferences.data.articles, articlesLoaded: true });
+      let minArticles = articlesAndPreferences.data.articles || [];
+      this.setState({ articles: minArticles, articlesLoaded: true });
     });
   }
 
@@ -100,8 +101,8 @@ class Home extends React.Component {
       topics, selectedSources, sortBy,
     };
 
-    this.setPreferences();
     this.getArticles(options);
+    this.setPreferences();
   }
 
   onTopicSearch(topic) {
