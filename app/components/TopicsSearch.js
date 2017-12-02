@@ -40,6 +40,7 @@ class TopicsSearch extends React.Component {
     const value = this.state.searchTerm;
     this.setState({ searchTerm: '' });
     this.onTopicSearch(value);
+    this.props.setPreferences();
   }
 
   handleBarChange(event) {

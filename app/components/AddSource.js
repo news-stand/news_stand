@@ -161,6 +161,7 @@ class AddSource extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
+    this.props.setPreferences();
 
     const selected = suggestions.filter(source => source.label === this.state.value);
     if (selected.length) {

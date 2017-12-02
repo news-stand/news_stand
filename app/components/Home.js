@@ -100,6 +100,7 @@ class Home extends React.Component {
       topics, selectedSources, sortBy,
     };
 
+    this.setPreferences();
     this.getArticles(options);
   }
 
@@ -146,17 +147,14 @@ class Home extends React.Component {
         </div>
         <div className="contentContainer">
           <div className="topicsAndSourcesContainer">
-            {this.props.loggedIn ?
-              <Button id="savePreferences" style={buttonStyle} onClick={this.setPreferences} >Save Preferences</Button > :
-              <div />
-            }
             <Topics
               className="topics"
               topics={this.state.topics}
               onTopicSearch={this.onTopicSearch}
               onRemoval={this.onRemoval}
+              setPreferences={this.setPreferences}
             />
-            <AddSource onAddSource={this.onAddSource} getSources={getSources} />
+            <AddSource onAddSource={this.onAddSource} getSources={getSources} setPreferences={this.setPreferences} />
             <SelectedSources
               selectedSources={this.state.selectedSources}
               onRemoval={this.onRemoval}
