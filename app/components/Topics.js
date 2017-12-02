@@ -8,6 +8,7 @@ const Topics = props => (
     <TopicsSearch
       className="search"
       onTopicSearch={props.onTopicSearch}
+      setPreferences={props.setPreferences}
     />
     <TopicsList
       topics={props.topics}
