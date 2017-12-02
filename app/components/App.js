@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import search from './helpers/search';
 import Home from './Home';
@@ -8,6 +10,7 @@ import Login from './Login';
 import NotFound from './NotFound';
 import Profile from './Profile';
 import getPreferences from './helpers/getPreferences';
+import { loadUser } from '../actions/index';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,6 +33,9 @@ class App extends React.Component {
           user: authStatus.data.user,
           favorites: authStatus.data.user.articles,
         });
+        if (authStatus.data.loggedIn) {
+          this.props.loadUser(authStatus.data.user);
+        }
       })
       .catch((err) => {
         throw err;
@@ -83,4 +89,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ loadUser }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(App);

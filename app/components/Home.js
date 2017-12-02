@@ -181,4 +181,5 @@ Home.propTypes = {
   getPreferences: PropsTypes.func.isRequired,
 };
 
+
 export default Home;

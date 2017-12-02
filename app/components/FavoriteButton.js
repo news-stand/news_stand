@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import IconButton from 'material-ui/IconButton';
 import Heart from 'mui-icons/cmdi/heart';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { addToFavorites, removeFromFavorites } from '../actions/index';
 
 class FavoriteButton extends React.Component {
   constructor(props) {
@@ -11,34 +15,31 @@ class FavoriteButton extends React.Component {
       favorited: false,
     };
     this.onAddFavorite = this.onAddFavorite.bind(this);
+    this.onRemoveFavorite = this.onRemoveFavorite.bind(this);
   }
 
   onAddFavorite(article) {
-    axios.post('/favorites', article)
-      .then((response) => {
-        if (response.data === 'favorite added') {
-          this.setState({
-            favorited: true,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.props.addToFavorites(article);
+  }
+
+  onRemoveFavorite(article) {
+    this.props.removeFromFavorites(article);
   }
 
   render() {
+    const included = this.props.user[1].includes(this.props.article.title) ? 'favorited' : 'favorite';
     return (
       <div>
-        <IconButton className="favbtn" onClick={() => this.onAddFavorite(this.props.article)}>
-          <Heart className={this.state.favorited ? 'favorited' : 'favorite'} />
+        <IconButton
+          className="favbtn"
+          onClick={() => { if (this.props.user[1].includes(this.props.article.title)) { this.onRemoveFavorite(this.props.article); } else { this.onAddFavorite(this.props.article); } }}
+        >
+          {this.props.user.length > 0 && <Heart className={included} />}
         </IconButton>
       </div>
     );
   }
 }
-
-export default FavoriteButton;
 
 FavoriteButton.propTypes = {
   article: PropTypes.shape({
@@ -52,3 +53,12 @@ FavoriteButton.propTypes = {
     url: PropTypes.string.isRequired,
   }).isRequired,
 };
+
+function mapStateToProps({ user }) {
+  return { user };
+}
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ addToFavorites, removeFromFavorites }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteButton);

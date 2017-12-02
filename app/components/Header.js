@@ -42,8 +42,7 @@ const Header = props => (
         </div>
       }
     </nav>
-  </div>
-);
+  </div>);
 
 Header.propTypes = {
   sortBy: PropTypes.string.isRequired,

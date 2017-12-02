@@ -15,6 +15,8 @@ import setPreferences from './middleware/setPreferences';
 import addFavorite from './middleware/addFavorite';
 import addMessage from './middleware/addMessage';
 import grabMessage from './middleware/grabMessages';
+import getUser from './middleware/getUser';
+import removeFavorite from './middleware/removeFavorite';
 
 
 const app = express();
@@ -69,6 +71,15 @@ app.post('/favorites', addFavorite, (request, response) => {
 
 app.post('/message', addMessage);
 app.post('/messages', grabMessage);
+
+app.get('/user', getUser, (request, response) => {
+  console.log('result in app.js', request.result);
+  response.json(request.result);
+});
+
+app.post('/remove', removeFavorite, (request, response) => {
+  response.end('Removed favorite');
+});
 
 // catch-all route for implementing React Router
 app.get('*', (request, response) => {
