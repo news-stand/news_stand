@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Chip from 'material-ui/Chip';
 
 const TopicsListItem = props => (
-  <div className="topics list-item">
-    <button
-      type="button"
+  <div className="list-item">
+    <Chip
+      style={{ fontSize: '12px', marginBottom: '5px' }}
+      label={props.topic}
+      onRequestDelete={() => { props.onRemoval(props.index, 'topics'); }}
       className="remove btn add-remove-btn"
-      onClick={() => { props.onRemoval(props.index, 'topics'); }}
-    >
-      x
-    </button>
-    {props.topic}
+    />
   </div>
 );
 

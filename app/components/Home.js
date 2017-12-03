@@ -1,6 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 import axios from 'axios';
+import Button from 'material-ui/Button';
 
 import Topics from './Topics';
 import AddSource from './AddSource';
@@ -9,11 +10,16 @@ import NewsList from './NewsList';
 import Header from './Header';
 import getSources from './helpers/getSources';
 
+const buttonStyle = {
+  fontSize: '10px',
+};
+
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       sortBy: 'publishedAt',
+      articlesLoaded: false,
       articles: [],
       selectedSources: [{
         label: 'TechCrunch',
@@ -43,7 +49,8 @@ class Home extends React.Component {
           selectedSources: articlesAndPreferences.data.preferences.selectedSources,
         });
       }
-      this.setState({ articles: articlesAndPreferences.data.articles });
+      let minArticles = articlesAndPreferences.data.articles || [];
+      this.setState({ articles: minArticles, articlesLoaded: true });
     });
   }
 
@@ -95,6 +102,7 @@ class Home extends React.Component {
     };
 
     this.getArticles(options);
+    this.setPreferences();
   }
 
   onTopicSearch(topic) {
@@ -122,7 +130,7 @@ class Home extends React.Component {
 
   getArticles(options) {
     this.props.search(options, (newsArticles) => {
-      this.setState({ articles: newsArticles });
+      this.setState({ articles: newsArticles, articlesLoaded: true });
     });
   }
 
@@ -134,33 +142,32 @@ class Home extends React.Component {
             onRefreshClick={this.onRefreshClick}
             onToggleClick={this.onToggleClick}
             sortBy={this.state.sortBy}
+            user={this.props.user}
+            loggedIn={this.props.loggedIn}
           />
         </div>
         <div className="contentContainer">
           <div className="topicsAndSourcesContainer">
-            <button
-              id="savePreferences"
-              className="btn btn-primary"
-              onClick={this.setPreferences}
-            >
-              Save Preferences
-            </button>
             <Topics
               className="topics"
               topics={this.state.topics}
               onTopicSearch={this.onTopicSearch}
               onRemoval={this.onRemoval}
+              setPreferences={this.setPreferences}
             />
-
-            <AddSource onAddSource={this.onAddSource} getSources={getSources} />
+            <AddSource onAddSource={this.onAddSource} getSources={getSources} setPreferences={this.setPreferences} />
             <SelectedSources
               selectedSources={this.state.selectedSources}
               onRemoval={this.onRemoval}
             />
           </div>
-
           <div className="articlesContainer">
-            <NewsList newsArticles={this.state.articles} />
+            <NewsList
+              loading={!this.state.articlesLoaded}
+              newsArticles={this.state.articles}
+              user={this.props.user}
+              loggedIn={this.props.loggedIn}
+            />
           </div>
         </div>
       </div>
@@ -172,5 +179,6 @@ Home.propTypes = {
   search: PropsTypes.func.isRequired,
   getPreferences: PropsTypes.func.isRequired,
 };
+
 
 export default Home;

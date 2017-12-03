@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import uniq from 'node-uniq';
+import { connect } from 'react-redux';
 
 import NewsList from './NewsList';
 
@@ -74,7 +75,7 @@ class Profile extends React.Component {
             {/* turnary operator to show if now articles are liked */}
             {this.state.articles.length === 0 ?
               <p>Articles you like will be shown here</p> :
-              <NewsList newsArticles={this.props.user.articles} />
+              this.props.fetchedUser[0].articles && <NewsList newsArticles={this.props.fetchedUser[0].articles} user={this.props.fetchedUser[0]} loggedIn={true} />
             }
           </div>
         </div>
@@ -93,4 +94,7 @@ Profile.propTypes = {
   }).isRequired,
 };
 
-export default Profile;
+function mapStateToProps(state) {
+  return { fetchedUser: state.user };
+}
+export default connect(mapStateToProps)(Profile);

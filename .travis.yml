@@ -1,25 +1,24 @@
 language: node_js
 node_js:
-  - 8.4.0
+- 8.4.0
 addons:
   chrome: stable
 before_install:
-  - export CHROME_BIN=chromium-browser
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
-  - npm run build:prod
+- npm run build:prod
 jobs:
   include:
-    - stage: server tests
-      script: node ./build/server/index.js & npm run test
-    - stage: client tests
-      script: karma start --single-run
+  - stage: server tests
+    script: node ./build/server/index.js & npm run test
+  - stage: client tests
+    script: karma start --single-run
 deploy:
   provider: heroku
   api_key:
-    secure: BsKFSXizsS9hqsZMnM5XtyBIBlzOKBt+hI9+J5Sy/Ejmoh2vqmPje1NYUNCjsgOjMTu+tdsvJWmsc0ZpUYz1VpxRYFdmig0KEirrf2u74UseTPw1k8A3nhWKUNnlBI8coVlYVybdqtF9Qjck1ssOGpYVr6DC3Q/9ZhJCLs+Lz4JwCDbM8sNXFEx0wkxCWbnxBdSOUyo5w4D84N7NGBFY451RIoWgbUo0EiKKEFQeiTGCR+0t9Bi1seheB2UAa9RMt6VrEeP8pyoVQGng3cr7UB743VZ/rnF1Lk3tgQyvC5rPHK3H8Nx3qoObjJEWr4EVHvskRO2Vtv6V8M3SVlfld1Jmn7ealciuDLsONKx1bdxIyeYav4n8+/Zi3dVCwnrE6sbPwFjhrK0zaEabt/85zdHdWPAcs5qKF2zecKC6OQQnANjxWsKKlwmshPKJ+RyKq0k3M2xgx10t2Am390OoH5kNeavIB4MjPOK2z/lj8RCbV2Y3zWWga5Dw0FK/2ADg1kXb1s0fWdChmLDPn8Xay82t0OxJcsIOHGs4+NVE3qAd/L8CySTIhj6/UUXfaOCA7lVew54BxI6yNVZ4R/j4usuODSoco93YDBDd38O1eRHKWFqntVDimxrkaAxY2PTsMXWI1mr7/oHbgoEPJ/31C3ICIamVldzgSu2xQUpX8Ok=
-  app: 
-    master: news-stand-hr-staging
+    secure: TNEWUmqggAk3WeqeZqcho4gcD7rgDcnLtF0zA/YnFvn9XsfATbU8v0elIfXPhKbJqq+ZuNHebFydTQ4PQrfidb7Jx8fYya2dV6fndA51TOmY/uiB0Fp6Pn9tKqfstlG830ViqafKcap5+NRMwN0O6xvxJKGsQbsGVWXo74ZgY+lr8Yxoe8+K6kHEb9gIid2EdguVH4VijDqehBXPIvpEFpGLZYQTPgQ0C5YEes3l2sU1WRzn29STvY4m9AJsAKn6alPUYX6I6YRmoeubEUDmFV0g+m8MNR/PLPp8yGSdV1IfEjf4qyyBFNBiyVPt5ipDR90oTXSk8N2H2Eu/xp0Pk125ZbLorw1KhYxmp3aV1b/sUyM/bXM2vHbIgaBI2pawy9PheQ70gPvL63GYPWNm7QS8AaGN9rHOfRWsWn6hpPCgiFYJCnbqAFZzr/geKifjNosdcRMLvcUhaJ+EJ7SHRjgvKubcwe8ZuVJvkImm8Z3HO0zOL0c1jFDZh7Qi+jlB9er1iaS0gdbNoC6owC51+WNLQkPr/K/VDNg5Bx4T/fN56JFAaiwx/IBl8tu11AFX+WY9al/RbxqHDxvTHHwdd7ENzMNqRAX8Y4mo5ghaYNdCH4G/kbCxoGfr4hCfbJYO8T9/aS3mA7Q3DCZKYxhts8LUHnQXGhD6HliCtbdYXvs=
+  app: newsstandbetav2
   on:
-    repo: news-stand/news_stand
+    repo: daybydayaddictionfree/news_stand

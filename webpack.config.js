@@ -25,10 +25,16 @@ module.exports = {
         loader: 'style-loader!css-loader',
         include: path.join(__dirname, 'app/public/assets/styles.css'),
       },
+      {
+        test: /favicon\.ico$/,
+        loader: 'file',
+        include: path.join(__dirname, 'app/public/assets/favicon.ico'),
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './app/public/assets/favicon.ico',
       template: './app/public/index.html',
       filename: 'index.html',
       inject: 'body',

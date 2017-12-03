@@ -1,6 +1,9 @@
 import React from 'react';
 import TextField from 'material-ui/TextField';
 import PropTypes from 'prop-types';
+import Icon from 'material-ui/Icon';
+import IconButton from 'material-ui/IconButton';
+import NoteAddIcon from 'material-ui-icons/NoteAdd';
 
 function renderInput(inputProps) {
   const { classes, autoFocus, value, ref, ...other } = inputProps;
@@ -37,6 +40,7 @@ class TopicsSearch extends React.Component {
     const value = this.state.searchTerm;
     this.setState({ searchTerm: '' });
     this.onTopicSearch(value);
+    this.props.setPreferences();
   }
 
   handleBarChange(event) {
@@ -46,16 +50,16 @@ class TopicsSearch extends React.Component {
 
   render() {
     return (
-      <div className="topics search">
-        <form className="topics search" onSubmit={(event) => { this.onSearch(event); }} >
-          <button type="submit" className="add btn add-remove-btn">+</button>
+      <div className="search">
+        <form className="search" onSubmit={(event) => { this.onSearch(event); }} >
           {renderInput({
             autoFocus: true,
-            classes: 'topics search',
-            placeholder: 'Search a topic',
+            classes: 'search',
+            placeholder: 'Add search topic',
             value: this.state.searchTerm,
             onChange: this.handleBarChange,
           })}
+          <button type="submit" className="add btn add-remove-btn">+</button>
         </form>
       </div>
     );
@@ -67,3 +71,7 @@ TopicsSearch.propTypes = {
 };
 
 export default TopicsSearch;
+
+// <IconButton aria-label="Add a topic">
+//   <NoteAddIcon />
+// </IconButton>
