@@ -4,6 +4,8 @@
 
 > Our project is built using the MERN stack.
 
+![screenshot](./images/news-stand.png)
+
 ## Team
 
   - Katherine Manning
